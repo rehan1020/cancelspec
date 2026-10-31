@@ -13,15 +13,15 @@ channels:
     entry_url: https://www.hotstar.com/in/my-account
     steps:
       - Log into your Hotstar account in a web browser.
-      - Go to My Account under your profile icon.
-      - Select Cancel Membership next to your active subscription.
+      - Click your profile. Open My Account.
+      - Find your plan. Click Cancel Membership.
       - Confirm the cancellation request on the next screen.
     notes: Access continues until the current validity period expires.
   - channel: bank-mandate
     steps:
       - Open your UPI or net banking mobile app.
-      - Navigate to AutoPay or Mandates section.
-      - Locate the Hotstar or Novi Digital mandate.
+      - Go to settings. Tap AutoPay or mandates.
+      - Find Hotstar on the list.
       - Select Revoke or Pause mandate and authenticate with your UPI PIN.
     notes: Revoking the bank mandate prevents future renewals.
 tags:

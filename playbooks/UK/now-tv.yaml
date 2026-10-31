@@ -13,9 +13,9 @@ channels:
     entry_url: https://www.nowtv.com/myaccount
     steps:
       - Log into your NOW account in a web browser.
-      - Select Passes and vouchers or Membership.
+      - Go to Passes or Membership.
       - Select Cancel next to each pass you wish to cancel.
-      - Complete the survey steps and confirm cancellation.
+      - Skip survey offers. Click Confirm to finish.
     notes: You must cancel each membership pass individually.
 tags:
   - retention-offer

@@ -14,14 +14,14 @@ channels:
       - Log into your Spotify account page in a web browser.
       - Select Manage your plan under Your plan.
       - Select Change plan and scroll to Cancel Spotify.
-      - Select Cancel Premium and confirm your cancellation.
+      - Click Cancel Premium. Confirm to finish.
     notes: Your account reverts to the free tier at the end of your billing cycle.
   - channel: apple
     steps:
       - Open Settings on your iPhone or iPad.
       - Tap your name at the top.
-      - Tap Subscriptions.
-      - Select Spotify and tap Cancel Subscription.
+      - Tap Subscriptions. Open your active list.
+      - Select Spotify. Tap to cancel.
 tags:
   - retention-offer
 accessible_alternative: Direct cancellation through web browser does not require a phone call or CAPTCHA.

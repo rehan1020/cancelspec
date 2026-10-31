@@ -12,8 +12,8 @@ channels:
     steps:
       - Log into your Hulu account on a web browser.
       - Select your name in the top-right corner and select Account.
-      - Scroll to Cancel your Subscription and select Cancel.
-      - Select Continue to Cancel then confirm by selecting Cancel Subscription.
+      - Scroll to Cancel Subscription. Click Cancel.
+      - Click Continue to Cancel. Confirm to finish.
     notes: You keep access until the end of your billing cycle.
 tags:
   - retention-offer

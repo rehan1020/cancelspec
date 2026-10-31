@@ -12,16 +12,16 @@ channels:
     entry_url: https://www.netflix.com/youraccount
     steps:
       - Log into your Netflix account in a web browser.
-      - Select your profile icon and select Account.
-      - Select Cancel Membership under Membership and Billing.
-      - Select Finish Cancellation to confirm.
+      - Click your profile image. Go to Account.
+      - Find Membership. Click Cancel.
+      - Click Finish. Confirm that you want to stop.
     notes: You can continue watching until the end of your current billing period.
   - channel: google-play
     steps:
       - Open the Google Play Store on your Android device.
       - Tap your profile icon at top right.
-      - Tap Payments and subscriptions then Subscriptions.
-      - Select Netflix and tap Cancel subscription.
+      - Tap Payments. Tap Subscriptions.
+      - Select Netflix. Tap to cancel.
 tags:
   - retention-offer
 accessible_alternative: Browser cancellation available without CAPTCHA or phone call.

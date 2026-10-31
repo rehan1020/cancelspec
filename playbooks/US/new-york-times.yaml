@@ -13,9 +13,9 @@ channels:
     entry_url: https://www.nytimes.com/subscription/cancel
     steps:
       - Log into your New York Times account in a web browser.
-      - Go to Account Settings and select Subscription overview.
-      - Select Cancel your subscription.
-      - Chat with automated assistant or complete cancellation questionnaire.
+      - Open Account Settings. Click your plan details.
+      - Click Cancel Subscription. Confirm to proceed.
+      - Chat with the bot. Answer questions to finish.
     notes: Some accounts may be prompted to chat or call customer care to complete cancellation.
 tags:
   - chat-only

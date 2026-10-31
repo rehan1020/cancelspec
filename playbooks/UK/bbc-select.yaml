@@ -11,14 +11,14 @@ channels:
     steps:
       - Open Settings on your iPhone or iPad.
       - Tap your name at the top of the screen.
-      - Tap Subscriptions.
-      - Select BBC Select and tap Cancel Subscription.
+      - Tap Subscriptions. Open your active list.
+      - Select BBC Select. Tap Cancel Subscription.
   - channel: direct
     entry_url: https://bbcselect.com/account/
     steps:
       - Log into your BBC Select account in a web browser.
-      - Navigate to your Account and select Subscriptions.
-      - Select Cancel Subscription and confirm your choice.
+      - Open your Account page. View your subscriptions.
+      - Click Cancel Subscription. Confirm your choice.
 contributors:
   - cancelbot
 reviewers:

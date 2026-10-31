@@ -12,14 +12,14 @@ channels:
     entry_url: https://www.timesprime.com/profile
     steps:
       - Log into Times Prime on the web or mobile browser.
-      - Go to your Profile and select Membership Details.
-      - Select Manage Auto-Renewal and toggle it off.
-      - Confirm disabling auto-renewal.
+      - Open Profile. View plan details.
+      - Turn off auto renew.
+      - Confirm to turn off recurring charges.
   - channel: bank-mandate
     steps:
       - Open your UPI app (Google Pay, PhonePe, or Paytm).
-      - Go to Autopay or Recurring Payments settings.
-      - Select Times Prime or Times Internet mandate.
+      - Open settings. Tap the Autopay list.
+      - Select Times Prime from the list.
       - Tap Cancel Autopay and enter your UPI PIN.
 auto_renews:
   value: true
