@@ -3,6 +3,18 @@
 
 /**
  * @cancelspec/scanner
- * Statement parsing, recurrence detection, and matching
+ * Statement intake, parsing, recurrence detection, matching
  */
-export {};
+
+export * from './types.js';
+export * from './intake.js';
+export * from './column_mapping.js';
+export * from './dates.js';
+export * from './amounts.js';
+export * from './grouping.js';
+export * from './recurrence.js';
+export * from './confidence.js';
+export * from './matcher.js';
+export * from './output.js';
+export * from './engine.js';
+export * from './worker.js';
