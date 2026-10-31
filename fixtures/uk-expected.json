@@ -1,0 +1,42 @@
+[
+  {
+    "merchantKey": "NOW TV ENTERTAINMENT",
+    "serviceId": "now-tv",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 9.99,
+    "currency": "GBP"
+  },
+  {
+    "merchantKey": "BBC SELECT DIGITAL",
+    "serviceId": "bbc-select",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 4.99,
+    "currency": "GBP"
+  },
+  {
+    "merchantKey": "SPOTIFY UK DIRECT",
+    "serviceId": "spotify",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 10.99,
+    "currency": "GBP"
+  },
+  {
+    "merchantKey": "PUREGYM MONTHLY DD",
+    "serviceId": "puregym",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 28.99,
+    "currency": "GBP"
+  },
+  {
+    "merchantKey": "JETBRAINS QUARTERLY SUB",
+    "serviceId": "dev-quarterly",
+    "cadence": "quarterly",
+    "chargeCount": 4,
+    "typicalAmount": 45,
+    "currency": "GBP"
+  }
+]

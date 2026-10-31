@@ -11,3 +11,4 @@ export * from './normalize.js';
 export * from './loader.js';
 export * from './index_builder.js';
 export * from './bundle.js';
+export * from './fixtures/generator.js';

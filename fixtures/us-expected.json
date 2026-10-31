@@ -1,0 +1,66 @@
+[
+  {
+    "merchantKey": "NETFLIX COM 1234",
+    "serviceId": "netflix",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 17.99,
+    "currency": "USD"
+  },
+  {
+    "merchantKey": "SPOTIFY USA 5678",
+    "serviceId": "spotify",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 10.99,
+    "currency": "USD"
+  },
+  {
+    "merchantKey": "HULU MONTHLY SUB",
+    "serviceId": "hulu",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 7.99,
+    "currency": "USD"
+  },
+  {
+    "merchantKey": "NYTIMES DIGITAL",
+    "serviceId": "new-york-times",
+    "cadence": "monthly",
+    "chargeCount": 11,
+    "typicalAmount": 4,
+    "currency": "USD"
+  },
+  {
+    "merchantKey": "GITHUB PRO SUBSCRIPTION",
+    "serviceId": "github",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 4,
+    "currency": "USD"
+  },
+  {
+    "merchantKey": "FRESH MEALS WEEKLY",
+    "serviceId": "meal-kit",
+    "cadence": "weekly",
+    "chargeCount": 52,
+    "typicalAmount": 65,
+    "currency": "USD"
+  },
+  {
+    "merchantKey": "ANYTIME FITNESS DUES",
+    "serviceId": "fitness-club",
+    "cadence": "biweekly",
+    "chargeCount": 26,
+    "typicalAmount": 25,
+    "currency": "USD"
+  },
+  {
+    "merchantKey": "CLOUD VAULT ANNUAL",
+    "serviceId": "cloud-vault",
+    "cadence": "annual",
+    "chargeCount": 1,
+    "typicalAmount": 99.99,
+    "currency": "USD"
+  }
+]

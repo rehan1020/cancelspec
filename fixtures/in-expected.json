@@ -1,0 +1,34 @@
+[
+  {
+    "merchantKey": "UPI NOVI DIGITAL",
+    "serviceId": "hotstar",
+    "cadence": "annual",
+    "chargeCount": 1,
+    "typicalAmount": 1499,
+    "currency": "INR"
+  },
+  {
+    "merchantKey": "UPI TIMES INTERNET",
+    "serviceId": "times-prime",
+    "cadence": "annual",
+    "chargeCount": 1,
+    "typicalAmount": 1199,
+    "currency": "INR"
+  },
+  {
+    "merchantKey": "SPOTIFY INDIA AUTOPAY",
+    "serviceId": "spotify",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 119,
+    "currency": "INR"
+  },
+  {
+    "merchantKey": "GOOGLE STORAGE 100GB",
+    "serviceId": "google-one",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 130,
+    "currency": "INR"
+  }
+]

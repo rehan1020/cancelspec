@@ -1,0 +1,34 @@
+[
+  {
+    "merchantKey": "DEEZER PREMIUM SEPA",
+    "serviceId": "deezer",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 10.99,
+    "currency": "EUR"
+  },
+  {
+    "merchantKey": "NETFLIX SEPA LASTSCHRIFT",
+    "serviceId": "netflix",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 13.99,
+    "currency": "EUR"
+  },
+  {
+    "merchantKey": "SPOTIFY AB STOCKHOLM",
+    "serviceId": "spotify",
+    "cadence": "monthly",
+    "chargeCount": 12,
+    "typicalAmount": 10.99,
+    "currency": "EUR"
+  },
+  {
+    "merchantKey": "NORDVPN ANNUAL SUB",
+    "serviceId": "nordvpn",
+    "cadence": "annual",
+    "chargeCount": 1,
+    "typicalAmount": 59.88,
+    "currency": "EUR"
+  }
+]

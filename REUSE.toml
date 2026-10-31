@@ -45,31 +45,31 @@ SPDX-FileCopyrightText = "2026 CancelSpec contributors"
 SPDX-License-Identifier = "CC-BY-4.0"
 
 [[annotations]]
+path = "fixtures/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
 path = ".gitkeep"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 CancelSpec contributors"
 SPDX-License-Identifier = "CC-BY-4.0"
 
 [[annotations]]
-path = "fixtures/**/.gitkeep"
+path = "scripts/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 CancelSpec contributors"
-SPDX-License-Identifier = "CC-BY-4.0"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = "scripts/**/.gitkeep"
+path = "tests/**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 CancelSpec contributors"
-SPDX-License-Identifier = "CC-BY-4.0"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
 path = "site/**/.gitkeep"
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2026 CancelSpec contributors"
-SPDX-License-Identifier = "CC-BY-4.0"
-
-[[annotations]]
-path = "tests/**/.gitkeep"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 CancelSpec contributors"
 SPDX-License-Identifier = "CC-BY-4.0"
