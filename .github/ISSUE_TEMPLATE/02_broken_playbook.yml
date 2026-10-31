@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-4.0
+
+name: Report Broken Playbook
+description: Report that existing cancellation steps or links for a service are outdated, broken, or inaccurate.
+title: "[Broken Playbook]: "
+labels: ["broken-playbook", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Three independent reports automatically mark a playbook as broken. Please describe what has changed.
+  - type: input
+    id: service_id
+    attributes:
+      label: Playbook Service ID & Region
+      description: The canonical ID from our URL (e.g. "US/new-york-times" or "GLOBAL/spotify").
+      placeholder: "e.g. US/new-york-times"
+    validations:
+      required: true
+  - type: textarea
+    id: what_changed
+    attributes:
+      label: What Changed or Failed?
+      description: Explain which step is no longer accurate or what new barrier the service introduced.
+      placeholder: "Step 3 now requires calling phone number... or the cancel button moved to Settings > Security..."
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Supporting URL or Documentation
+      description: Link to official help page or announcement demonstrating the new procedure.
+      placeholder: "https://support.example.com/how-to-cancel"
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy_check
+    attributes:
+      label: Privacy Confirmation
+      options:
+        - label: "I have not included personal account details, emails, or real account numbers."
+          required: true

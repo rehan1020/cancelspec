@@ -1,0 +1,81 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-4.0
+
+name: Suggest New Playbook
+description: Propose adding cancellation instructions for a subscription service.
+title: "[New Playbook]: "
+labels: ["playbook", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new cancellation playbook!
+        **Privacy notice:** Do not include personal account numbers, full credit card numbers, personal emails, or real statement excerpts.
+  - type: input
+    id: service_name
+    attributes:
+      label: Service Name
+      description: The official public name of the subscription service (e.g. "Spotify", "The New York Times").
+      placeholder: "e.g. Acme Cloud"
+    validations:
+      required: true
+  - type: dropdown
+    id: region
+    attributes:
+      label: Region
+      description: Primary geographic region this service operates in.
+      options:
+        - GLOBAL
+        - US
+        - UK
+        - EU
+        - IN
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: Official Website
+      description: The service's official domain name (e.g. "acme.example.com"). Must be HTTPS.
+      placeholder: "https://example.com"
+    validations:
+      required: true
+  - type: input
+    id: merchant_descriptors
+    attributes:
+      label: Statement Merchant Descriptors
+      description: Bank statement descriptor strings associated with this service (uppercase, star wildcards allowed).
+      placeholder: "ACME* SUB 1234, ACME CLOUD POS"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Cancellation Steps (if known)
+      description: Ordered step-by-step actions (plain English, grade 8 or below, each starting with a verb).
+      placeholder: "1. Log into your account at https://...\n2. Click Profile > Billing.\n3. Select Cancel Subscription."
+    validations:
+      required: false
+  - type: checkboxes
+    id: friction_tags
+    attributes:
+      label: Known Friction Tags
+      description: Select any verified friction barriers required to cancel:
+      options:
+        - label: "phone-required (Must call customer support)"
+        - label: "chat-only (Must initiate live text chat)"
+        - label: "retention-offer (Multiple discount / retention screens)"
+        - label: "survey-wall (Mandatory questionnaire)"
+        - label: "hidden-entry (Cancel link is concealed or misleadingly named)"
+        - label: "captcha (CAPTCHA required to submit)"
+        - label: "app-required (Cannot cancel on the web; mobile app required)"
+        - label: "fee-on-exit (Early termination or exit fee charged)"
+  - type: checkboxes
+    id: privacy_checklist
+    attributes:
+      label: Contribution Checklist
+      options:
+        - label: "I confirm this submission contains NO personal or private banking details."
+          required: true
+        - label: "I understand playbook contributions are licensed under CC BY-NC-SA 4.0."
+          required: true

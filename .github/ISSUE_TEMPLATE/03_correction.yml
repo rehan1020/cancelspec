@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-4.0
+
+name: Suggest Correction or Friction Tag
+description: Suggest an updated friction tag, billing channel, or fact (notice period, refund window) for an existing playbook.
+title: "[Correction]: "
+labels: ["playbook-update", "triage"]
+body:
+  - type: input
+    id: service_id
+    attributes:
+      label: Playbook Identifier
+      description: Region and ID (e.g. "GLOBAL/netflix", "IN/hotstar").
+      placeholder: "e.g. GLOBAL/netflix"
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_correction
+    attributes:
+      label: Proposed Correction
+      description: Describe the updated fact, channel, or friction tag to add/remove.
+      placeholder: "Add friction tag 'survey-wall' because a 5-question mandatory exit survey was added..."
+    validations:
+      required: true
+  - type: input
+    id: evidence_source
+    attributes:
+      label: Evidence Source (URL)
+      description: Official terms of service, support article, or verifiable documentation URL.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm_no_pii
+    attributes:
+      label: Privacy Check
+      options:
+        - label: "No personal or account-identifying data is included."
+          required: true

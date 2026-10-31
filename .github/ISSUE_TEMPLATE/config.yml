@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-4.0
+
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerabilities
+    url: https://github.com/cancelspec/cancelspec/security/advisories/new
+    about: Privately report a security vulnerability to the maintainers.
+  - name: General Questions & Discussion
+    url: https://github.com/cancelspec/cancelspec/discussions
+    about: Ask questions or discuss new cancellation patterns with the community.
