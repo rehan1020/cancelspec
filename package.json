@@ -18,6 +18,9 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
+    "build:site": "node packages/cli/dist/cli.js build --site",
+    "serve": "node scripts/serve.js",
+    "preview": "npm run build && npm run build:site && npm run serve",
     "test": "npm run test --workspaces --if-present && vitest run tests",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
