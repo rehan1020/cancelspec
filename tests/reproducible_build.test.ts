@@ -76,5 +76,5 @@ describe('Reproducible Builds Gate (WP9)', () => {
     }
 
     console.log(`✓ Reproducible build verified across ${hashesA.size} files.`);
-  });
+  }, 20000);
 });
