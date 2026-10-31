@@ -5,4 +5,9 @@
  * @cancelspec/core
  * Playbook loader, normalization, alias index, scoring, and bundle writer
  */
-export {};
+
+export * from './scoring.js';
+export * from './normalize.js';
+export * from './loader.js';
+export * from './index_builder.js';
+export * from './bundle.js';
