@@ -3,6 +3,11 @@
 
 /**
  * @cancelspec/ui
- * DOM helper library
+ * Small DOM helper library: element builder, store, announcer, focus manager
  */
-export {};
+
+export * from './escape.js';
+export * from './dom.js';
+export * from './announcer.js';
+export * from './focus.js';
+export * from './store.js';
