@@ -4,6 +4,7 @@
   "private": true,
   "description": "Free, open-source, browser-only subscription cancellation tool and community dataset",
   "license": "AGPL-3.0-or-later",
+  "type": "module",
   "engines": {
     "node": ">=20.0.0"
   },
@@ -17,13 +18,14 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present && vitest run tests",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present"
   },
   "devDependencies": {
     "@types/node": "26.6.6",
+    "axe-core": "4.14.0",
     "esbuild": "0.28.2",
     "typescript": "7.0.2",
     "vitest": "5.0.5",
