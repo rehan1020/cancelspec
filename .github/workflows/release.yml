@@ -15,7 +15,7 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     environment: release
 
     steps:
@@ -31,10 +31,33 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build monorepo
         run: npm run build
 
-      # TODO(#8): Add SBOM generation
-      # TODO(#9): Add attestations
-      # TODO(#10): Add npm and PyPI publishing
-      # TODO(#11): Add GitHub release with bundle and changelog
+      - name: Run automated test & gate suite
+        run: npm test
+
+      - name: Execute release check & bundle generation
+        run: node packages/cli/dist/cli.js build && node packages/cli/dist/cli.js release-check
+
+      - name: Generate CycloneDX SBOM
+        run: |
+          mkdir -p dist
+          npm sbom --sbom-format=cyclonedx > dist/sbom.json
+
+      - name: Generate SHA-256 Checksums
+        run: |
+          cd dist/data
+          sha256sum bundle.*.json > SHA256SUMS.txt
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="${{ github.ref_name }}"
+          gh release create "$TAG_NAME" \
+            dist/data/bundle.*.json \
+            dist/data/SHA256SUMS.txt \
+            dist/sbom.json \
+            --title "CancelSpec Release $TAG_NAME" \
+            --notes "CancelSpec community dataset and cancellation tool release $TAG_NAME."
