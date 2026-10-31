@@ -1,0 +1,48 @@
+id: new-york-times
+name: The New York Times
+aliases:
+  - NYTimes
+  - NYT Digital
+category: news-media
+website: https://nytimes.com
+merchant_patterns:
+  - NYTIMES*
+  - NYT*
+channels:
+  - channel: direct
+    entry_url: https://www.nytimes.com/subscription/cancel
+    steps:
+      - Log into your New York Times account in a web browser.
+      - Go to Account Settings and select Subscription overview.
+      - Select Cancel your subscription.
+      - Chat with automated assistant or complete cancellation questionnaire.
+    notes: Some accounts may be prompted to chat or call customer care to complete cancellation.
+tags:
+  - chat-only
+  - retention-offer
+  - survey-wall
+accessible_alternative: Online cancellation chat is available 24/7 as an alternative to phone.
+notice_period:
+  value: None
+  source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
+  accessed_on: '2026-10-31'
+refund_window:
+  value: Prorated refund for annual plans
+  source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
+  accessed_on: '2026-10-31'
+auto_renews:
+  value: true
+  source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
+  accessed_on: '2026-10-31'
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against official NYT help pages.

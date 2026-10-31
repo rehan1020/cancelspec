@@ -1,0 +1,43 @@
+id: now-tv
+name: NOW
+aliases:
+  - NOW TV
+  - NOW Broadband
+category: streaming-video
+website: https://nowtv.com
+merchant_patterns:
+  - NOW TV*
+  - NOWTV*
+channels:
+  - channel: direct
+    entry_url: https://www.nowtv.com/myaccount
+    steps:
+      - Log into your NOW account in a web browser.
+      - Select Passes and vouchers or Membership.
+      - Select Cancel next to each pass you wish to cancel.
+      - Complete the survey steps and confirm cancellation.
+    notes: You must cancel each membership pass individually.
+tags:
+  - retention-offer
+  - survey-wall
+accessible_alternative: Cancel online through your account page without calling.
+notice_period:
+  value: None
+  source: https://help.nowtv.com/article/how-do-i-cancel-now
+  accessed_on: '2026-10-31'
+auto_renews:
+  value: true
+  source: https://help.nowtv.com/article/how-do-i-cancel-now
+  accessed_on: '2026-10-31'
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://help.nowtv.com/article/how-do-i-cancel-now
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against official NOW TV support guide.

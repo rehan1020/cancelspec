@@ -1,0 +1,39 @@
+id: times-prime
+name: Times Prime
+aliases:
+  - TimesPrime
+category: delivery-membership
+website: https://timesprime.com
+merchant_patterns:
+  - TIMES PRIME*
+  - TIMES INTERNET*
+channels:
+  - channel: direct
+    entry_url: https://www.timesprime.com/profile
+    steps:
+      - Log into Times Prime on the web or mobile browser.
+      - Go to your Profile and select Membership Details.
+      - Select Manage Auto-Renewal and toggle it off.
+      - Confirm disabling auto-renewal.
+  - channel: bank-mandate
+    steps:
+      - Open your UPI app (Google Pay, PhonePe, or Paytm).
+      - Go to Autopay or Recurring Payments settings.
+      - Select Times Prime or Times Internet mandate.
+      - Tap Cancel Autopay and enter your UPI PIN.
+auto_renews:
+  value: true
+  source: https://www.timesprime.com/faq
+  accessed_on: '2026-10-31'
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://www.timesprime.com/faq
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against Times Prime official FAQ.

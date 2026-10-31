@@ -1,0 +1,33 @@
+id: bbc-select
+name: BBC Select
+aliases:
+  - BBC Select UK
+category: streaming-video
+website: https://bbcselect.com
+merchant_patterns:
+  - BBC SELECT*
+channels:
+  - channel: apple
+    steps:
+      - Open Settings on your iPhone or iPad.
+      - Tap your name at the top of the screen.
+      - Tap Subscriptions.
+      - Select BBC Select and tap Cancel Subscription.
+  - channel: direct
+    entry_url: https://bbcselect.com/account/
+    steps:
+      - Log into your BBC Select account in a web browser.
+      - Navigate to your Account and select Subscriptions.
+      - Select Cancel Subscription and confirm your choice.
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://bbcselect.com/help/
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against BBC Select help pages.

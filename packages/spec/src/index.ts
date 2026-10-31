@@ -5,4 +5,7 @@
  * @cancelspec/spec
  * Schema definition, enums, version constant, and validator
  */
-export {};
+
+export * from './constants.js';
+export * from './types.js';
+export * from './validator.js';

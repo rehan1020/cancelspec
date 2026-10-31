@@ -1,0 +1,40 @@
+id: hulu
+name: Hulu
+aliases:
+  - Hulu Plus
+category: streaming-video
+website: https://hulu.com
+merchant_patterns:
+  - HULU*
+channels:
+  - channel: direct
+    entry_url: https://secure.hulu.com/account
+    steps:
+      - Log into your Hulu account on a web browser.
+      - Select your name in the top-right corner and select Account.
+      - Scroll to Cancel your Subscription and select Cancel.
+      - Select Continue to Cancel then confirm by selecting Cancel Subscription.
+    notes: You keep access until the end of your billing cycle.
+tags:
+  - retention-offer
+accessible_alternative: Full online cancellation flow without phone or CAPTCHA.
+notice_period:
+  value: None
+  source: https://help.hulu.com/article/hulu-cancel-subscription
+  accessed_on: '2026-10-31'
+auto_renews:
+  value: true
+  source: https://help.hulu.com/article/hulu-cancel-subscription
+  accessed_on: '2026-10-31'
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://help.hulu.com/article/hulu-cancel-subscription
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against official Hulu support documentation.

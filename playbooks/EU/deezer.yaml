@@ -1,0 +1,47 @@
+id: deezer
+name: Deezer
+aliases:
+  - Deezer Premium
+category: streaming-music
+website: https://deezer.com
+merchant_patterns:
+  - DEEZER*
+channels:
+  - channel: direct
+    entry_url: https://www.deezer.com/account
+    steps:
+      - Log into your Deezer account on a web browser.
+      - Select your profile picture and choose Account Settings.
+      - Select Manage my subscription.
+      - Select Cancel my subscription and confirm your selection.
+    notes: Your account reverts to the free Deezer tier at cycle end.
+  - channel: apple
+    steps:
+      - Open Settings on your Apple device.
+      - Tap your Apple ID banner.
+      - Tap Subscriptions.
+      - Select Deezer and tap Cancel Subscription.
+notice_period:
+  value: None
+  source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
+  accessed_on: '2026-10-31'
+refund_window:
+  value: 14 days statutory cooling-off in EU
+  source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
+  accessed_on: '2026-10-31'
+auto_renews:
+  value: true
+  source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
+  accessed_on: '2026-10-31'
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against Deezer support documentation.

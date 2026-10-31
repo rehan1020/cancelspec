@@ -1,0 +1,51 @@
+id: spotify
+name: Spotify
+aliases:
+  - Spotify Premium
+category: streaming-music
+website: https://spotify.com
+merchant_patterns:
+  - SPOTIFY*
+  - SPOTIFY USA*
+channels:
+  - channel: direct
+    entry_url: https://www.spotify.com/account/
+    steps:
+      - Log into your Spotify account page in a web browser.
+      - Select Manage your plan under Your plan.
+      - Select Change plan and scroll to Cancel Spotify.
+      - Select Cancel Premium and confirm your cancellation.
+    notes: Your account reverts to the free tier at the end of your billing cycle.
+  - channel: apple
+    steps:
+      - Open Settings on your iPhone or iPad.
+      - Tap your name at the top.
+      - Tap Subscriptions.
+      - Select Spotify and tap Cancel Subscription.
+tags:
+  - retention-offer
+accessible_alternative: Direct cancellation through web browser does not require a phone call or CAPTCHA.
+notice_period:
+  value: None
+  source: https://support.spotify.com/article/cancel-subscription/
+  accessed_on: '2026-10-31'
+refund_window:
+  value: 14 days in EU and UK
+  source: https://support.spotify.com/article/refund-policy/
+  accessed_on: '2026-10-31'
+auto_renews:
+  value: true
+  source: https://support.spotify.com/article/cancel-subscription/
+  accessed_on: '2026-10-31'
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://support.spotify.com/article/cancel-subscription/
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against official support documentation.

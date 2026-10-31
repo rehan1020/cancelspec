@@ -1,0 +1,51 @@
+id: netflix
+name: Netflix
+aliases:
+  - Netflix Streaming
+category: streaming-video
+website: https://netflix.com
+merchant_patterns:
+  - NETFLIX*
+  - NETFLIX.COM*
+channels:
+  - channel: direct
+    entry_url: https://www.netflix.com/youraccount
+    steps:
+      - Log into your Netflix account in a web browser.
+      - Select your profile icon and select Account.
+      - Select Cancel Membership under Membership and Billing.
+      - Select Finish Cancellation to confirm.
+    notes: You can continue watching until the end of your current billing period.
+  - channel: google-play
+    steps:
+      - Open the Google Play Store on your Android device.
+      - Tap your profile icon at top right.
+      - Tap Payments and subscriptions then Subscriptions.
+      - Select Netflix and tap Cancel subscription.
+tags:
+  - retention-offer
+accessible_alternative: Browser cancellation available without CAPTCHA or phone call.
+notice_period:
+  value: None
+  source: https://help.netflix.com/node/407
+  accessed_on: '2026-10-31'
+refund_window:
+  value: None
+  source: https://help.netflix.com/node/407
+  accessed_on: '2026-10-31'
+auto_renews:
+  value: true
+  source: https://help.netflix.com/node/407
+  accessed_on: '2026-10-31'
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://help.netflix.com/node/407
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against official support documentation.

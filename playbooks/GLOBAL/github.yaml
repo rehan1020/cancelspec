@@ -1,0 +1,31 @@
+id: github
+name: GitHub
+aliases:
+  - GitHub Pro
+  - GitHub Copilot
+category: software
+website: https://github.com
+merchant_patterns:
+  - GITHUB*
+channels:
+  - channel: direct
+    entry_url: https://github.com/settings/billing
+    steps:
+      - Navigate to your GitHub Settings in a web browser.
+      - Select Billing and plans from the left sidebar.
+      - Select Plans and usage.
+      - Select Edit next to your plan and choose Downgrade to Free.
+      - Follow the prompts to confirm your downgrade.
+    notes: Access remains active until the end of your billing cycle.
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://docs.github.com/billing-and-payments/managing-billing-for-your-products/managing-your-github-subscription/downgrading-your-plan
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against official GitHub documentation.

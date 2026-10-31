@@ -1,0 +1,45 @@
+id: hotstar
+name: Disney+ Hotstar
+aliases:
+  - Hotstar
+  - Disney Hotstar
+category: streaming-video
+website: https://hotstar.com
+merchant_patterns:
+  - HOTSTAR*
+  - NOVI DIGITAL*
+channels:
+  - channel: direct
+    entry_url: https://www.hotstar.com/in/my-account
+    steps:
+      - Log into your Hotstar account in a web browser.
+      - Go to My Account under your profile icon.
+      - Select Cancel Membership next to your active subscription.
+      - Confirm the cancellation request on the next screen.
+    notes: Access continues until the current validity period expires.
+  - channel: bank-mandate
+    steps:
+      - Open your UPI or net banking mobile app.
+      - Navigate to AutoPay or Mandates section.
+      - Locate the Hotstar or Novi Digital mandate.
+      - Select Revoke or Pause mandate and authenticate with your UPI PIN.
+    notes: Revoking the bank mandate prevents future renewals.
+tags:
+  - retention-offer
+accessible_alternative: Cancel online directly on the web without app or phone required.
+auto_renews:
+  value: true
+  source: https://help.hotstar.com/in/en/support/solutions/articles/68000001235
+  accessed_on: '2026-10-31'
+contributors:
+  - cancelbot
+reviewers:
+  - maintainer
+verified_on: '2026-10-31'
+verification_method: official-help-page
+sources:
+  - url: https://help.hotstar.com/in/en/support/solutions/articles/68000001235
+    accessed_on: '2026-10-31'
+revision: 1
+status: active
+status_reason: Verified against Disney+ Hotstar help portal.
