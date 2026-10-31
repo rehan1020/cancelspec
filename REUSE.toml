@@ -1,0 +1,147 @@
+version = 1
+SPDX-PackageName = "CancelSpec"
+SPDX-PackageSupplier = "hello@cancelspec.org"
+
+[[annotations]]
+path = "playbooks/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+[[annotations]]
+path = "playbooks/**/.gitkeep"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+[[annotations]]
+path = "docs/PLAN.md"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "packages/spec/src/schema/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "project.config"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "NOTICE"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "CancelSpec Production Build Plan and Agent Prompt.md"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = ".gitkeep"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "fixtures/**/.gitkeep"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "scripts/**/.gitkeep"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "site/**/.gitkeep"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "tests/**/.gitkeep"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "docs/**/.gitkeep"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "policies/**/.gitkeep"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = ".gitignore"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ".npmrc"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ".editorconfig"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ".gitattributes"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "package.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "package-lock.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "tsconfig.base.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "tsconfig.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "packages/**/package.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "packages/**/tsconfig.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CancelSpec contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"

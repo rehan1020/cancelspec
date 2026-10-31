@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# CODEOWNERS — reviewers required for specific paths.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Spec changes require project maintainer review
+packages/spec/ @cancelspec/maintainers
+
+# Policy changes require project maintainer review
+policies/ @cancelspec/maintainers
+GOVERNANCE.md @cancelspec/maintainers
+CODE_OF_CONDUCT.md @cancelspec/maintainers
+
+# Playbooks by region
+playbooks/US/ @cancelspec/us-reviewers
+playbooks/UK/ @cancelspec/uk-reviewers
+playbooks/EU/ @cancelspec/eu-reviewers
+playbooks/IN/ @cancelspec/in-reviewers
+playbooks/GLOBAL/ @cancelspec/maintainers

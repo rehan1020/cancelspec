@@ -1,0 +1,19 @@
+{
+  "name": "@cancelspec/core",
+  "version": "0.0.0",
+  "description": "Playbook loader, normalization, alias index, scoring, and bundle writer",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc --build",
+    "test": "vitest run src",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@cancelspec/spec": "*"
+  }
+}

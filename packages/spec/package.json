@@ -1,0 +1,16 @@
+{
+  "name": "@cancelspec/spec",
+  "version": "0.0.0",
+  "description": "Schema definition, enums, version constant, and validator",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc --build",
+    "test": "vitest run src",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  }
+}

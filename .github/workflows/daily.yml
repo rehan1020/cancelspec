@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: daily
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      # TODO(#15): Fetch home page, one service page, and bundle hash from both hosts
+      # TODO(#16): Compare outputs and open issue on failure
+      - name: Placeholder
+        run: echo "Daily smoke test not yet implemented"

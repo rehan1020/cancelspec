@@ -1,0 +1,15 @@
+CancelSpec
+Copyright 2026 CancelSpec contributors
+
+This project contains works under multiple licenses:
+
+- Source code: AGPL-3.0-or-later
+  See LICENSES/AGPL-3.0-or-later.txt
+
+- Playbook corpus (playbooks/): CC-BY-NC-SA-4.0
+  See LICENSES/CC-BY-NC-SA-4.0.txt
+
+- Specification text and schema: CC-BY-4.0
+  See LICENSES/CC-BY-4.0.txt
+
+See .reuse/dep5 and individual file headers for per-file licensing.

@@ -1,0 +1,21 @@
+{
+  "name": "@cancelspec/cli",
+  "version": "0.0.0",
+  "description": "CLI commands",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc --build",
+    "test": "vitest run src",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@cancelspec/spec": "*",
+    "@cancelspec/core": "*",
+    "@cancelspec/site-builder": "*"
+  }
+}
