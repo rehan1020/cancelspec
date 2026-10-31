@@ -14,6 +14,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@cancelspec/spec": "*"
+    "@cancelspec/spec": "*",
+    "yaml": "2.9.1"
   }
 }

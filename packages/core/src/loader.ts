@@ -19,8 +19,8 @@ import {
 } from './scoring.js';
 
 export interface LoadOptions {
-  includeDrafts?: boolean;
-  referenceDate?: Date;
+  includeDrafts?: boolean | undefined;
+  referenceDate?: Date | undefined;
 }
 
 export function compilePlaybook(

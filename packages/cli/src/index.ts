@@ -3,6 +3,10 @@
 
 /**
  * @cancelspec/cli
- * CLI commands
+ * CLI commands: lint, new, build, release-check
  */
-export {};
+
+export * from './commands/lint.js';
+export * from './commands/new.js';
+export * from './commands/build.js';
+export * from './commands/release_check.js';

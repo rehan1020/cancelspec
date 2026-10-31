@@ -14,8 +14,8 @@ export interface ReleaseBundle {
 }
 
 export interface CreateBundleOptions {
-  dataVersion?: string;
-  referenceDate?: Date;
+  dataVersion?: string | undefined;
+  referenceDate?: Date | undefined;
 }
 
 export function sortObjectKeys<T>(value: T): T {
