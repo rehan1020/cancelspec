@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import { join, resolve } from 'node:path';
+import { buildSite } from '@cancelspec/site-builder';
 import { lintAllPlaybooks, lintFiles } from './commands/lint.js';
 import { scaffoldPlaybook } from './commands/new.js';
 import { buildDataBundle } from './commands/build.js';
@@ -96,9 +97,18 @@ async function main() {
       const outDirIdx = args.indexOf('--outDir');
       const outDir = outDirIdx !== -1 && args[outDirIdx + 1] ? args[outDirIdx + 1] : undefined;
       const quiet = args.includes('--quiet');
+      const isSite = args.includes('--site');
 
       try {
-        buildDataBundle(playbooksDir, { outDir, quiet });
+        if (isSite) {
+          buildSite({
+            playbooksDir,
+            outDir: outDir || join(process.cwd(), 'site'),
+            quiet,
+          });
+        } else {
+          buildDataBundle(playbooksDir, { outDir, quiet });
+        }
       } catch (err) {
         console.error(`Build failed: ${(err as Error).message}`);
         process.exit(1);

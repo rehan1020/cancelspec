@@ -1,18 +1,19 @@
 // SPDX-FileCopyrightText: 2026 CancelSpec contributors
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+import type { AliasIndex } from '@cancelspec/core/index_builder';
 import { scoreColumnMapping } from './column_mapping.js';
 import { scanStatement, type ScanOptions } from './engine.js';
 import { parseStatementIntake } from './intake.js';
-import type { ColumnMapping, ScannerProgress, ScanResult } from './types.js';
+import type { ColumnMapping, ScanResult } from './types.js';
 
 export type WorkerInMessage =
-  | { type: 'SCAN_START'; text: string; options?: ScanOptions }
-  | { type: 'CONTINUE_WITH_MAPPING'; text: string; mapping: ColumnMapping; options?: ScanOptions }
+  | { type: 'SCAN_START'; text: string; options?: ScanOptions | undefined }
+  | { type: 'CONTINUE_WITH_MAPPING'; text: string; mapping: ColumnMapping; options?: ScanOptions | undefined }
   | { type: 'RESET' };
 
 export type WorkerOutMessage =
-  | { type: 'SCAN_PROGRESS'; progress: ScannerProgress }
+  | { type: 'SCAN_PROGRESS'; stage: string; percent: number }
   | {
       type: 'MAPPING_REQUIRED';
       headers: string[];
@@ -24,6 +25,7 @@ export type WorkerOutMessage =
 
 export function setupWorkerHandler(
   postMsg: (msg: WorkerOutMessage) => void,
+  getIndex?: (() => AliasIndex | undefined) | undefined,
 ): (e: { data: WorkerInMessage }) => void {
   return function handleMessage(e: { data: WorkerInMessage }) {
     const msg = e.data;
@@ -50,10 +52,12 @@ export function setupWorkerHandler(
           return;
         }
 
+        const fallbackIndex = getIndex ? getIndex() : undefined;
         const result = scanStatement(msg.text, {
           ...msg.options,
+          aliasIndex: msg.options?.aliasIndex || fallbackIndex,
           onProgress: (p) => {
-            postMsg({ type: 'SCAN_PROGRESS', progress: p });
+            postMsg({ type: 'SCAN_PROGRESS', stage: p.stage, percent: p.percent });
           },
         });
 
@@ -67,11 +71,13 @@ export function setupWorkerHandler(
       }
     } else if (msg.type === 'CONTINUE_WITH_MAPPING') {
       try {
+        const fallbackIndex = getIndex ? getIndex() : undefined;
         const result = scanStatement(msg.text, {
           ...msg.options,
           columnMapping: msg.mapping,
+          aliasIndex: msg.options?.aliasIndex || fallbackIndex,
           onProgress: (p) => {
-            postMsg({ type: 'SCAN_PROGRESS', progress: p });
+            postMsg({ type: 'SCAN_PROGRESS', stage: p.stage, percent: p.percent });
           },
         });
 

@@ -10,6 +10,7 @@ import {
 } from '@cancelspec/core';
 import { CATEGORIES, REGIONS, type CompiledPlaybook } from '@cancelspec/spec';
 import { loadProjectConfig, type ProjectConfig } from './config.js';
+import { buildClientBundles } from './generator/client_bundles.js';
 import { generateCloudflareHeaders } from './generator/headers.js';
 import { generateRobotsTxt, generateSitemapXml } from './generator/sitemap.js';
 import { generateMainCss } from './generator/styles.js';
@@ -222,6 +223,16 @@ export function buildSite(options: SiteBuilderOptions): BuildReport {
   const bundleJson = serializeDeterministicJson(bundle);
   totalBytes += writePage(outDir, `data/bundle.${bundle.dataVersion}.json`, bundleJson);
   totalBytes += writePage(outDir, 'data/bundle.latest.json', bundleJson);
+
+  // Client-side scripts (Tool Web Worker & Interactive UI)
+  try {
+    const clientBytes = buildClientBundles(outDir, playbooks);
+    totalBytes += clientBytes;
+  } catch (err) {
+    if (!options.quiet) {
+      console.warn('Warning: Could not build client bundles:', (err as Error).message);
+    }
+  }
 
   if (!options.quiet) {
     console.log(`✓ Static site built successfully!`);

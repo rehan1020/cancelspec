@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import type { Channel } from '@cancelspec/spec';
-import type { IndexEntry } from '@cancelspec/core';
+import type { IndexEntry } from '@cancelspec/core/index_builder';
 
 export type Cadence =
   | 'weekly'
@@ -57,8 +57,9 @@ export interface MatchedPlaybook {
   serviceName: string;
   region: string;
   category: string;
+  difficulty?: number | undefined;
   matchScore: number; // 0.8 - 1.0
-  entry: IndexEntry;
+  entry?: IndexEntry | undefined;
 }
 
 export interface DetectedSubscription {

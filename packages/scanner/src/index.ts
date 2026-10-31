@@ -18,3 +18,5 @@ export * from './matcher.js';
 export * from './output.js';
 export * from './engine.js';
 export * from './worker.js';
+export * from './client/types.js';
+export * from './client/app.js';

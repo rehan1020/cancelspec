@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2026 CancelSpec contributors
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { normalizeMerchant } from '@cancelspec/core';
+import { normalizeMerchant } from '@cancelspec/core/normalize';
 import type { ParsedTransaction, TransactionGroup } from './types.js';
 
 function computeJaccardSimilarity(tokensA: string[], tokensB: string[]): number {

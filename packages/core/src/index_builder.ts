@@ -11,6 +11,7 @@ export interface IndexEntry {
   region: string;
   serviceName: string;
   category: string;
+  difficulty?: number | undefined;
   isWildcard: boolean;
   tokens: string[];
 }
@@ -40,6 +41,7 @@ export function buildAliasIndex(playbooks: CompiledPlaybook[]): AliasIndex {
       region: playbook.region,
       serviceName: playbook.name,
       category: playbook.category,
+      difficulty: playbook.difficulty,
       isWildcard,
       tokens,
     };

@@ -1,7 +1,8 @@
 // SPDX-FileCopyrightText: 2026 CancelSpec contributors
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { normalizeMerchant, type AliasIndex } from '@cancelspec/core';
+import type { AliasIndex } from '@cancelspec/core/index_builder';
+import { normalizeMerchant } from '@cancelspec/core/normalize';
 import { parseFlexibleAmount } from './amounts.js';
 import { scoreColumnMapping } from './column_mapping.js';
 import { computeConfidenceScore } from './confidence.js';

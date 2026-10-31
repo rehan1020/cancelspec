@@ -3,8 +3,8 @@
   "references": [
     { "path": "packages/spec" },
     { "path": "packages/core" },
-    { "path": "packages/scanner" },
     { "path": "packages/ui" },
+    { "path": "packages/scanner" },
     { "path": "packages/site-builder" },
     { "path": "packages/cli" }
   ]

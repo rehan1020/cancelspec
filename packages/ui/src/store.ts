@@ -10,7 +10,7 @@ export interface Store<T> {
   reset(): void;
 }
 
-export function createStore<T extends Record<string, unknown>>(initialState: T): Store<T> {
+export function createStore<T extends object>(initialState: T): Store<T> {
   let state = { ...initialState };
   const listeners = new Set<Listener<T>>();
 

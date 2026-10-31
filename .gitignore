@@ -1,5 +1,7 @@
 node_modules/
 dist/
+site/*
+!site/.gitkeep
 *.tsbuildinfo
 .DS_Store
 Thumbs.db

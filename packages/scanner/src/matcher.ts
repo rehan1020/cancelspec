@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2026 CancelSpec contributors
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type { AliasIndex } from '@cancelspec/core';
+import type { AliasIndex } from '@cancelspec/core/index_builder';
 import type { MatchedPlaybook } from './types.js';
 
 function computeTokenSetSimilarity(tokensA: string[], tokensB: string[]): number {
@@ -38,6 +38,7 @@ export function matchMerchantKey(
           serviceName: entry.serviceName,
           region: entry.region,
           category: entry.category,
+          difficulty: entry.difficulty,
           matchScore: 1.0,
           entry,
         });
@@ -59,6 +60,7 @@ export function matchMerchantKey(
           serviceName: entry.serviceName,
           region: entry.region,
           category: entry.category,
+          difficulty: entry.difficulty,
           matchScore: 0.9,
           entry,
         });
@@ -75,6 +77,7 @@ export function matchMerchantKey(
         serviceName: entry.serviceName,
         region: entry.region,
         category: entry.category,
+        difficulty: entry.difficulty,
         matchScore: Math.round(similarity * 100) / 100,
         entry,
       });

@@ -6,6 +6,20 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./normalize": {
+      "types": "./dist/normalize.d.ts",
+      "import": "./dist/normalize.js"
+    },
+    "./index_builder": {
+      "types": "./dist/index_builder.d.ts",
+      "import": "./dist/index_builder.js"
+    }
+  },
   "files": ["dist"],
   "scripts": {
     "build": "tsc --build",
