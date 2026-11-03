@@ -34,7 +34,7 @@ When configuring Cloudflare Pages for the primary site:
 | **Build command** | `npm ci && npm run build && npm run build:site` | Compiles monorepo packages, extracts bundles, and runs static site generator |
 | **Build output directory** | `site` | Target directory where `cancelspec build --site` outputs HTML/CSS/JS |
 | **Root directory** | `/` | Repository root |
-| **Node.js Version** | `20` | Set environment variable `NODE_VERSION=20` in Pages dashboard |
+| **Node.js Version** | `22` | Set environment variable `NODE_VERSION=22` in Pages dashboard |
 
 ### Headers and Security
 Cloudflare Pages automatically processes the `_headers` file generated in `site/_headers`, which applies:

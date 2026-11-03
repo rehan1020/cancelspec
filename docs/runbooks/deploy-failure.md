@@ -30,7 +30,7 @@ The daily CI job (`daily.yml`) fetches the homepage, one service page, and the d
 ### Scenario B: Cloudflare Pages Git Build Fails
 1. Log into the Cloudflare Dashboard and view the build logs for the CancelSpec project.
 2. Confirm the build command matches `node packages/cli/dist/cli.js build --site` and output directory is `site`.
-3. Verify Node LTS version is set to 20 or higher (`NODE_VERSION=20`).
+3. Verify Node LTS version is set to 22 or higher (`NODE_VERSION=22`).
 
 ### Scenario C: Hash Mismatch Between Hosts
 1. Triggered by `daily.yml` alert when bundle hashes differ across hosts.
