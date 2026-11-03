@@ -17,15 +17,15 @@
     "packages/cli"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
+    "build": "tsc --build",
     "pretest": "npm run build",
     "build:site": "node packages/cli/dist/cli.js build --site",
     "serve": "node scripts/serve.js",
     "preview": "npm run build && npm run build:site && npm run serve",
     "test": "npm run test --workspaces --if-present && vitest run tests",
     "lint": "npm run lint --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "clean": "npm run clean --workspaces --if-present"
+    "typecheck": "tsc --build && npm run typecheck --workspaces --if-present",
+    "clean": "tsc --build --clean"
   },
   "devDependencies": {
     "@types/jsdom": "30.0.0",

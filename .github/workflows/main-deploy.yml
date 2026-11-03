@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build monorepo
+        run: npm run build
+
       - name: Lint
         run: npm run lint
 
@@ -54,10 +57,8 @@ jobs:
             exit 1
           fi
 
-      - name: Build monorepo and site
-        run: |
-          npm run build
-          npm run build:site
+      - name: Build site
+        run: npm run build:site
 
       # TODO(#5): Reproducible-build check
       - name: Verify reproducible build

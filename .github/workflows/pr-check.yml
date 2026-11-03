@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build monorepo
+        run: npm run build
+
       - name: Lint
         run: npm run lint
 
@@ -36,9 +39,6 @@ jobs:
 
       - name: Unit tests
         run: npm test
-
-      - name: Build
-        run: npm run build
 
       - name: Setup Python for REUSE
         uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0

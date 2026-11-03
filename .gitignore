@@ -3,6 +3,7 @@ dist/
 site/*
 !site/.gitkeep
 *.tsbuildinfo
+**/*.tsbuildinfo
 .DS_Store
 Thumbs.db
 coverage/
