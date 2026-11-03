@@ -87,18 +87,39 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
 
-      # TODO(#7): Post-deploy smoke test
+      # Post-deploy smoke test: verify key pages are reachable.
+      # GitHub Pages can take up to 60s to propagate after a fresh deploy,
+      # so we retry with backoff before declaring failure.
       - name: Post-deploy smoke test
         run: |
           DEPLOY_URL="${{ steps.deployment.outputs.page_url }}"
+          # Ensure HTTPS (deploy-pages may return http:// on custom domains)
+          DEPLOY_URL="${DEPLOY_URL/http:\/\//https:\/\/}"
+          # Ensure trailing slash
+          DEPLOY_URL="${DEPLOY_URL%/}/"
           echo "Testing deployment at $DEPLOY_URL..."
+
+          smoke_curl() {
+            local url="$1"
+            local attempt
+            for attempt in 1 2 3 4 5; do
+              if curl -fsSL --retry 0 --max-time 10 "$url" > /dev/null 2>&1; then
+                return 0
+              fi
+              echo "  Attempt $attempt for $url failed, waiting $(( attempt * 5 ))s..."
+              sleep $(( attempt * 5 ))
+            done
+            echo "ERROR: $url unreachable after 5 attempts"
+            return 1
+          }
+
           # 1. Fetch home page
-          curl -fsSL "$DEPLOY_URL" > /dev/null || curl -fsSL "${DEPLOY_URL}index.html" > /dev/null
+          smoke_curl "$DEPLOY_URL" || smoke_curl "${DEPLOY_URL}index.html"
           # 2. Fetch data bundle
-          curl -fsSL "${DEPLOY_URL}data/bundle.latest.json" > /dev/null
+          smoke_curl "${DEPLOY_URL}data/bundle.latest.json"
           # 3. Fetch one service page if any exist
           if [ -d "./site/services" ] && find ./site/services -name "index.html" | grep -qv "services/index.html"; then
             SERVICE_PATH=$(find ./site/services -name "index.html" | grep -v "services/index.html" | head -n 1 | sed 's|^\./site/||')
-            curl -fsSL "${DEPLOY_URL}${SERVICE_PATH}" > /dev/null
+            smoke_curl "${DEPLOY_URL}${SERVICE_PATH}"
           fi
           echo "✓ Post-deploy smoke test passed."
