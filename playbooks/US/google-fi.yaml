@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: google-fi
+name: Google Fi Wireless
+aliases:
+  - Google Fi
+  - Project Fi
+category: telecom-bundle
+website: https://fi.google.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://fi.google.com
+    steps:
+      - Open the Google Fi website or mobile app.
+      - Go to the Account tab.
+      - Select Manage Plan.
+      - Click Cancel service.
+      - Follow the on-screen prompts to confirm.
+    notes: Your service remains active until your phone number transfers or the billing cycle ends.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-01
+verification_method: official-help-page
+sources:
+  - url: https://support.google.com/fi/answer/6079398?hl=en
+    accessed_on: 2026-11-02
+    sha256: 130e6641bdb75ceea48727d2a7f10ae13b67ad88780ba8f5a6301151b3f8d8c3
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

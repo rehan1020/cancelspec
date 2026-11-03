@@ -65,12 +65,12 @@ describe('Conformance fixtures — Invalid Playbooks rejected with clear message
     id: 'test-service',
     name: 'Test Service',
     category: 'software',
-    website: 'https://testservice.example.com',
+    website: 'https://testservice.com',
     merchant_patterns: ['TEST SERVICE*'],
     channels: [
       {
         channel: 'direct',
-        entry_url: 'https://testservice.example.com/cancel',
+        entry_url: 'https://testservice.com/cancel',
         steps: ['Log into your account and select Cancel.'],
       },
     ],
@@ -80,8 +80,9 @@ describe('Conformance fixtures — Invalid Playbooks rejected with clear message
     verification_method: 'official-help-page',
     sources: [
       {
-        url: 'https://testservice.example.com/help',
+        url: 'https://testservice.com/help',
         accessed_on: '2026-10-31',
+        sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
       },
     ],
     revision: 1,
@@ -215,5 +216,136 @@ describe('Conformance fixtures — Invalid Playbooks rejected with clear message
     });
     expect(result.valid).toBe(false);
     expect(result.errors.some((e) => e.message.includes('cannot leave draft status'))).toBe(true);
+  });
+
+  it('rejects merchant patterns whose literal text is shorter than 6 characters', () => {
+    const resultShort = validatePlaybook({
+      ...baseValidPlaybook,
+      merchant_patterns: ['HULU*', 'SPOTIFY*'],
+    });
+    expect(resultShort.valid).toBe(false);
+    expect(resultShort.errors.some((e) => e.message.includes('at least 6 characters'))).toBe(true);
+
+    const resultValid = validatePlaybook({
+      ...baseValidPlaybook,
+      merchant_patterns: ['HULU.COM*', 'SPOTIFY*'],
+    });
+    expect(resultValid.valid).toBe(true);
+  });
+
+  it('validates playbook kind (service vs channel-guide) and prevents aliases on channel-guides', () => {
+    const resultGuideValid = validatePlaybook({
+      ...baseValidPlaybook,
+      kind: 'channel-guide',
+      aliases: undefined,
+    });
+    expect(resultGuideValid.valid).toBe(true);
+
+    const resultGuideWithAliases = validatePlaybook({
+      ...baseValidPlaybook,
+      kind: 'channel-guide',
+      aliases: ['Alias 1'],
+    });
+    expect(resultGuideWithAliases.valid).toBe(false);
+    expect(resultGuideWithAliases.errors.some((e) => e.message.includes('Channel guides cannot carry service aliases'))).toBe(true);
+
+    const resultInvalidKind = validatePlaybook({
+      ...baseValidPlaybook,
+      kind: 'invalid-kind' as any,
+    });
+    expect(resultInvalidKind.valid).toBe(false);
+    expect(resultInvalidKind.errors.some((e) => e.path === 'kind')).toBe(true);
+  });
+
+  it('validates outcome field (cancel, downgrade, close-account)', () => {
+    for (const outcome of ['cancel', 'downgrade', 'close-account'] as const) {
+      const res = validatePlaybook({
+        ...baseValidPlaybook,
+        outcome,
+      });
+      expect(res.valid).toBe(true);
+    }
+
+    const resInvalid = validatePlaybook({
+      ...baseValidPlaybook,
+      outcome: 'delete-everything' as any,
+    });
+    expect(resInvalid.valid).toBe(false);
+    expect(resInvalid.errors.some((e) => e.path === 'outcome')).toBe(true);
+  });
+
+  it('validates source sha256 checksum format', () => {
+    const resValid = validatePlaybook({
+      ...baseValidPlaybook,
+      sources: [
+        {
+          url: 'https://testservice.com/cancel',
+          accessed_on: '2026-10-31',
+          sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+        },
+      ],
+    });
+    expect(resValid.valid).toBe(true);
+
+    const resInvalid = validatePlaybook({
+      ...baseValidPlaybook,
+      sources: [
+        {
+          url: 'https://testservice.com/cancel',
+          accessed_on: '2026-10-31',
+          sha256: 'invalid-short-hash',
+        },
+      ],
+    });
+    expect(resInvalid.valid).toBe(false);
+    expect(resInvalid.errors.some((e) => e.path === 'sources[0].sha256')).toBe(true);
+  });
+
+  it('requires sha256 and accessed_on fetch date before leaving draft status', () => {
+    const resDraftWithoutSha = validatePlaybook({
+      ...baseValidPlaybook,
+      status: 'draft',
+      sources: [
+        {
+          url: 'https://testservice.com/cancel',
+          accessed_on: '2026-10-31',
+        },
+      ],
+    });
+    // Draft playbooks are allowed to omit sha256
+    expect(resDraftWithoutSha.valid).toBe(true);
+
+    const resActiveWithoutSha = validatePlaybook({
+      ...baseValidPlaybook,
+      status: 'active',
+      sources: [
+        {
+          url: 'https://testservice.com/cancel',
+          accessed_on: '2026-10-31',
+        },
+      ],
+    });
+    // Active playbooks MUST have sha256
+    expect(resActiveWithoutSha.valid).toBe(false);
+    expect(
+      resActiveWithoutSha.errors.some((e) =>
+        e.message.includes('A playbook cannot leave draft status without a valid 64-character hex sha256'),
+      ),
+    ).toBe(true);
+  });
+
+  it('accepts allowlisted official help hosts in source validation', () => {
+    const resGoogleHelp = validatePlaybook({
+      ...baseValidPlaybook,
+      website: 'https://youtube.com',
+      sources: [
+        {
+          url: 'https://support.google.com/youtube/answer/6308278',
+          accessed_on: '2026-10-31',
+          sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+        },
+      ],
+    });
+    expect(resGoogleHelp.valid).toBe(true);
   });
 });

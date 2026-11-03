@@ -2,14 +2,19 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 import {
+  ALLOWLISTED_OFFICIAL_HELP_HOSTS,
   BANNED_LEGAL_PHRASES,
   CATEGORIES,
   CHANNELS,
+  OUTCOMES,
+  PLAYBOOK_KINDS,
   STATUSES,
   TAGS,
   VERIFICATION_METHODS,
   type Category,
   type Channel,
+  type Outcome,
+  type PlaybookKind,
   type Status,
   type Tag,
   type VerificationMethod,
@@ -37,6 +42,44 @@ function containsHtmlOrMarkdown(text: string): boolean {
     MARKDOWN_LINK_REGEX.test(text) ||
     MARKDOWN_FORMAT_REGEX.test(text)
   );
+}
+
+function containsPlaceholders(text: string): boolean {
+  return /\bexample\.com\b|\bTODO\b/i.test(text);
+}
+
+function extractDomain(urlOrDomain: string): string {
+  try {
+    const raw = urlOrDomain.startsWith('http') ? urlOrDomain : `https://${urlOrDomain}`;
+    const hostname = new URL(raw).hostname.toLowerCase();
+    const parts = hostname.split('.');
+    if (parts.length >= 2) {
+      const p2 = parts[parts.length - 2];
+      const p1 = parts[parts.length - 1];
+      if (parts.length >= 3 && p2 && p1 && p2.length <= 3 && p1.length <= 2) {
+        return parts.slice(-3).join('.');
+      }
+      return parts.slice(-2).join('.');
+    }
+    return hostname;
+  } catch {
+    return urlOrDomain.toLowerCase();
+  }
+}
+
+function sourceMatchesWebsite(sourceUrl: string, websiteUrl: string): boolean {
+  const siteDomain = extractDomain(websiteUrl);
+  const srcDomain = extractDomain(sourceUrl);
+  if (srcDomain === siteDomain) return true;
+  if (siteDomain && srcDomain.endsWith(`.${siteDomain}`)) return true;
+  try {
+    const srcHost = new URL(sourceUrl.startsWith('http') ? sourceUrl : `https://${sourceUrl}`).hostname.toLowerCase();
+    const allowed = ALLOWLISTED_OFFICIAL_HELP_HOSTS[siteDomain];
+    if (allowed && (allowed.includes(srcDomain) || allowed.includes(srcHost))) return true;
+  } catch {
+    // ignore
+  }
+  return false;
 }
 
 function isValidHttpsUrl(urlString: string): boolean {
@@ -99,6 +142,8 @@ export function validatePlaybook(data: unknown): ValidationResult {
     'id',
     'name',
     'aliases',
+    'kind',
+    'outcome',
     'category',
     'website',
     'merchant_patterns',
@@ -160,6 +205,33 @@ export function validatePlaybook(data: unknown): ValidationResult {
     }
   }
 
+  // kind
+  if (data.kind !== undefined) {
+    if (typeof data.kind !== 'string' || !PLAYBOOK_KINDS.includes(data.kind as PlaybookKind)) {
+      errors.push({
+        path: 'kind',
+        message: `Invalid kind "${data.kind}". Must be one of: ${PLAYBOOK_KINDS.join(', ')}`,
+      });
+    } else if (data.kind === 'channel-guide') {
+      if (Array.isArray(data.aliases) && data.aliases.length > 0) {
+        errors.push({
+          path: 'aliases',
+          message: 'Channel guides cannot carry service aliases',
+        });
+      }
+    }
+  }
+
+  // outcome
+  if (data.outcome !== undefined) {
+    if (typeof data.outcome !== 'string' || !OUTCOMES.includes(data.outcome as Outcome)) {
+      errors.push({
+        path: 'outcome',
+        message: `Invalid outcome "${data.outcome}". Must be one of: ${OUTCOMES.join(', ')}`,
+      });
+    }
+  }
+
   // category
   if (!data.category || typeof data.category !== 'string') {
     errors.push({ path: 'category', message: 'category is required' });
@@ -175,14 +247,21 @@ export function validatePlaybook(data: unknown): ValidationResult {
     errors.push({ path: 'website', message: 'website is required' });
   } else if (!isValidHttpsUrl(data.website) && !/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.website)) {
     errors.push({ path: 'website', message: 'website must be a valid domain or https URL' });
+  } else if (containsPlaceholders(data.website)) {
+    errors.push({ path: 'website', message: 'website cannot contain placeholder domain' });
   }
 
   // 2. Matching
   // merchant_patterns
-  if (!Array.isArray(data.merchant_patterns) || data.merchant_patterns.length === 0) {
+  if (!Array.isArray(data.merchant_patterns)) {
     errors.push({
       path: 'merchant_patterns',
-      message: 'merchant_patterns is required and must contain at least one pattern',
+      message: 'merchant_patterns must be an array',
+    });
+  } else if (data.status !== 'draft' && data.merchant_patterns.length === 0) {
+    errors.push({
+      path: 'merchant_patterns',
+      message: 'merchant_patterns is required and must contain at least one pattern for non-draft playbooks',
     });
   } else {
     data.merchant_patterns.forEach((pattern, idx) => {
@@ -204,6 +283,30 @@ export function validatePlaybook(data: unknown): ValidationResult {
             message: 'merchant_pattern must be uppercase',
           });
         }
+        const literal = pattern.replace(/\*/g, '').trim();
+        if (literal.length < 6) {
+          errors.push({
+            path: `merchant_patterns[${idx}]`,
+            message: `merchant_pattern literal text must be at least 6 characters (got ${literal.length} for "${pattern}")`,
+          });
+        }
+
+        // Minimum-literal rule on normalized pattern (after processor prefixes are stripped)
+        if (data.kind !== 'channel-guide') {
+          const stripped = pattern
+            .replace(/\*/g, ' ')
+            .trim()
+            .replace(/^(GOOGLE|GOOGLE PLAY|APPLE\.COM|APPLE|APPLE BILL|PAYPAL|SQUARE|SQ)\b\s*/i, '')
+            .trim();
+          const words = stripped.split(/\s+/).filter(Boolean);
+          const hasWordGe4 = words.some((w) => w.replace(/[^A-Z0-9]/g, '').length >= 4);
+          if (!hasWordGe4) {
+            errors.push({
+              path: `merchant_patterns[${idx}]`,
+              message: `merchant_pattern normalized literal must contain at least one word of 4 or more characters after processor prefixes are stripped (got "${stripped}")`,
+            });
+          }
+        }
       }
     });
   }
@@ -216,7 +319,7 @@ export function validatePlaybook(data: unknown): ValidationResult {
     });
   } else {
     data.channels.forEach((ch, idx) => {
-      validateChannel(ch, `channels[${idx}]`, errors, warnings);
+      validateChannel(ch, `channels[${idx}]`, errors, warnings, data.status as Status);
     });
   }
 
@@ -304,6 +407,16 @@ export function validatePlaybook(data: unknown): ValidationResult {
     data.sources.forEach((src, idx) => {
       validateSource(src, `sources[${idx}]`, errors);
     });
+
+    const hasMatchingSource = (data.sources as Array<{ url?: string }>).some(
+      (src) => src && typeof src.url === 'string' && sourceMatchesWebsite(src.url, data.website as string),
+    );
+    if (!hasMatchingSource && typeof data.website === 'string' && data.website.trim()) {
+      errors.push({
+        path: 'sources',
+        message: `At least one source host must match the service website domain ("${extractDomain(data.website as string)}")`,
+      });
+    }
   }
 
   if (typeof data.revision !== 'number' || !Number.isInteger(data.revision) || data.revision < 1) {
@@ -335,6 +448,45 @@ export function validatePlaybook(data: unknown): ValidationResult {
         message: 'A playbook cannot leave draft status without a verification_method',
       });
     }
+
+    // Require sha256 and accessed_on fetch date on every source before leaving draft
+    if (Array.isArray(data.sources)) {
+      data.sources.forEach((src, idx) => {
+        if (!isPlainObject(src) || typeof src.sha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(src.sha256)) {
+          errors.push({
+            path: `sources[${idx}].sha256`,
+            message: 'A playbook cannot leave draft status without a valid 64-character hex sha256 digest on every source',
+          });
+        }
+        if (!isPlainObject(src) || typeof src.accessed_on !== 'string' || !isValidDate(src.accessed_on)) {
+          errors.push({
+            path: `sources[${idx}].accessed_on`,
+            message: 'A playbook cannot leave draft status without an accessed_on fetch date on every source',
+          });
+        }
+      });
+    }
+
+    if (data.status === 'active') {
+      if (!Array.isArray(data.reviewers) || data.reviewers.length === 0) {
+        errors.push({
+          path: 'reviewers',
+          message: 'An active playbook must have at least one human reviewer',
+        });
+      }
+      if (Array.isArray(data.contributors) && data.contributors.includes('ai-draft')) {
+        errors.push({
+          path: 'status',
+          message: 'A playbook with "ai-draft" as contributor cannot have status "active"',
+        });
+      }
+      if (Array.isArray(data.reviewers) && data.reviewers.includes('ai-draft')) {
+        errors.push({
+          path: 'reviewers',
+          message: '"ai-draft" cannot be a reviewer',
+        });
+      }
+    }
   }
 
   if (typeof data.status_reason !== 'string' || !data.status_reason.trim()) {
@@ -361,6 +513,7 @@ function validateChannel(
   path: string,
   errors: ValidationError[],
   warnings: ValidationWarning[],
+  status?: Status,
 ): void {
   if (!isPlainObject(channelData)) {
     errors.push({ path, message: 'channel must be an object' });
@@ -385,11 +538,23 @@ function validateChannel(
     }
   }
 
-  if (!Array.isArray(channelData.steps) || channelData.steps.length === 0) {
+  if (!Array.isArray(channelData.steps)) {
     errors.push({
       path: `${path}.steps`,
-      message: 'steps is required and must contain at least one step',
+      message: 'steps is required and must be an array',
     });
+  } else if (channelData.steps.length === 0) {
+    if (status !== 'draft') {
+      errors.push({
+        path: `${path}.steps`,
+        message: 'steps must contain at least one step for non-draft playbooks',
+      });
+    } else if (!channelData.notes) {
+      errors.push({
+        path: `${path}.steps`,
+        message: 'steps in draft playbooks may only be empty if notes explaining the unsourced steps is provided',
+      });
+    }
   } else {
     channelData.steps.forEach((step, sIdx) => {
       const stepPath = `${path}.steps[${sIdx}]`;
@@ -459,9 +624,18 @@ function validateFact(factData: unknown, path: string, errors: ValidationError[]
   }
   if (factData.value === undefined || (typeof factData.value !== 'string' && typeof factData.value !== 'boolean')) {
     errors.push({ path: `${path}.value`, message: 'fact value must be a string or boolean' });
+  } else if (typeof factData.value === 'string') {
+    if (factData.value.trim().toLowerCase() === 'none') {
+      errors.push({ path: `${path}.value`, message: 'Do not use "None"; omit the fact field when unknown' });
+    }
+    if (containsPlaceholders(factData.value)) {
+      errors.push({ path: `${path}.value`, message: 'fact value cannot contain placeholder text' });
+    }
   }
   if (typeof factData.source !== 'string' || !isValidHttpsUrl(factData.source)) {
     errors.push({ path: `${path}.source`, message: 'fact source must be an https URL' });
+  } else if (containsPlaceholders(factData.source)) {
+    errors.push({ path: `${path}.source`, message: 'fact source cannot contain placeholder domain' });
   }
   if (typeof factData.accessed_on !== 'string' || !isValidDate(factData.accessed_on)) {
     errors.push({ path: `${path}.accessed_on`, message: 'fact accessed_on must be a date (YYYY-MM-DD)' });
@@ -475,9 +649,19 @@ function validateSource(sourceData: unknown, path: string, errors: ValidationErr
   }
   if (typeof sourceData.url !== 'string' || !isValidHttpsUrl(sourceData.url)) {
     errors.push({ path: `${path}.url`, message: 'source url must be an https URL' });
+  } else if (containsPlaceholders(sourceData.url)) {
+    errors.push({ path: `${path}.url`, message: 'source url cannot contain placeholder domain' });
   }
   if (typeof sourceData.accessed_on !== 'string' || !isValidDate(sourceData.accessed_on)) {
     errors.push({ path: `${path}.accessed_on`, message: 'source accessed_on must be a date (YYYY-MM-DD)' });
+  }
+  if (sourceData.sha256 !== undefined) {
+    if (typeof sourceData.sha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(sourceData.sha256)) {
+      errors.push({
+        path: `${path}.sha256`,
+        message: 'source sha256 must be a 64-character lowercase hex SHA-256 digest',
+      });
+    }
   }
 }
 

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
 id: new-york-times
 name: The New York Times
 aliases:
@@ -5,9 +8,9 @@ aliases:
   - NYT Digital
 category: news-media
 website: https://nytimes.com
+outcome: cancel
 merchant_patterns:
   - NYTIMES*
-  - NYT*
 channels:
   - channel: direct
     entry_url: https://www.nytimes.com/subscription/cancel
@@ -22,27 +25,23 @@ tags:
   - retention-offer
   - survey-wall
 accessible_alternative: Online cancellation chat is available 24/7 as an alternative to phone.
-notice_period:
-  value: None
-  source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
-  accessed_on: '2026-10-31'
 refund_window:
   value: Prorated refund for annual plans
   source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
-  accessed_on: '2026-10-31'
+  accessed_on: 2026-10-31
 auto_renews:
   value: true
   source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
-  accessed_on: '2026-10-31'
+  accessed_on: 2026-10-31
 contributors:
-  - cancelbot
-reviewers:
-  - maintainer
-verified_on: '2026-10-31'
+  - ai-draft
+reviewers: []
+verified_on: 2026-10-31
 verification_method: official-help-page
 sources:
   - url: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
-    accessed_on: '2026-10-31'
+    accessed_on: 2026-11-02
+    sha256: 24e19422acb4f2a8b7335f115982a313819bc4d63a1944116045902b341465b5
 revision: 1
-status: active
-status_reason: Verified against official NYT help pages.
+status: draft
+status_reason: AI-drafted, awaiting human verification.

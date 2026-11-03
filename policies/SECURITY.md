@@ -7,7 +7,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## Reporting a vulnerability
 
-Please report security vulnerabilities through GitHub's private vulnerability reporting feature on this repository, or by email to security@cancelspec.org.
+Please report security vulnerabilities through GitHub's private vulnerability reporting feature on this repository (https://github.com/rehan1020/cancelspec/security/advisories/new), or by email to the security address specified in `project.config` (cancelspec@protonmail.com).
 
 ## Response goals
 

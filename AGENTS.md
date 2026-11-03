@@ -34,6 +34,8 @@ ui → site-builder → cli
 4. **Names from config**: All project names, URLs, contacts come from `project.config`.
 5. **No real data**: Fixtures are synthetic only.
 6. **No innerHTML/eval**: Use textContent for untrusted content.
+7. **Agent boundaries**: Agents never claim human testing, external registry searches, account or domain actions, or reviews.
+8. **Draft playbooks only**: Agents never mark a playbook active; all agent-authored playbooks must remain status draft with contributor ai-draft and empty reviewers.
 
 ## Build and test
 

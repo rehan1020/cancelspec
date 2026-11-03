@@ -31,6 +31,8 @@ export function compilePlaybook(
   return {
     ...rawPlaybook,
     region,
+    kind: rawPlaybook.kind || 'service',
+    outcome: rawPlaybook.outcome || 'cancel',
     difficulty: computeDifficulty(rawPlaybook),
     accessible_to_cancel: isAccessibleToCancel(rawPlaybook),
     staleness_days: computeStalenessDays(rawPlaybook.verified_on, referenceDate),

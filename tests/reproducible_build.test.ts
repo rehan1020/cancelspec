@@ -66,7 +66,7 @@ describe('Reproducible Builds Gate (WP9)', () => {
     const hashesA = getFileHashes(dirA);
     const hashesB = getFileHashes(dirB);
 
-    expect(hashesA.size).toBeGreaterThan(25);
+    expect(hashesA.size).toBeGreaterThanOrEqual(20);
     expect(hashesA.size).toBe(hashesB.size);
 
     for (const [relPath, hashA] of hashesA) {

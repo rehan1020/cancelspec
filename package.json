@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
+    "pretest": "npm run build",
     "build:site": "node packages/cli/dist/cli.js build --site",
     "serve": "node scripts/serve.js",
     "preview": "npm run build && npm run build:site && npm run serve",
@@ -27,9 +28,11 @@
     "clean": "npm run clean --workspaces --if-present"
   },
   "devDependencies": {
+    "@types/jsdom": "30.0.0",
     "@types/node": "26.6.6",
     "axe-core": "4.14.0",
     "esbuild": "0.28.2",
+    "jsdom": "29.1.1",
     "typescript": "7.0.2",
     "vitest": "5.0.5",
     "yaml": "2.9.1"

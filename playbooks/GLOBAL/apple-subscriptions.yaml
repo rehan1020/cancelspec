@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: apple-subscriptions
+name: Apple Subscriptions
+kind: channel-guide
+outcome: cancel
+category: software
+website: https://apple.com
+merchant_patterns:
+  - APPLE.COM*
+  - APPLE BILL*
+channels:
+  - channel: apple
+    steps:
+      - Open Settings on your device.
+      - Tap your name at the top.
+      - Tap Subscriptions. Open your active list.
+      - Select the subscription you want to cancel.
+      - Tap Cancel Subscription. Confirm to finish.
+    notes: If you see an expiration message in red text, the subscription is already cancelled.
+  - channel: direct
+    entry_url: https://account.apple.com
+    steps:
+      - Go to account.apple.com in a web browser.
+      - Sign in with your Apple Account.
+      - Select Subscriptions from the menu.
+      - Choose the subscription you want to cancel.
+      - Click Cancel Subscription. Confirm to finish.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-03
+verification_method: official-help-page
+sources:
+  - url: https://support.apple.com/en-us/118428
+    accessed_on: 2026-11-03
+    sha256: 5e91e9b76405a35ab65b763e734db114ba9267dce516e6f6dd8ebfbf997e970c
+revision: 2
+status: draft
+status_reason: AI-drafted, awaiting human verification.

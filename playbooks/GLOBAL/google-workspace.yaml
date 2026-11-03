@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: google-workspace
+name: Google Workspace
+aliases:
+  - G Suite
+  - Google Apps
+category: software
+website: https://workspace.google.com
+merchant_patterns:
+  - GOOGLE*WORKSPACE*
+  - GOOGLE*GSUITE*
+channels:
+  - channel: direct
+    entry_url: https://admin.google.com
+    steps:
+      - Sign in to the Google Admin console.
+      - Go to Billing in the admin menu. Click Subscriptions.
+      - Click on your active subscription to view details.
+      - Click More and select Cancel Subscription.
+      - Pick a reason for canceling and click Continue.
+      - Check the box, enter your email, and click Cancel My Subscription.
+    notes: Requires having billing management privileges in Google Workspace.
+tags:
+  - survey-wall
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-01
+verification_method: official-help-page
+sources:
+  - url: https://knowledge.workspace.google.com/admin/billing/cancel-google-workspace
+    accessed_on: 2026-11-02
+    sha256: 08db2cb91d8f52da2e1e9b38e7c3bb0daf8adc4aec0bb36a68270f7e67b87b1f
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

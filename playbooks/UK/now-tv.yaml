@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
 id: now-tv
 name: NOW
 aliases:
@@ -5,9 +8,10 @@ aliases:
   - NOW Broadband
 category: streaming-video
 website: https://nowtv.com
+outcome: cancel
 merchant_patterns:
-  - NOW TV*
-  - NOWTV*
+  - NOWTV.COM*
+  - NOW DIGITAL*
 channels:
   - channel: direct
     entry_url: https://www.nowtv.com/myaccount
@@ -21,23 +25,19 @@ tags:
   - retention-offer
   - survey-wall
 accessible_alternative: Cancel online through your account page without calling.
-notice_period:
-  value: None
-  source: https://help.nowtv.com/article/how-do-i-cancel-now
-  accessed_on: '2026-10-31'
 auto_renews:
   value: true
   source: https://help.nowtv.com/article/how-do-i-cancel-now
-  accessed_on: '2026-10-31'
+  accessed_on: 2026-10-31
 contributors:
-  - cancelbot
-reviewers:
-  - maintainer
-verified_on: '2026-10-31'
+  - ai-draft
+reviewers: []
+verified_on: 2026-10-31
 verification_method: official-help-page
 sources:
   - url: https://help.nowtv.com/article/how-do-i-cancel-now
-    accessed_on: '2026-10-31'
+    accessed_on: 2026-11-02
+    sha256: 335a623297ae691b09d755e644c708905af055cefbc7d77e90cd2ed8629d854a
 revision: 1
-status: active
-status_reason: Verified against official NOW TV support guide.
+status: draft
+status_reason: AI-drafted, awaiting human verification.

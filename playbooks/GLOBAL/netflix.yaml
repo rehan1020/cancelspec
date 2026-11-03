@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
 id: netflix
 name: Netflix
 aliases:
@@ -25,27 +28,19 @@ channels:
 tags:
   - retention-offer
 accessible_alternative: Browser cancellation available without CAPTCHA or phone call.
-notice_period:
-  value: None
-  source: https://help.netflix.com/node/407
-  accessed_on: '2026-10-31'
-refund_window:
-  value: None
-  source: https://help.netflix.com/node/407
-  accessed_on: '2026-10-31'
 auto_renews:
   value: true
   source: https://help.netflix.com/node/407
-  accessed_on: '2026-10-31'
+  accessed_on: 2026-10-31
 contributors:
-  - cancelbot
-reviewers:
-  - maintainer
-verified_on: '2026-10-31'
+  - ai-draft
+reviewers: []
+verified_on: 2026-10-31
 verification_method: official-help-page
 sources:
   - url: https://help.netflix.com/node/407
-    accessed_on: '2026-10-31'
+    accessed_on: 2026-11-02
+    sha256: 50f5208d50a5a5f9cd2dc29b9e3b5b6d77a720c41788597bc850a82dabf017f2
 revision: 1
-status: active
-status_reason: Verified against official support documentation.
+status: draft
+status_reason: AI-drafted, awaiting human verification.

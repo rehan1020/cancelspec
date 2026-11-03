@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: 2026 CancelSpec contributors
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 
 export interface ProjectConfig {
   project: {
@@ -31,12 +31,26 @@ export interface ProjectConfig {
   };
 }
 
+function findProjectConfigPath(startDir = process.cwd()): string | null {
+  let curr = resolve(startDir);
+  while (true) {
+    const candidate = join(curr, 'project.config');
+    if (existsSync(candidate)) return candidate;
+    const parent = dirname(curr);
+    if (parent === curr) break;
+    curr = parent;
+  }
+  return null;
+}
+
 export function loadProjectConfig(rootOrPath?: string): ProjectConfig {
   let configPath: string;
   if (rootOrPath?.endsWith('.config')) {
     configPath = rootOrPath;
+  } else if (rootOrPath) {
+    configPath = join(rootOrPath, 'project.config');
   } else {
-    configPath = join(rootOrPath || process.cwd(), 'project.config');
+    configPath = findProjectConfigPath() || join(process.cwd(), 'project.config');
   }
 
   const content = readFileSync(configPath, 'utf8');

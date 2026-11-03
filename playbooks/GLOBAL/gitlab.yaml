@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: gitlab
+name: GitLab
+aliases:
+  - GitLab.com
+  - GitLab SaaS
+category: software
+website: https://gitlab.com
+outcome: downgrade
+merchant_patterns:
+  - GITLAB*
+channels:
+  - channel: direct
+    entry_url: https://customers.gitlab.com
+    steps:
+      - Sign in to the GitLab Customers Portal.
+      - Go to the Subscriptions and purchases page.
+      - Click the actions menu beside your plan.
+      - Click Cancel subscription from the menu.
+      - Pick a reason from the dropdown list.
+      - Click Cancel subscription to finish.
+    notes: Your subscription remains active until the end of the term, then expires.
+tags:
+  - survey-wall
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-01
+verification_method: official-help-page
+sources:
+  - url: https://docs.gitlab.com/subscriptions/manage_subscription/
+    accessed_on: 2026-11-02
+    sha256: 64677301da72fabc989f6c754c3e31c448ff642b5e372d60228fae6183d562d8
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

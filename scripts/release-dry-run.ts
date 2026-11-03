@@ -8,7 +8,9 @@ import { join } from 'node:path';
 import { runReleaseCheck } from '../packages/cli/src/commands/release_check.js';
 import { buildDataBundle } from '../packages/cli/src/commands/build.js';
 
-export function runReleaseDryRun(options: { quiet?: boolean } = {}): boolean {
+export function runReleaseDryRun(
+  options: { quiet?: boolean; strictDrafts?: boolean } = {},
+): boolean {
   const rootDir = process.cwd();
   const playbooksDir = join(rootDir, 'playbooks');
   const distDir = join(rootDir, 'dist');
@@ -22,8 +24,11 @@ export function runReleaseDryRun(options: { quiet?: boolean } = {}): boolean {
     console.log('========================================\n');
   }
 
-  // 1. Release readiness check (playbook lint, zero drafts, staleness audit)
-  const checkResult = runReleaseCheck(playbooksDir, { quiet: false });
+  // 1. Release readiness check
+  const checkResult = runReleaseCheck(playbooksDir, {
+    quiet: options.quiet ?? false,
+    strictDrafts: options.strictDrafts,
+  });
   if (!checkResult.passed) {
     console.error('\n✗ Release readiness checks failed.');
     return false;

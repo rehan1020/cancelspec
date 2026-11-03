@@ -88,16 +88,19 @@ export function lintFiles(filePaths: string[], options: LintOptions = {}): LintR
         }
       }
 
-      // Check merchant patterns
-      for (const pattern of pb.merchant_patterns) {
-        const prev = regionPatterns.get(pattern);
-        if (prev && prev !== pb.id) {
-          validation.warnings.push({
-            path: 'merchant_patterns',
-            message: `Pattern collision: "${pattern}" is also registered by service "${prev}" in region ${region}`,
-          });
-        } else {
-          regionPatterns.set(pattern, pb.id);
+      // Check merchant patterns (fail when two playbooks share a merchant pattern)
+      if (Array.isArray(pb.merchant_patterns)) {
+        for (const pattern of pb.merchant_patterns) {
+          const prev = regionPatterns.get(pattern);
+          if (prev && prev !== pb.id) {
+            validation.errors.push({
+              path: 'merchant_patterns',
+              message: `Pattern collision: "${pattern}" is also registered by service "${prev}" in region ${region}`,
+            });
+            validation.valid = false;
+          } else {
+            regionPatterns.set(pattern, pb.id);
+          }
         }
       }
     }

@@ -28,16 +28,18 @@ describe('Offline Capability Gate (WP9)', () => {
     for (const file of htmlFiles) {
       const html = readFileSync(file, 'utf8');
 
-      // Stylesheet links must point to /styles/ or local
+      // Stylesheet links must point to styles/main.css locally (no external CDN)
       const cssLinks = html.match(/<link[^>]+rel=["']stylesheet["'][^>]*>/gi) || [];
       for (const link of cssLinks) {
-        expect(link).toContain('href="/styles/main.css"');
+        expect(link).toMatch(/href=["'][^"']*styles\/main\.css["']/);
+        expect(link).not.toMatch(/https?:\/\//);
       }
 
-      // Script links must point to local scripts
+      // Script links must point to local scripts without external CDN
       const scripts = html.match(/<script[^>]+src=["']([^"']+)["'][^>]*>/gi) || [];
       for (const script of scripts) {
-        expect(script).toMatch(/src=["']\/scripts\//);
+        expect(script).toMatch(/src=["'][^"']*scripts\//);
+        expect(script).not.toMatch(/https?:\/\//);
       }
     }
   });

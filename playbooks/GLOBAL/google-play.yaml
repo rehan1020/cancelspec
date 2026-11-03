@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: google-play
+name: Google Play Subscriptions
+kind: channel-guide
+outcome: cancel
+category: software
+website: https://play.google.com
+merchant_patterns:
+  - GOOGLE*PLAY*
+  - GOOGLE *PLAY*
+channels:
+  - channel: google-play
+    entry_url: https://play.google.com/store/account/subscriptions
+    steps:
+      - Go to your Google Play subscriptions page.
+      - Click Manage next to the subscription.
+      - Click Cancel subscription to open the prompt.
+      - Pick a reason for canceling.
+      - Click Continue. Confirm to finish.
+    notes: Uninstalling an app does not cancel your subscription.
+tags:
+  - survey-wall
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-01
+verification_method: official-help-page
+sources:
+  - url: https://support.google.com/googleplay/answer/7018481?hl=en
+    accessed_on: 2026-11-02
+    sha256: 2d12822bc057cb7224ec919a4477b52b452ad56c64fbacc74c8fdeba750752bb
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

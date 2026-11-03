@@ -6,6 +6,18 @@ import type { ProjectConfig } from '../config.js';
 import { renderLayout } from './layout.js';
 
 export function renderHomePage(config: ProjectConfig, serviceCount: number): string {
+  const verifiedNotice =
+    serviceCount === 0
+      ? `<div class="banner banner-info" style="margin-top: 1rem;">
+          <strong>Notice:</strong> No verified playbooks are published yet. All cancellation playbooks are currently drafts undergoing human verification.
+        </div>`
+      : '';
+
+  const pickServicesDesc =
+    serviceCount === 0
+      ? `<p>No verified playbooks are published yet. Our community playbooks are currently in draft awaiting human verification.</p>`
+      : `<p>Browse our directory of ${serviceCount} community-verified step-by-step cancellation playbooks.</p>`;
+
   const content = `
     <div class="hero-box">
       <h1>${escapeHtml(config.site.tagline)}</h1>
@@ -13,6 +25,7 @@ export function renderHomePage(config: ProjectConfig, serviceCount: number): str
       <div class="banner banner-warning">
         <strong>Privacy Promise:</strong> No data leaves your device. Zero network requests during or after a scan. Nothing is ever stored or tracked.
       </div>
+      ${verifiedNotice}
     </div>
 
     <section aria-labelledby="search-heading">
@@ -43,7 +56,7 @@ export function renderHomePage(config: ProjectConfig, serviceCount: number): str
         <div class="path-box">
           <div>
             <h3>Pick Services by Hand</h3>
-            <p>Browse our directory of ${serviceCount} community-verified step-by-step cancellation playbooks.</p>
+            ${pickServicesDesc}
             <p><small>Works completely without JavaScript. Clear instructions, direct links, and friction alerts.</small></p>
           </div>
           <div style="margin-top: 1rem;">

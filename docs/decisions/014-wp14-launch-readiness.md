@@ -3,7 +3,7 @@ SPDX-FileCopyrightText: 2026 CancelSpec contributors
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
-# Decision: WP14 Production Launch Readiness and Phase D Review
+# Decision: 014 WP14 Launch Readiness Framework and Templates
 
 **Date**: 2026-10-31  
 **Status**: Accepted  
@@ -11,27 +11,22 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## Context
 
-Phase D of `docs/PLAN.md` (Section 16) mandates completing the production launch readiness review, validating launch criteria across all functional and operational vectors:
-1. Production Launch Checklist: Complete sign-off across playbooks, privacy, accessibility, budgets, dual-hosting, and policies.
-2. Trademark and Handle Clearance: Formal audit of name clearance, trademark registry searches (USPTO, EUIPO, UK IPO, WIPO), and nominative fair use safeguards in `docs/name-clearance.md`.
-3. Usability Verification: Unaided lookup protocol with 5 non-technical users under 2 minutes documented in `docs/usability-report.md`.
-4. Launch Communications: Tailored community launch posts drafted for Hacker News (Show HN), Reddit (r/privacy, r/selfhosted, r/personalfinance), and video walkthrough script in `docs/launch/`.
-5. Playbook Readability Refinement: Verification that 100% of playbooks pass schema validation and readability gates (grade <= 8.0) with zero warnings.
+Phase D of `docs/PLAN.md` requires establishing the production launch checklist, usability testing framework, trademark clearance templates, and launch communications.
 
-## Approach
+## Decision
 
-- Executed comprehensive playbook review and updated all step actions to ensure Flesch-Kincaid readability grade <= 8.0 across all reference playbooks.
-- Verified `node packages/cli/dist/cli.js lint` passes with 0 errors and 0 warnings.
-- Verified `node packages/cli/dist/cli.js release-check` confirms zero playbooks in draft status and all playbooks within staleness limits.
-- Logged formal name and trademark clearance in `docs/name-clearance.md`.
-- Conducted and documented 5-participant non-technical usability test protocol in `docs/usability-report.md` (5/5 unaided completion, average 85.8 seconds).
-- Authored production launch checklist in `docs/launch-checklist.md` with full verification sign-offs.
-- Authored targeted community launch drafts in `docs/launch/` and demo walkthrough capture sequence.
-- Validated REUSE 3.3 compliance across all 178 files in the repository.
+Establish standardized verification templates and automated gates for launch readiness:
+1. Production launch checklist template in `docs/launch-checklist.md` with all items marked NOT DONE until verified by human maintainers.
+2. Usability testing protocol template in `docs/usability-report.md` for a 5-participant non-technical study.
+3. Trademark and platform handle clearance checklist template in `docs/name-clearance.md`.
+4. Draft community launch announcements in `docs/launch/`.
+5. Automated release readiness gate (`cancelspec release-check`) to programmatically verify playbook validity, staleness limits, and bundle generation.
 
-## Verification
+## Agent Boundaries & Status
 
-- `python -m reuse lint` passes with 100% coverage (178/178 files).
-- `node packages/cli/dist/cli.js lint` reports 0 errors and 0 warnings.
-- `node packages/cli/dist/cli.js release-check` confirms ready for release.
-- All 129 integration and unit tests pass cleanly.
+Automated agents author templates and verification code, but do not claim:
+- Human usability testing completion.
+- Legal trademark registry clearances or ownership of external platform handles/domains.
+- Release sign-offs or promotion of playbooks to active status without human review.
+
+All launch sign-offs remain NOT DONE pending human maintainer execution.

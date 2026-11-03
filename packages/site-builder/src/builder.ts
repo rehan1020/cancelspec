@@ -37,6 +37,7 @@ export interface SiteBuilderOptions {
   config?: ProjectConfig | undefined;
   referenceDate?: Date | undefined;
   quiet?: boolean | undefined;
+  includeDrafts?: boolean | undefined;
 }
 
 export interface BuildReport {
@@ -45,18 +46,46 @@ export interface BuildReport {
   urls: string[];
 }
 
+export function computeRelativeRoot(relativeFilePath: string): string {
+  const normalized = relativeFilePath.replace(/\\/g, '/');
+  const segments = normalized.split('/').filter(Boolean);
+  const depth = segments.length - 1;
+  return depth === 0 ? './' : '../'.repeat(depth);
+}
+
+export function relativizeHtml(html: string, rootRel: string): string {
+  return html.replace(/(href|src|action)="\/([^"]*)"/g, (match, attr, path) => {
+    if (path.startsWith('/')) return match;
+    if (!path) return `${attr}="${rootRel}index.html"`;
+    if (path.endsWith('/')) return `${attr}="${rootRel}${path}index.html"`;
+    return `${attr}="${rootRel}${path}"`;
+  });
+}
+
 function writePage(outDir: string, relativePath: string, content: string): number {
   const filePath = join(outDir, relativePath);
   mkdirSync(dirname(filePath), { recursive: true });
-  writeFileSync(filePath, content, 'utf8');
-  return Buffer.byteLength(content, 'utf8');
+  let finalContent = content;
+  if (relativePath.endsWith('.html')) {
+    const rootRel = computeRelativeRoot(relativePath);
+    finalContent = relativizeHtml(content, rootRel);
+  }
+  writeFileSync(filePath, finalContent, 'utf8');
+  return Buffer.byteLength(finalContent, 'utf8');
 }
 
 export function buildSite(options: SiteBuilderOptions): BuildReport {
+  if (options.includeDrafts && !options.quiet) {
+    console.warn(
+      '⚠️  WARNING: --include-drafts is enabled for local preview only. This output contains unverified drafts and must NEVER be deployed to production!',
+    );
+  }
+
   const outDir = options.outDir;
   const config = options.config || loadProjectConfig();
   const playbooks = loadAllPlaybooks(options.playbooksDir, {
     referenceDate: options.referenceDate,
+    includeDrafts: options.includeDrafts,
   });
 
   const urls: string[] = [];
@@ -74,19 +103,19 @@ export function buildSite(options: SiteBuilderOptions): BuildReport {
   trackPage('/', 'index.html', renderHomePage(config, playbooks.length));
 
   // 2. Tool
-  trackPage('/tool/', 'tool/index.html', renderToolPage(config));
+  trackPage('/tool/', 'tool/index.html', renderToolPage(config, playbooks.length));
 
   // 3. Services directory
   trackPage('/services/', 'services/index.html', renderServicesIndexPage(playbooks, config));
 
-  // 4. Individual service pages
+  // 4. Individual service pages (only for active verified playbooks)
   for (const playbook of playbooks) {
     const serviceUrl = `/services/${playbook.region.toLowerCase()}/${playbook.id}/`;
     const relPath = `services/${playbook.region.toLowerCase()}/${playbook.id}/index.html`;
     trackPage(serviceUrl, relPath, renderServicePage(playbook, config));
   }
 
-  // 5. Category indexes
+  // 5. Category indexes (only categories with active playbooks)
   const playbooksByCategory = new Map<string, CompiledPlaybook[]>();
   for (const cat of CATEGORIES) {
     playbooksByCategory.set(cat, []);
@@ -102,7 +131,7 @@ export function buildSite(options: SiteBuilderOptions): BuildReport {
     }
   }
 
-  // 6. Region indexes
+  // 6. Region indexes (only regions with active playbooks)
   const playbooksByRegion = new Map<string, CompiledPlaybook[]>();
   for (const reg of REGIONS) {
     playbooksByRegion.set(reg, []);
@@ -112,8 +141,10 @@ export function buildSite(options: SiteBuilderOptions): BuildReport {
     if (list) list.push(p);
   }
   for (const [reg, pList] of playbooksByRegion) {
-    const regUrl = `/services/region/${reg.toLowerCase()}/`;
-    trackPage(regUrl, `services/region/${reg.toLowerCase()}/index.html`, renderRegionIndexPage(reg, pList, config));
+    if (pList.length > 0) {
+      const regUrl = `/services/region/${reg.toLowerCase()}/`;
+      trackPage(regUrl, `services/region/${reg.toLowerCase()}/index.html`, renderRegionIndexPage(reg, pList, config));
+    }
   }
 
   // 7. Hall of Shame
@@ -175,7 +206,7 @@ export function buildSite(options: SiteBuilderOptions): BuildReport {
       title: 'Trademark Policy',
       bodyHtml: `
         <h2>Service Names & Identification</h2>
-        <p>Service names (Netflix, Spotify, etc.) appear solely as plain text for factual identification under nominative fair use. They remain trademarks of their respective owners.</p>
+        <p>Service names appear solely as plain text for factual identification under nominative fair use. They remain trademarks of their respective owners.</p>
       `,
     },
   ];
@@ -197,7 +228,7 @@ export function buildSite(options: SiteBuilderOptions): BuildReport {
   const headers = generateCloudflareHeaders();
   totalBytes += writePage(outDir, '_headers', headers);
 
-  // Sitemap & Robots
+  // Sitemap & Robots (always absolute to site.url)
   const sitemap = generateSitemapXml(urls, config.site.url);
   totalBytes += writePage(outDir, 'sitemap.xml', sitemap);
 

@@ -10,3 +10,5 @@ export * from './commands/lint.js';
 export * from './commands/new.js';
 export * from './commands/build.js';
 export * from './commands/release_check.js';
+export * from './commands/targets.js';
+export * from './commands/queue.js';

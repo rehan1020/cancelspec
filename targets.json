@@ -1,0 +1,42 @@
+[
+  {
+    "id": "dropbox",
+    "name": "Dropbox",
+    "region": "GLOBAL",
+    "website": "https://dropbox.com",
+    "category": "cloud-storage",
+    "priority": 1
+  },
+  {
+    "id": "linkedin-premium",
+    "name": "LinkedIn Premium",
+    "region": "GLOBAL",
+    "website": "https://linkedin.com",
+    "category": "software",
+    "priority": 2
+  },
+  {
+    "id": "nordvpn",
+    "name": "NordVPN",
+    "region": "GLOBAL",
+    "website": "https://nordvpn.com",
+    "category": "vpn-security",
+    "priority": 3
+  },
+  {
+    "id": "audible",
+    "name": "Audible",
+    "region": "GLOBAL",
+    "website": "https://audible.com",
+    "category": "streaming-music",
+    "priority": 4
+  },
+  {
+    "id": "grammarly",
+    "name": "Grammarly",
+    "region": "GLOBAL",
+    "website": "https://grammarly.com",
+    "category": "software",
+    "priority": 5
+  }
+]

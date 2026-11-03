@@ -1,45 +1,36 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
 id: hotstar
-name: Disney+ Hotstar
+name: JioHotstar
 aliases:
+  - Jio Hotstar
+  - Disney+ Hotstar
   - Hotstar
   - Disney Hotstar
 category: streaming-video
 website: https://hotstar.com
 merchant_patterns:
+  - JIOHOTSTAR*
   - HOTSTAR*
   - NOVI DIGITAL*
 channels:
   - channel: direct
     entry_url: https://www.hotstar.com/in/my-account
-    steps:
-      - Log into your Hotstar account in a web browser.
-      - Click your profile. Open My Account.
-      - Find your plan. Click Cancel Membership.
-      - Confirm the cancellation request on the next screen.
-    notes: Access continues until the current validity period expires.
+    steps: []
+    notes: Official JioHotstar cancellation help page could not be fetched (help portal is an SPA requiring client-side API/login). Steps left empty awaiting human verification.
   - channel: bank-mandate
-    steps:
-      - Open your UPI or net banking mobile app.
-      - Go to settings. Tap AutoPay or mandates.
-      - Find Hotstar on the list.
-      - Select Revoke or Pause mandate and authenticate with your UPI PIN.
-    notes: Revoking the bank mandate prevents future renewals.
-tags:
-  - retention-offer
-accessible_alternative: Cancel online directly on the web without app or phone required.
-auto_renews:
-  value: true
-  source: https://help.hotstar.com/in/en/support/solutions/articles/68000001235
-  accessed_on: '2026-10-31'
+    steps: []
+    notes: Steps left empty awaiting human verification from official bank mandate documentation.
 contributors:
-  - cancelbot
-reviewers:
-  - maintainer
-verified_on: '2026-10-31'
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-03
 verification_method: official-help-page
 sources:
-  - url: https://help.hotstar.com/in/en/support/solutions/articles/68000001235
-    accessed_on: '2026-10-31'
-revision: 1
-status: active
-status_reason: Verified against Disney+ Hotstar help portal.
+  - url: https://www.hotstar.com/in/help
+    accessed_on: 2026-11-03
+    sha256: e24399a86e6806a9bda40346c15da1e23c1d2055c4ec1cbfea26fbb7fb979cff
+revision: 2
+status: draft
+status_reason: AI-drafted, awaiting human verification.

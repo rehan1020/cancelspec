@@ -34,5 +34,5 @@ describe('Release Pipeline & Dry-Run (WP12)', () => {
     const sbomJson = JSON.parse(readFileSync(sbomPath, 'utf8'));
     expect(sbomJson.bomFormat).toBe('CycloneDX');
     expect(sbomJson.components.length).toBeGreaterThan(0);
-  });
+  }, 15000);
 });

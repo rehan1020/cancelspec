@@ -10,6 +10,23 @@ export function renderServicesIndexPage(
   playbooks: CompiledPlaybook[],
   config: ProjectConfig,
 ): string {
+  if (playbooks.length === 0) {
+    const emptyContent = `
+    <h1>All Subscription Services</h1>
+    <p>Browse step-by-step verified cancellation playbooks across all regions. No JavaScript required.</p>
+    <div class="banner banner-info" style="margin: 1.5rem 0;">
+      <p>No verified playbooks are published yet. All playbooks are currently in draft status awaiting human verification.</p>
+    </div>
+`;
+    return renderLayout({
+      title: 'Services Directory',
+      description: 'Complete directory of subscription cancellation playbooks.',
+      canonicalPath: '/services/',
+      content: emptyContent,
+      config,
+    });
+  }
+
   const serviceRows = playbooks
     .map(
       (p) => `
@@ -22,17 +39,18 @@ export function renderServicesIndexPage(
     )
     .join('\n');
 
+  const activeRegions = Array.from(new Set(playbooks.map((p) => p.region.toLowerCase()))).sort();
+  const regionBadges = activeRegions
+    .map((r) => `<a href="/services/region/${r}/" class="badge">${r.toUpperCase()}</a>`)
+    .join(' ');
+
   const content = `
     <h1>All Subscription Services</h1>
     <p>Browse step-by-step verified cancellation playbooks across all regions. No JavaScript required.</p>
 
-    <div style="margin: 1.5rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+    <div style="margin: 1.5rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
       <strong>Filter by Region:</strong>
-      <a href="/services/region/global/" class="badge">GLOBAL</a>
-      <a href="/services/region/us/" class="badge">US</a>
-      <a href="/services/region/uk/" class="badge">UK</a>
-      <a href="/services/region/eu/" class="badge">EU</a>
-      <a href="/services/region/in/" class="badge">IN</a>
+      ${regionBadges}
     </div>
 
     <table aria-label="Services directory table">

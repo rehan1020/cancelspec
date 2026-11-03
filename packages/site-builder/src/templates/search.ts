@@ -10,12 +10,14 @@ export function renderSearchPage(
   playbooks: CompiledPlaybook[],
   config: ProjectConfig,
 ): string {
-  const serviceList = playbooks
-    .map(
-      (p) =>
-        `<li><a href="/services/${p.region.toLowerCase()}/${p.id}/">${escapeHtml(p.name)} (${escapeHtml(p.region)})</a> - <small>${escapeHtml(p.category)}</small></li>`,
-    )
-    .join('\n');
+  const serviceList = playbooks.length > 0
+    ? playbooks
+        .map(
+          (p) =>
+            `<li><a href="/services/${p.region.toLowerCase()}/${p.id}/">${escapeHtml(p.name)} (${escapeHtml(p.region)})</a> - <small>${escapeHtml(p.category)}</small></li>`,
+        )
+        .join('\n')
+    : '<p class="text-muted">No verified playbooks are published yet.</p>';
 
   const content = `
     <h1>Search Subscriptions</h1>
@@ -37,7 +39,7 @@ export function renderSearchPage(
       const input = document.getElementById('search-input');
       const container = document.getElementById('search-results-container');
 
-      fetch('/search-index.json')
+      fetch('../search-index.json')
         .then(res => res.json())
         .then(data => {
           input.addEventListener('input', () => {
@@ -60,7 +62,7 @@ export function renderSearchPage(
             matches.forEach(m => {
               const li = document.createElement('li');
               const a = document.createElement('a');
-              a.href = '/services/' + m.region.toLowerCase() + '/' + m.id + '/';
+              a.href = '../services/' + m.region.toLowerCase() + '/' + m.id + '/index.html';
               a.textContent = m.name + ' (' + m.region + ')';
               li.appendChild(a);
               list.appendChild(li);

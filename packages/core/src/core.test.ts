@@ -177,7 +177,7 @@ describe('Merchant Normalization', () => {
   });
 
   it('detects Google Play hint', () => {
-    const raw = 'GOOGLE *DISNEY PLUS 1234';
+    const raw = 'GOOGLE *PLAY DISNEY PLUS 1234';
     const result = normalizeMerchant(raw);
     expect(result.processorHint).toBe('google-play');
     expect(result.merchantKey).toBe('DISNEY PLUS');
@@ -202,8 +202,13 @@ describe('Playbook Loader & Index', () => {
   const playbooksDir = join(rootDir, 'playbooks');
   const refDate = new Date('2026-10-31T00:00:00.000Z');
 
-  it('loads all 10 reference playbooks with derived fields', () => {
+  it('excludes drafts by default', () => {
     const playbooks = loadAllPlaybooks(playbooksDir, { referenceDate: refDate });
+    expect(playbooks.length).toBe(0);
+  });
+
+  it('loads all reference playbooks with derived fields when includeDrafts is true', () => {
+    const playbooks = loadAllPlaybooks(playbooksDir, { referenceDate: refDate, includeDrafts: true });
     expect(playbooks.length).toBeGreaterThanOrEqual(10);
 
     for (const p of playbooks) {
@@ -216,7 +221,7 @@ describe('Playbook Loader & Index', () => {
   });
 
   it('builds an alias index from loaded playbooks', () => {
-    const playbooks = loadAllPlaybooks(playbooksDir, { referenceDate: refDate });
+    const playbooks = loadAllPlaybooks(playbooksDir, { referenceDate: refDate, includeDrafts: true });
     const index = buildAliasIndex(playbooks);
 
     expect(index.entries.length).toBeGreaterThan(0);
@@ -231,7 +236,7 @@ describe('Bundle Writer & Deterministic Output', () => {
   const refDate = new Date('2026-10-31T00:00:00.000Z');
 
   it('produces identical serialized output across runs (OPEN-2)', () => {
-    const playbooks = loadAllPlaybooks(playbooksDir, { referenceDate: refDate });
+    const playbooks = loadAllPlaybooks(playbooksDir, { referenceDate: refDate, includeDrafts: true });
 
     const bundle1 = createReleaseBundle(playbooks, { referenceDate: refDate });
     const bundle2 = createReleaseBundle(playbooks, { referenceDate: refDate });

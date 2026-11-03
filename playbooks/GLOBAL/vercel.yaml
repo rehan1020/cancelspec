@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: vercel
+name: Vercel
+aliases:
+  - Vercel Pro
+category: software
+website: https://vercel.com
+outcome: downgrade
+merchant_patterns:
+  - VERCEL*
+channels:
+  - channel: direct
+    entry_url: https://vercel.com/dashboard
+    steps:
+      - Sign in to your Vercel team account.
+      - Open Settings in the sidebar.
+      - Select Billing in the Settings menu.
+      - Click Downgrade Plan in the Plan section.
+      - Follow the prompts to confirm.
+    notes: When downgrading a Pro team, all members except the team owner are removed.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-01
+verification_method: official-help-page
+sources:
+  - url: https://vercel.com/docs/plans/pro-plan
+    accessed_on: 2026-11-02
+    sha256: 7012f5e07a737b08dd2e381acac06d9982257add294a5431f6295d2fcc93901c
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

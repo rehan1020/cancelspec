@@ -7,3 +7,5 @@ site/*
 Thumbs.db
 coverage/
 out/
+scratch/
+repomix-output.xml

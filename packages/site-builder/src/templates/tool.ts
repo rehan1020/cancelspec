@@ -4,13 +4,22 @@
 import type { ProjectConfig } from '../config.js';
 import { renderLayout } from './layout.js';
 
-export function renderToolPage(config: ProjectConfig): string {
+export function renderToolPage(config: ProjectConfig, serviceCount: number = 0): string {
+  const verifiedNotice =
+    serviceCount === 0
+      ? `<div class="banner banner-info" role="region" aria-label="Playbook corpus notice" style="margin-top: 1rem;">
+          <strong>Notice:</strong> No verified playbooks are published yet. You can still scan bank statements to detect recurring subscriptions, but step-by-step cancellation guides will appear once playbooks are verified.
+        </div>`
+      : '';
+
   const content = `
     <h1>Statement Scanner & Subscription Finder</h1>
 
     <div class="banner banner-warning" role="region" aria-label="Privacy guarantee">
       <strong>Zero-Data Guarantee:</strong> This tool runs entirely in your browser using a Web Worker. No statement data leaves your device, no network requests are made, and nothing is saved to cookies or local storage.
     </div>
+
+    ${verifiedNotice}
 
     <noscript>
       <div class="banner banner-danger">
@@ -21,7 +30,7 @@ export function renderToolPage(config: ProjectConfig): string {
     </noscript>
 
     <div id="tool-app">
-      <!-- Container where tool UI (WP8) mounts -->
+      <!-- Container where tool UI mounts -->
       <section class="card" aria-labelledby="intake-heading">
         <h2 id="intake-heading">1. Drop in your bank statement</h2>
         <p>Accepts CSV, TSV, or TXT statements (up to 20 MB). Columns and dates are parsed locally.</p>

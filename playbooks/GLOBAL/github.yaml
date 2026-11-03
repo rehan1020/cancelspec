@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
 id: github
 name: GitHub
 aliases:
@@ -18,14 +21,13 @@ channels:
       - Follow the prompts to confirm your downgrade.
     notes: Access remains active until the end of your billing cycle.
 contributors:
-  - cancelbot
-reviewers:
-  - maintainer
-verified_on: '2026-10-31'
+  - ai-draft
+reviewers: []
+verified_on: 2026-10-31
 verification_method: official-help-page
 sources:
   - url: https://docs.github.com/billing-and-payments/managing-billing-for-your-products/managing-your-github-subscription/downgrading-your-plan
-    accessed_on: '2026-10-31'
+    accessed_on: 2026-11-02
 revision: 1
-status: active
-status_reason: Verified against official GitHub documentation.
+status: draft
+status_reason: AI-drafted, awaiting human verification.

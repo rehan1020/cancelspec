@@ -5,16 +5,16 @@
 # See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Spec changes require project maintainer review
-packages/spec/ @cancelspec/maintainers
+packages/spec/ @rehan1020
 
 # Policy changes require project maintainer review
-policies/ @cancelspec/maintainers
-GOVERNANCE.md @cancelspec/maintainers
-CODE_OF_CONDUCT.md @cancelspec/maintainers
+policies/ @rehan1020
+GOVERNANCE.md @rehan1020
+CODE_OF_CONDUCT.md @rehan1020
 
 # Playbooks by region
-playbooks/US/ @cancelspec/us-reviewers
-playbooks/UK/ @cancelspec/uk-reviewers
-playbooks/EU/ @cancelspec/eu-reviewers
-playbooks/IN/ @cancelspec/in-reviewers
-playbooks/GLOBAL/ @cancelspec/maintainers
+playbooks/US/ @rehan1020
+playbooks/UK/ @rehan1020
+playbooks/EU/ @rehan1020
+playbooks/IN/ @rehan1020
+playbooks/GLOBAL/ @rehan1020

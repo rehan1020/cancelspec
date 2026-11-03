@@ -30,6 +30,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # TODO(#12): Add staleness check
-      # TODO(#13): Add full link check
-      # TODO(#14): Add dependency alert review
+      - name: Build packages
+        run: npm run build
+
+      - name: Check every source and entry URL
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/check-links.js

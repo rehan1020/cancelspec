@@ -40,13 +40,14 @@ export function scaffoldPlaybook(
   }
 
   const name = options.name || titleCase(serviceId);
-  const website = options.website || `https://${serviceId.replace(/-/g, '')}.example.com`;
+  const website = options.website || `https://${serviceId.replace(/-/g, '')}.TODO-fill-domain`;
   const pattern = `${serviceId.replace(/-/g, ' ').toUpperCase()}*`;
-  const today = new Date().toISOString().split('T')[0]!;
 
-  const content = `id: ${serviceId}
+  const content = `# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: ${serviceId}
 name: ${name}
-aliases: []
 category: software
 website: ${website}
 merchant_patterns:
@@ -55,21 +56,20 @@ channels:
   - channel: direct
     entry_url: ${website}/account
     steps:
-      - Log into your account in a web browser.
-      - Navigate to your Account or Billing settings.
-      - Select Cancel Subscription and follow the prompts to confirm.
-    notes: Initial cancellation steps verified from official documentation.
+      - Log into your account on the web dashboard.
+      - Go to Account or Billing settings.
+      - Select Cancel Subscription and confirm.
 contributors:
-  - contributor
+  - ai-draft
 reviewers: []
-verified_on: '${today}'
-verification_method: official-help-page
+verified_on: TODO-fill-verified-on
+verification_method: TODO-fill-verification-method
 sources:
-  - url: ${website}/help
-    accessed_on: '${today}'
+  - url: https://${serviceId.replace(/-/g, '')}.TODO-fill-domain/help
+    accessed_on: TODO-fill-access-date
 revision: 1
 status: draft
-status_reason: Initial scaffold created via CLI.
+status_reason: AI-drafted, awaiting human verification.
 `;
 
   const targetDir = join(playbooksDir, region);

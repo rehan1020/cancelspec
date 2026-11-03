@@ -50,9 +50,11 @@ export function normalizeMerchant(rawDescriptor: string): NormalizationResult {
   if (/PAYPAL\b|PAYPAL\*/.test(text)) {
     processorHint = 'paypal';
     text = text.replace(/PAYPAL\b|PAYPAL\*/g, ' ');
-  } else if (/GOOGLE\s*\*|GOOGLE\s+PLAY\b/.test(text)) {
+  } else if (/GOOGLE\s*\*\s*PLAY\b|GOOGLE\s+PLAY\b|G\.CO\/HELPPAY\b/.test(text)) {
     processorHint = 'google-play';
-    text = text.replace(/GOOGLE\s*\*|GOOGLE\s+PLAY\b/g, ' ');
+    text = text.replace(/GOOGLE\s*\*\s*PLAY\b|GOOGLE\s+PLAY\b|G\.CO\/HELPPAY\b/g, ' ');
+  } else if (/GOOGLE\s*\*/.test(text)) {
+    text = text.replace(/GOOGLE\s*\*/g, ' ');
   } else if (/APPLE\.COM\b|APPLE\s*\*/.test(text)) {
     processorHint = 'apple';
     text = text.replace(/APPLE\.COM\b|APPLE\s*\*/g, ' ');

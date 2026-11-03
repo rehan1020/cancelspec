@@ -140,7 +140,7 @@ describe('Tool UI & Scanner Client App (WP8)', () => {
     expect(badge?.textContent).toContain('230.88'); // 131.88 + 99.00
 
     // Likely subscription table
-    const likelyLink = container.querySelector('a[href="/services/global/spotify/"]');
+    const likelyLink = container.querySelector('a[href="../services/global/spotify/index.html"]');
     expect(likelyLink).not.toBeNull();
     expect(likelyLink?.textContent).toContain('See how to cancel');
     expect(likelyLink?.getAttribute('target')).toBe('_blank');

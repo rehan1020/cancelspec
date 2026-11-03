@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
 id: deezer
 name: Deezer
 aliases:
@@ -21,27 +24,22 @@ channels:
       - Tap your Apple ID banner.
       - Tap Subscriptions. Open your active list.
       - Select Deezer. Tap Cancel to end plan.
-notice_period:
-  value: None
-  source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
-  accessed_on: '2026-10-31'
 refund_window:
   value: 14 days statutory cooling-off in EU
   source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
-  accessed_on: '2026-10-31'
+  accessed_on: 2026-10-31
 auto_renews:
   value: true
   source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
-  accessed_on: '2026-10-31'
+  accessed_on: 2026-10-31
 contributors:
-  - cancelbot
-reviewers:
-  - maintainer
-verified_on: '2026-10-31'
+  - ai-draft
+reviewers: []
+verified_on: 2026-10-31
 verification_method: official-help-page
 sources:
   - url: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
-    accessed_on: '2026-10-31'
+    accessed_on: 2026-11-02
 revision: 1
-status: active
-status_reason: Verified against Deezer support documentation.
+status: draft
+status_reason: AI-drafted, awaiting human verification.

@@ -18,7 +18,7 @@ export interface AppOptions {
 }
 
 export function createScannerApp(container: HTMLElement, options: AppOptions = {}) {
-  const workerUrl = options.workerUrl || '/scripts/scanner-worker.js';
+  const workerUrl = options.workerUrl || '../scripts/scanner-worker.js';
   const githubRepoUrl =
     options.githubRepoUrl || 'https://github.com/cancelspec/cancelspec';
 
@@ -335,7 +335,7 @@ export function createScannerApp(container: HTMLElement, options: AppOptions = {
         'p',
         { style: 'text-align: center; margin-top: 2rem;' },
         el('span', { style: 'color: var(--text-muted);' }, 'Prefer not to upload a statement? '),
-        el('a', { href: '/services/' }, 'Browse all cancellation guides by hand'),
+        el('a', { href: '../services/index.html' }, 'Browse all cancellation guides by hand'),
       ),
     );
   }
@@ -707,6 +707,16 @@ export function createScannerApp(container: HTMLElement, options: AppOptions = {
             `Difficulty ${sub.topMatch.difficulty}/5`,
           ),
         );
+        if (sub.topMatch.outcome) {
+          difficultyCell.appendChild(document.createTextNode(' '));
+          difficultyCell.appendChild(
+            el(
+              'span',
+              { className: 'badge outcome-badge' },
+              `Outcome: ${sub.topMatch.outcome}`,
+            ),
+          );
+        }
       } else {
         difficultyCell.textContent = '—';
       }
@@ -718,7 +728,7 @@ export function createScannerApp(container: HTMLElement, options: AppOptions = {
         const cancelLink = el(
           'a',
           {
-            href: `/services/${sub.topMatch.region.toLowerCase()}/${sub.topMatch.serviceId}/`,
+            href: `../services/${sub.topMatch.region.toLowerCase()}/${sub.topMatch.serviceId}/index.html`,
             target: '_blank',
             rel: 'noopener',
             className: 'btn btn-primary btn-sm',
@@ -892,7 +902,7 @@ export function createScannerApp(container: HTMLElement, options: AppOptions = {
           ? el(
               'a',
               {
-                href: `/services/${sub.topMatch.region.toLowerCase()}/${sub.topMatch.serviceId}/`,
+                href: `../services/${sub.topMatch.region.toLowerCase()}/${sub.topMatch.serviceId}/index.html`,
                 target: '_blank',
                 rel: 'noopener',
                 style: 'margin-left: 1rem; font-size: 0.85rem;',

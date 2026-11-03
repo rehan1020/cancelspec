@@ -13,15 +13,23 @@ export interface BuildOptions {
   outDir?: string | undefined;
   referenceDate?: Date | undefined;
   quiet?: boolean | undefined;
+  includeDrafts?: boolean | undefined;
 }
 
 export function buildDataBundle(
   playbooksDir: string,
   options: BuildOptions = {},
 ): { latestPath: string; versionedPath: string; count: number } {
+  if (options.includeDrafts && !options.quiet) {
+    console.warn(
+      '⚠️  WARNING: --include-drafts is enabled for local preview only. This output contains unverified drafts and must NEVER be deployed to production!',
+    );
+  }
+
   const outDir = options.outDir || join(process.cwd(), 'dist', 'data');
   const playbooks = loadAllPlaybooks(playbooksDir, {
     referenceDate: options.referenceDate,
+    includeDrafts: options.includeDrafts,
   });
 
   const bundle = createReleaseBundle(playbooks, {

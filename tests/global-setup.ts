@@ -13,5 +13,6 @@ export function setup() {
     outDir: sharedSiteDir,
     quiet: true,
     referenceDate: new Date('2026-10-31T00:00:00.000Z'),
+    includeDrafts: true,
   });
 }

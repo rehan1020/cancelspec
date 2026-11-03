@@ -1,0 +1,61 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: bbc-select
+name: BBC Select
+aliases:
+  - BBC Select US
+category: streaming-video
+website: https://bbcselect.com
+merchant_patterns:
+  - BBC SELECT*
+channels:
+  - channel: amazon
+    entry_url: https://www.primevideo.com/help?nodeId=G3BQ95AL4WZLV9ZG
+    steps:
+      - Open Account & Settings on the Prime Video website.
+      - Select Subscriptions from the top menu.
+      - Find BBC Select on the list.
+      - Click Unsubscribe. Confirm to finish.
+    notes: Access continues until the current billing cycle ends.
+  - channel: apple
+    entry_url: https://support.apple.com/en-us/118428
+    steps:
+      - Open Settings on your iPhone or iPad.
+      - Tap your name at the top of the screen.
+      - Tap Subscriptions. Open your active list.
+      - Select BBC Select from your list.
+      - Tap Cancel Subscription. Confirm to finish.
+    notes: If billed through Apple, cancel at least 24 hours before renewal.
+  - channel: roku
+    entry_url: https://support.roku.com/article/manage-or-cancel-subscriptions
+    steps:
+      - Open the Roku website and sign in.
+      - Find BBC Select on the page.
+      - Select Manage subscription to see your plan.
+      - Click Turn off auto-renew. Confirm to finish.
+    notes: You can also manage the subscription directly on your Roku device.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-03
+verification_method: official-help-page
+sources:
+  - url: https://www.bbcselect.com/where-to-watch/
+    accessed_on: 2026-11-03
+    sha256: 161145709503ce7e5720b1ccf13956275a6f0218a03d22aac3372e21ef7019aa
+  - url: https://www.bbcselect.com/faq/
+    accessed_on: 2026-11-03
+    sha256: 494fcf5e2b114a62275de8f5ca4b3d000d0fd4ac837e0d7192a773c79201d5bc
+  - url: https://support.apple.com/en-us/118428
+    accessed_on: 2026-11-03
+    sha256: 5e91e9b76405a35ab65b763e734db114ba9267dce516e6f6dd8ebfbf997e970c
+  - url: https://support.roku.com/article/manage-or-cancel-subscriptions
+    accessed_on: 2026-11-03
+    sha256: d99a00d3b83ea65b1cd4a21adae350856e74150ed2ec3d47cb02207d18614c79
+  - url: https://www.primevideo.com/help?nodeId=G3BQ95AL4WZLV9ZG
+    accessed_on: 2026-11-03
+    sha256: 898438af2ce493596ec9629608045bda5183c045cdc59d4da7e1d6faed305725
+revision: 2
+status: draft
+status_reason: AI-drafted, awaiting human verification.

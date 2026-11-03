@@ -117,12 +117,13 @@ export function scanStatement(
     }
 
     const norm = normalizeMerchant(rawDesc);
-    if (!norm.merchantKey) continue;
+    const merchantKey = norm.merchantKey || (norm.processorHint ? norm.processorHint.toUpperCase() : '');
+    if (!merchantKey) continue;
 
     transactions.push({
       date,
       rawDescription: rawDesc,
-      merchantKey: norm.merchantKey,
+      merchantKey,
       processorHint: norm.processorHint,
       amount,
       currency: defaultCurrency,
@@ -143,7 +144,7 @@ export function scanStatement(
   for (const group of groups) {
     // Check if group matches an alias in index
     const matches = options.aliasIndex
-      ? matchMerchantKey(group.merchantKey, group.tokens, options.aliasIndex)
+      ? matchMerchantKey(group.merchantKey, group.tokens, options.aliasIndex, group.processorHint)
       : [];
 
     const hasPlaybookMatch = matches.length > 0;

@@ -13,6 +13,8 @@ export const CHANNELS = [
   'carrier-billing',
   'paypal',
   'bank-mandate',
+  'amazon',
+  'roku',
   'other',
 ] as const;
 export type Channel = typeof CHANNELS[number];
@@ -65,6 +67,12 @@ export const STATUSES = [
 ] as const;
 export type Status = typeof STATUSES[number];
 
+export const PLAYBOOK_KINDS = ['service', 'channel-guide'] as const;
+export type PlaybookKind = typeof PLAYBOOK_KINDS[number];
+
+export const OUTCOMES = ['cancel', 'downgrade', 'close-account'] as const;
+export type Outcome = typeof OUTCOMES[number];
+
 export const BANNED_LEGAL_PHRASES = [
   'legal advice',
   'legally entitled',
@@ -79,3 +87,13 @@ export const BANNED_LEGAL_PHRASES = [
   'we advise legally',
   'statutory right',
 ] as const;
+
+export const ALLOWLISTED_OFFICIAL_HELP_HOSTS: Record<string, string[]> = {
+  'youtube.com': ['support.google.com', 'google.com'],
+  'google.com': ['support.google.com', 'knowledge.workspace.google.com', 'youtube.com'],
+  'play.google.com': ['support.google.com', 'google.com'],
+  'fi.google.com': ['support.google.com', 'google.com'],
+  'workspace.google.com': ['knowledge.workspace.google.com', 'support.google.com', 'google.com'],
+  'apple.com': ['support.apple.com', 'apple.com'],
+};
+

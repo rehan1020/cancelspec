@@ -6,6 +6,7 @@ name: release
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -38,7 +39,15 @@ jobs:
         run: npm test
 
       - name: Execute release check & bundle generation
-        run: node packages/cli/dist/cli.js build && node packages/cli/dist/cli.js release-check
+        run: |
+          node packages/cli/dist/cli.js build
+          if [ "${{ github.ref_type }}" = "tag" ]; then
+            echo "Launch tag release: running release-check with strict drafts enabled"
+            node packages/cli/dist/cli.js release-check --strict-drafts
+          else
+            echo "Normal build: running release-check without strict drafts"
+            node packages/cli/dist/cli.js release-check
+          fi
 
       - name: Generate CycloneDX SBOM
         run: |
@@ -51,6 +60,7 @@ jobs:
           sha256sum bundle.*.json > SHA256SUMS.txt
 
       - name: Create GitHub Release
+        if: github.ref_type == 'tag'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

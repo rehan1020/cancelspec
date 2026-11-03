@@ -4,6 +4,8 @@
 import type {
   Category,
   Channel,
+  Outcome,
+  PlaybookKind,
   Status,
   Tag,
   VerificationMethod,
@@ -32,6 +34,7 @@ export interface Fact {
 export interface Source {
   url: string;
   accessed_on: string;
+  sha256?: string;
 }
 
 export interface Playbook {
@@ -41,6 +44,8 @@ export interface Playbook {
   aliases?: string[];
   category: Category;
   website: string;
+  kind?: PlaybookKind;
+  outcome?: Outcome;
 
   // Matching
   merchant_patterns: string[];
@@ -79,6 +84,8 @@ export interface DerivedPlaybookFields {
 
 export interface CompiledPlaybook extends Playbook, DerivedPlaybookFields {
   region: string;
+  kind: PlaybookKind;
+  outcome: Outcome;
 }
 
 export interface ValidationError {

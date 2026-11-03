@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2026 CancelSpec contributors
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import type { Channel } from '@cancelspec/spec';
+import type { Channel, Outcome, PlaybookKind } from '@cancelspec/spec';
 import type { IndexEntry } from '@cancelspec/core/index_builder';
 
 export type Cadence =
@@ -60,6 +60,8 @@ export interface MatchedPlaybook {
   difficulty?: number | undefined;
   matchScore: number; // 0.8 - 1.0
   entry?: IndexEntry | undefined;
+  outcome?: Outcome | undefined;
+  kind?: PlaybookKind | undefined;
 }
 
 export interface DetectedSubscription {

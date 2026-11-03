@@ -1,0 +1,51 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: youtube-premium
+name: YouTube Premium
+aliases:
+  - YouTube Music Premium
+category: streaming-video
+website: https://youtube.com
+merchant_patterns:
+  - GOOGLE*YOUTUBE PREMIUM*
+  - YOUTUBE PREMIUM*
+channels:
+  - channel: direct
+    entry_url: https://www.youtube.com/paid_memberships
+    steps:
+      - Go to your paid memberships page.
+      - Click Manage membership to view your plan details.
+      - Click Deactivate to begin.
+      - Click Continue to cancel.
+      - Choose your reason and click next.
+      - Click Yes, cancel to finish.
+    notes: Your benefits will continue until the end of your billing cycle.
+  - channel: apple
+    steps:
+      - Open Settings on your iPhone or iPad.
+      - Tap your name at the top.
+      - Tap Subscriptions. Open your active list.
+      - Select YouTube. Tap to cancel.
+  - channel: google-play
+    steps:
+      - Open your Google Play settings.
+      - Find YouTube Premium and tap Cancel.
+tags:
+  - survey-wall
+auto_renews:
+  value: true
+  source: https://support.google.com/youtube/answer/6308278?hl=en
+  accessed_on: 2026-11-01
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-01
+verification_method: official-help-page
+sources:
+  - url: https://support.google.com/youtube/answer/6308278?hl=en
+    accessed_on: 2026-11-02
+    sha256: 69eacaa7a1ec601acc4d024a6ea10826bd90fac8e425cdaad2ed86da9f2a0559
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

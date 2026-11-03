@@ -10,6 +10,8 @@ import { parseFlexibleAmount } from './amounts.js';
 import { scoreColumnMapping } from './column_mapping.js';
 import { parseFlexibleDate } from './dates.js';
 import { scanStatement } from './engine.js';
+import { matchMerchantKey } from './matcher.js';
+import { normalizeMerchant } from '@cancelspec/core';
 import { detectDelimiter, parseDelimitedText } from './intake.js';
 import { setupWorkerHandler, type WorkerInMessage, type WorkerOutMessage } from './worker.js';
 
@@ -90,6 +92,7 @@ describe('Fixture Accuracy & Performance Acceptance (WP7)', () => {
 
   const playbooks = loadAllPlaybooks(playbooksDir, {
     referenceDate: new Date('2026-10-31T00:00:00.000Z'),
+    includeDrafts: true,
   });
   const aliasIndex = buildAliasIndex(playbooks);
 
@@ -176,5 +179,213 @@ describe('Fixture Accuracy & Performance Acceptance (WP7)', () => {
 
     expect(overallRecall).toBeGreaterThanOrEqual(0.90);
     expect(overallPrecision).toBeGreaterThanOrEqual(0.85);
+  });
+});
+
+describe('Most-Specific-Pattern-Wins Rule & Disambiguation (Task 9 & 10)', () => {
+  const rootDir = join(__dirname, '../../..');
+  const playbooks = loadAllPlaybooks(join(rootDir, 'playbooks'), {
+    includeDrafts: true,
+  });
+  const aliasIndex = buildAliasIndex(playbooks);
+
+  it('matches YouTube Premium over Google Play for Google Play billed YouTube Premium charges', () => {
+    const rawDesc = 'GOOGLE *PLAY YOUTUBE PREMIUM';
+    const norm = normalizeMerchant(rawDesc);
+    const matches = matchMerchantKey(norm.merchantKey, norm.tokens, aliasIndex, norm.processorHint);
+
+    expect(matches.length).toBeGreaterThan(0);
+    expect(matches[0]!.serviceId).toBe('youtube-premium');
+    expect(matches[0]!.serviceName).toBe('YouTube Premium');
+    // Google Play is present as a secondary / channel-guide fallback hint
+    const hasGooglePlayFallback = matches.some((m) => m.serviceId === 'google-play');
+    expect(hasGooglePlayFallback).toBe(true);
+    // YouTube Premium is ranked before Google Play
+    const ytIndex = matches.findIndex((m) => m.serviceId === 'youtube-premium');
+    const gpIndex = matches.findIndex((m) => m.serviceId === 'google-play');
+    expect(ytIndex).toBeLessThan(gpIndex);
+  });
+
+  it('matches Google Play when charge is specifically for Google Play', () => {
+    const rawDesc = 'GOOGLE *PLAY STORE';
+    const norm = normalizeMerchant(rawDesc);
+    const matches = matchMerchantKey(norm.merchantKey, norm.tokens, aliasIndex, norm.processorHint);
+
+    expect(matches.length).toBeGreaterThan(0);
+    expect(matches[0]!.serviceId).toBe('google-play');
+    expect(matches[0]!.kind).toBe('channel-guide');
+  });
+
+  it('ordinary Google charge matches nothing', () => {
+    const ordinaryCharges = [
+      'GOOGLE *MOUNTAIN VIEW CA',
+      'GOOGLE *SERVICES',
+      'GOOGLE LLC',
+      'GOOGLE *TEMPORARY HOLD',
+      'GOOGLE',
+      'GOOGLE *APPS',
+    ];
+
+    for (const rawDesc of ordinaryCharges) {
+      const norm = normalizeMerchant(rawDesc);
+      const matches = matchMerchantKey(norm.merchantKey, norm.tokens, aliasIndex);
+      expect(matches).toEqual([]);
+    }
+  });
+
+  it('longer literal text beats shorter literal text in matching order', () => {
+    const testIndex = {
+      entries: [
+        {
+          pattern: 'STREAMING SHORT*',
+          normalizedPattern: 'STREAMING SHORT',
+          literalText: 'STREAMING SHORT',
+          literalLength: 15,
+          serviceId: 'short-service',
+          region: 'GLOBAL',
+          serviceName: 'Short Service',
+          category: 'software',
+          isWildcard: true,
+          tokens: ['STREAMING', 'SHORT'],
+          kind: 'service' as const,
+          outcome: 'cancel' as const,
+        },
+        {
+          pattern: 'STREAMING SHORT EXTRA LONG*',
+          normalizedPattern: 'STREAMING SHORT EXTRA LONG',
+          literalText: 'STREAMING SHORT EXTRA LONG',
+          literalLength: 26,
+          serviceId: 'long-service',
+          region: 'GLOBAL',
+          serviceName: 'Long Service',
+          category: 'software',
+          isWildcard: true,
+          tokens: ['STREAMING', 'SHORT', 'EXTRA', 'LONG'],
+          kind: 'service' as const,
+          outcome: 'cancel' as const,
+        },
+      ],
+      exactMap: {},
+    };
+
+    const matches = matchMerchantKey(
+      'STREAMING SHORT EXTRA LONG',
+      ['STREAMING', 'SHORT', 'EXTRA', 'LONG'],
+      testIndex as any,
+    );
+    expect(matches.length).toBe(2);
+    expect(matches[0]!.serviceId).toBe('long-service');
+    expect(matches[1]!.serviceId).toBe('short-service');
+  });
+
+  it('exact match beats prefix match', () => {
+    const testIndex = {
+      entries: [
+        {
+          pattern: 'STREAMBOX*',
+          normalizedPattern: 'STREAMBOX',
+          literalText: 'STREAMBOX',
+          literalLength: 9,
+          serviceId: 'streambox-prefix',
+          region: 'GLOBAL',
+          serviceName: 'Streambox Prefix',
+          category: 'software',
+          isWildcard: true,
+          tokens: ['STREAMBOX'],
+          kind: 'service' as const,
+          outcome: 'cancel' as const,
+        },
+        {
+          pattern: 'STREAMBOX',
+          normalizedPattern: 'STREAMBOX',
+          literalText: 'STREAMBOX',
+          literalLength: 9,
+          serviceId: 'streambox-exact',
+          region: 'GLOBAL',
+          serviceName: 'Streambox Exact',
+          category: 'software',
+          isWildcard: false,
+          tokens: ['STREAMBOX'],
+          kind: 'service' as const,
+          outcome: 'cancel' as const,
+        },
+      ],
+      exactMap: {},
+    };
+
+    const matches = matchMerchantKey('STREAMBOX', ['STREAMBOX'], testIndex as any);
+    expect(matches.length).toBe(2);
+    expect(matches[0]!.serviceId).toBe('streambox-exact');
+    expect(matches[1]!.serviceId).toBe('streambox-prefix');
+  });
+
+  it('proves GOOGLE *FITBIT PREMIUM and GOOGLE *FIREBASE do not match Google Fi', () => {
+    for (const rawDesc of ['GOOGLE *FITBIT PREMIUM', 'GOOGLE *FIREBASE']) {
+      const norm = normalizeMerchant(rawDesc);
+      const matches = matchMerchantKey(norm.merchantKey, norm.tokens, aliasIndex, norm.processorHint);
+      const matchedFi = matches.some((m) => m.serviceId === 'google-fi');
+      expect(matchedFi).toBe(false);
+      expect(matches).toEqual([]);
+    }
+  });
+
+  it('resolves APPLE.COM/BILL to the Apple channel guide', () => {
+    const rawDesc = 'APPLE.COM/BILL';
+    const norm = normalizeMerchant(rawDesc);
+    const matches = matchMerchantKey(norm.merchantKey, norm.tokens, aliasIndex, norm.processorHint);
+    expect(matches.length).toBeGreaterThan(0);
+    expect(matches[0]!.serviceId).toBe('apple-subscriptions');
+    expect(matches[0]!.kind).toBe('channel-guide');
+  });
+
+  it('attaches matching channel guide when charge carries processor hint and no service matches', () => {
+    // Apple hint
+    const appleNorm = normalizeMerchant('APPLE *UNKNOWN APP');
+    const appleMatches = matchMerchantKey(
+      appleNorm.merchantKey,
+      appleNorm.tokens,
+      aliasIndex,
+      appleNorm.processorHint,
+    );
+    expect(appleMatches.length).toBeGreaterThan(0);
+    expect(appleMatches[0]!.serviceId).toBe('apple-subscriptions');
+    expect(appleMatches[0]!.kind).toBe('channel-guide');
+
+    // Google Play hint
+    const gpNorm = normalizeMerchant('GOOGLE *PLAY UNKNOWN APP');
+    const gpMatches = matchMerchantKey(
+      gpNorm.merchantKey,
+      gpNorm.tokens,
+      aliasIndex,
+      gpNorm.processorHint,
+    );
+    expect(gpMatches.length).toBeGreaterThan(0);
+    expect(gpMatches[0]!.serviceId).toBe('google-play');
+    expect(gpMatches[0]!.kind).toBe('channel-guide');
+
+    // PayPal hint
+    const ppNorm = normalizeMerchant('PAYPAL *RANDOM STORE');
+    const ppMatches = matchMerchantKey(
+      ppNorm.merchantKey,
+      ppNorm.tokens,
+      aliasIndex,
+      ppNorm.processorHint,
+    );
+    expect(ppMatches.length).toBeGreaterThan(0);
+    expect(ppMatches[0]!.serviceId).toBe('paypal');
+    expect(ppMatches[0]!.kind).toBe('channel-guide');
+  });
+
+  it('service playbook takes precedence over channel guide for processor hints', () => {
+    const norm = normalizeMerchant('PAYPAL *NETFLIX COM');
+    const matches = matchMerchantKey(
+      norm.merchantKey,
+      norm.tokens,
+      aliasIndex,
+      norm.processorHint,
+    );
+    expect(matches.length).toBeGreaterThan(0);
+    expect(matches[0]!.serviceId).toBe('netflix');
+    expect(matches[0]!.kind).toBe('service');
   });
 });

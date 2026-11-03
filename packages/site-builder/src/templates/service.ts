@@ -64,13 +64,13 @@ export function renderServicePage(
         })
         .join('\n');
 
+      const stepsList = ch.steps.length > 0 ? `<ol class="steps-list">\n${steps}\n</ol>` : '';
+
       return `
         <section class="card" aria-labelledby="${channelId}">
           <h3 id="${channelId}">Billed via ${escapeHtml(ch.channel)}</h3>
           ${entryLink}
-          <ol class="steps-list">
-            ${steps}
-          </ol>
+          ${stepsList}
           ${notes}
         </section>`;
     })
@@ -123,6 +123,7 @@ export function renderServicePage(
       </div>
       <div>
         <span class="badge badge-difficulty-${playbook.difficulty}">Difficulty: Level ${playbook.difficulty} / 5</span>
+        <span class="badge outcome-badge">Outcome: ${escapeHtml(playbook.outcome || 'cancel')}</span>
         ${a11yHtml}
       </div>
     </div>
@@ -143,7 +144,7 @@ export function renderServicePage(
       <h2 id="provenance-heading">Verification & Sources</h2>
       <p><small>Last verified on <strong>${escapeHtml(playbook.verified_on)}</strong> using <strong>${escapeHtml(playbook.verification_method)}</strong> by community contributors (${escapeHtml(playbook.contributors.join(', '))}).</small></p>
       <ul>
-        ${playbook.sources.map((s) => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.url)} (opens in new tab)</a> (Accessed ${escapeHtml(s.accessed_on)})</li>`).join('\n')}
+        ${playbook.sources.map((s) => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.url)} (opens in new tab)</a> (Accessed ${escapeHtml(s.accessed_on)})${s.sha256 ? ` <small style="color: var(--text-muted); font-family: monospace;">[SHA-256: ${escapeHtml(s.sha256.slice(0, 12))}...]</small>` : ''}</li>`).join('\n')}
       </ul>
       <p><small>Is this information incorrect? <a href="${escapeHtml(issueUrl)}" target="_blank" rel="noopener noreferrer">Suggest a correction on GitHub (opens in new tab)</a>.</small></p>
     </section>
