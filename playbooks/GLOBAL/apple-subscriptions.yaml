@@ -30,12 +30,12 @@ channels:
 contributors:
   - ai-draft
 reviewers: []
-verified_on: 2026-11-03
+verified_on: 2026-11-04
 verification_method: official-help-page
 sources:
   - url: https://support.apple.com/en-us/118428
-    accessed_on: 2026-11-03
-    sha256: 5e91e9b76405a35ab65b763e734db114ba9267dce516e6f6dd8ebfbf997e970c
+    accessed_on: 2026-11-04
+    sha256: 0e661c506de6a9cda9e29570ef88ca531aaca1b0b3f0a4c780c1da27ec85496f
 revision: 2
 status: draft
 status_reason: AI-drafted, awaiting human verification.

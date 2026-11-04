@@ -38,24 +38,24 @@ channels:
 contributors:
   - ai-draft
 reviewers: []
-verified_on: 2026-11-03
+verified_on: 2026-11-04
 verification_method: official-help-page
 sources:
   - url: https://www.bbcselect.com/where-to-watch/
-    accessed_on: 2026-11-03
+    accessed_on: 2026-11-04
     sha256: 161145709503ce7e5720b1ccf13956275a6f0218a03d22aac3372e21ef7019aa
   - url: https://www.bbcselect.com/faq/
-    accessed_on: 2026-11-03
+    accessed_on: 2026-11-04
     sha256: 494fcf5e2b114a62275de8f5ca4b3d000d0fd4ac837e0d7192a773c79201d5bc
   - url: https://support.apple.com/en-us/118428
-    accessed_on: 2026-11-03
-    sha256: 5e91e9b76405a35ab65b763e734db114ba9267dce516e6f6dd8ebfbf997e970c
+    accessed_on: 2026-11-04
+    sha256: 0e661c506de6a9cda9e29570ef88ca531aaca1b0b3f0a4c780c1da27ec85496f
   - url: https://support.roku.com/article/manage-or-cancel-subscriptions
-    accessed_on: 2026-11-03
-    sha256: d99a00d3b83ea65b1cd4a21adae350856e74150ed2ec3d47cb02207d18614c79
+    accessed_on: 2026-11-04
+    sha256: 8d95026e57594a960ba4f94aff2538b98d96b288b4dc852cb19bb5e1ed4865ff
   - url: https://www.primevideo.com/help?nodeId=G3BQ95AL4WZLV9ZG
-    accessed_on: 2026-11-03
-    sha256: 898438af2ce493596ec9629608045bda5183c045cdc59d4da7e1d6faed305725
+    accessed_on: 2026-11-04
+    sha256: 95dc5e30971c507be6250b32aa502fe511a1dd96078b433af9e06aa34c22844a
 revision: 2
 status: draft
 status_reason: AI-drafted, awaiting human verification.
