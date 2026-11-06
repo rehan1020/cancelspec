@@ -175,6 +175,8 @@ export function buildSite(options: SiteBuilderOptions): BuildReport {
         <p>CancelSpec collects nothing and stores nothing. The scanner runs entirely in your browser using a Web Worker. No statement data leaves your device, zero network requests are made during or after scanning, and nothing is saved to cookies, localStorage, or IndexedDB.</p>
         <h2>Verification with Developer Tools</h2>
         <p>You can independently verify this in your browser: open the Network tab (inspect requests after scan) and Application tab (inspect storage).</p>
+        <h2>Contact</h2>
+        <p>Questions about privacy: <code>${config.contact.general}</code></p>
       `,
     },
     {

@@ -28,4 +28,4 @@ None currently documented.
 
 ## Reporting a barrier
 
-If you encounter an accessibility barrier, please open an issue on GitHub or email hello@cancelspec.org. We will respond within 7 days.
+If you encounter an accessibility barrier, please open an issue on GitHub or email cancelspec@protonmail.com. We will respond within 7 days.

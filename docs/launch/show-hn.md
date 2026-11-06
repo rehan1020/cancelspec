@@ -7,8 +7,8 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Title**: Show HN: CancelSpec – Browser-only subscription cancellation tool (zero network requests, no storage)
 
-**URL**: https://cancelspec.org  
-**Repository**: https://github.com/cancelspec/cancelspec  
+**URL**: https://cancelspec.cancelspec.workers.dev  
+**Repository**: https://github.com/rehan1020/cancelspec  
 
 ---
 

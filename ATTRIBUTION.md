@@ -9,17 +9,17 @@ When using CancelSpec, please provide attribution as follows.
 
 ## Code (AGPL-3.0-or-later)
 
-> Based on [CancelSpec](https://cancelspec.org) — AGPL-3.0-or-later.
-> Source: https://github.com/cancelspec/cancelspec
+> Based on [CancelSpec](https://cancelspec.cancelspec.workers.dev) — AGPL-3.0-or-later.
+> Source: https://github.com/rehan1020/cancelspec
 
 ## Data / Playbooks (CC BY-NC-SA 4.0)
 
-> Cancellation playbook data from [CancelSpec](https://cancelspec.org),
+> Cancellation playbook data from [CancelSpec](https://cancelspec.cancelspec.workers.dev),
 > licensed under CC BY-NC-SA 4.0.
-> Source: https://github.com/cancelspec/cancelspec
+> Source: https://github.com/rehan1020/cancelspec
 
 ## Specification (CC BY 4.0)
 
-> Specification based on the [CancelSpec Playbook Spec](https://cancelspec.org/spec/),
+> Specification based on the [CancelSpec Playbook Spec](https://cancelspec.cancelspec.workers.dev/spec/),
 > licensed under CC BY 4.0.
-> Source: https://github.com/cancelspec/cancelspec
+> Source: https://github.com/rehan1020/cancelspec

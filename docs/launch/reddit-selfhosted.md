@@ -8,7 +8,7 @@ SPDX-License-Identifier: CC-BY-4.0
 **Title**: CancelSpec: Self-hostable, zero-backend subscription cancellation finder and playbook directory
 
 **Subreddit**: r/selfhosted  
-**Links**: https://cancelspec.org | https://github.com/cancelspec/cancelspec  
+**Links**: https://cancelspec.cancelspec.workers.dev | https://github.com/rehan1020/cancelspec  
 
 ---
 
@@ -45,7 +45,7 @@ cancelspec.yourdomain.local {
 
 #### Using Docker:
 ```bash
-git clone https://github.com/cancelspec/cancelspec.git
+git clone https://github.com/rehan1020/cancelspec.git
 cd cancelspec
 npm ci && npm run build
 node packages/cli/dist/cli.js build --site

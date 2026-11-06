@@ -20,7 +20,7 @@ export interface AppOptions {
 export function createScannerApp(container: HTMLElement, options: AppOptions = {}) {
   const workerUrl = options.workerUrl || '../scripts/scanner-worker.js';
   const githubRepoUrl =
-    options.githubRepoUrl || 'https://github.com/cancelspec/cancelspec';
+    options.githubRepoUrl || 'https://github.com/rehan1020/cancelspec';
 
   const announcer = new LiveAnnouncer();
   let activeWorker: Worker | null = null;

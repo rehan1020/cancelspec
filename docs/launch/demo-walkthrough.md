@@ -15,7 +15,7 @@ SPDX-License-Identifier: CC-BY-4.0
 ## Shot List & Action Sequence
 
 ### Scene 1: Landing on the Tool (00:00 - 00:10)
-- **Visual**: Browser window showing `https://cancelspec.org/tool/`.
+- **Visual**: Browser window showing `https://cancelspec.cancelspec.workers.dev/tool/`.
 - **Highlights**:
   - Show the clean typography and zero-tracker shield badge.
   - Hover over the prominent privacy notice: *"No data leaves your device. The scanner runs entirely in your browser."*
@@ -53,4 +53,4 @@ SPDX-License-Identifier: CC-BY-4.0
   - The "Printable Checklist" updates dynamically showing steps and total monthly savings unlocked.
   - User clicks "Copy Checklist" (displays copied tooltip).
   - Browser developer tools Network tab opened briefly to prove **0 requests sent**.
-  - Final card: *"Free. Open source. No data collected. Ever. cancelspec.org"*.
+  - Final card: *"Free. Open source. No data collected. Ever. cancelspec.cancelspec.workers.dev"*.

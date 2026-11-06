@@ -1,6 +1,6 @@
 version = 1
 SPDX-PackageName = "CancelSpec"
-SPDX-PackageSupplier = "hello@cancelspec.org"
+SPDX-PackageSupplier = "cancelspec@protonmail.com"
 
 [[annotations]]
 path = "playbooks/**"

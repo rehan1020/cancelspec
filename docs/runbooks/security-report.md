@@ -7,7 +7,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## Context
 
-Per `SECURITY.md`, CancelSpec maintains a private vulnerability reporting route via GitHub Private Vulnerability Reporting and the security contact in `project.config` (`security@cancelspec.org`).
+Per `SECURITY.md`, CancelSpec maintains a private vulnerability reporting route via GitHub Private Vulnerability Reporting and the security contact in `project.config` (`cancelspec@protonmail.com`).
 
 Commitments:
 - Initial response within 48 hours.

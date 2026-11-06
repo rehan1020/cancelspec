@@ -56,7 +56,7 @@ GitHub Pages acts as an automated fallback mirror updated via GitHub Actions:
 
 ### Deployment Safety Gates
 The `main-deploy` workflow enforces three automated gates:
-1. **Configuration Gate**: Refuses deployment if `project.config` contains placeholder `REPLACE_ME` values.
+1. **Configuration Gate**: Refuses deployment if `project.config` contains placeholder values.
 2. **Reproducible Build Gate**: Builds twice into separate directories and confirms 100% bit-identical file hashes before deploying.
 3. **Smoke Test Gate**: Following deployment, executes automated HTTP requests to verify the home page, data bundle (`/data/bundle.latest.json`), and service routes load with HTTP 200.
 
@@ -64,13 +64,13 @@ The `main-deploy` workflow enforces three automated gates:
 
 ## 4. Custom Domain Transition Guide
 
-When moving from default platform subdomains (`*.pages.dev` or `*.github.io`) to a custom domain (e.g., `cancelspec.org`), **zero code changes are required**:
+When moving from default platform subdomains (`*.pages.dev` or `*.github.io`) to a custom domain (e.g., `example.org`), **zero code changes are required**:
 
 1. **Update `project.config`**:
    ```json
    {
      "site": {
-       "url": "https://cancelspec.org"
+       "url": "https://example.org"
      }
    }
    ```

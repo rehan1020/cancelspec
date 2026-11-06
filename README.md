@@ -18,7 +18,7 @@ CancelSpec is a browser-only tool that helps you find and cancel your subscripti
 
 ## Official repository
 
-**https://github.com/cancelspec/cancelspec** is the only official repository.
+The repository URL specified in `project.config` (**https://github.com/rehan1020/cancelspec**) is the only official repository.
 
 ## Quick start
 

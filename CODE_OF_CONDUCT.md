@@ -26,7 +26,7 @@ Examples of unacceptable behavior:
 
 ## Enforcement
 
-Instances of unacceptable behavior may be reported to conduct@cancelspec.org. All complaints will be reviewed and investigated.
+Instances of unacceptable behavior may be reported to cancelspec@protonmail.com (as specified in `project.config`). All complaints will be reviewed and investigated.
 
 ## Attribution
 

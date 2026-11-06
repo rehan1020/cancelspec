@@ -33,4 +33,4 @@ Open your browser's developer tools:
 
 ## Contact
 
-Questions about privacy: hello@cancelspec.org
+Questions about privacy: cancelspec@protonmail.com (as specified in `project.config`).

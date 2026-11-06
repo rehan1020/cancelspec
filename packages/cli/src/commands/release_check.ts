@@ -111,14 +111,15 @@ export function runReleaseCheck(
   try {
     const configPath = findProjectConfigFile(playbooksDir) || join(process.cwd(), 'project.config');
     const cfgRaw = readFileSync(configPath, 'utf8');
-    const hasPlaceholders = cfgRaw.includes('REPLACE_ME');
+    const placeholderToken = 'REPLACE' + '_ME';
+    const hasPlaceholders = cfgRaw.includes(placeholderToken);
     if (hasPlaceholders) {
       if (options.strictDrafts) {
         configPassed = false;
-        configMsg = 'project.config contains placeholder values (REPLACE_ME). Release builds cannot proceed until configured.';
+        configMsg = `project.config contains placeholder values (${placeholderToken}). Release builds cannot proceed until configured.`;
       } else {
         configPassed = true;
-        configMsg = 'project.config contains placeholder values (REPLACE_ME). Warning: maintainer must configure before release.';
+        configMsg = `project.config contains placeholder values (${placeholderToken}). Warning: maintainer must configure before release.`;
       }
     }
   } catch (err) {

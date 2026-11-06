@@ -16,7 +16,7 @@ Our committed timeline per `TAKEDOWN.md` and Section 14 of `docs/PLAN.md` is:
 ## Handling Inquiries
 
 ### Step 1: Receipt and Initial Logging
-1. Notices arrive at the dedicated email specified in `project.config` (`takedown@cancelspec.org`) or via platform processes (GitHub / Cloudflare).
+1. Notices arrive at the dedicated email specified in `project.config` (`cancelspec@protonmail.com`) or via platform processes (GitHub / Cloudflare).
 2. Send an immediate acknowledgment confirming receipt and providing our 7-day review window.
 3. Open a confidential tracking issue in the private maintainer tracker with personal contact information redacted.
 

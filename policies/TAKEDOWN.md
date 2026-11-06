@@ -7,7 +7,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## Contact
 
-Send takedown requests to takedown@cancelspec.org.
+Send takedown requests to cancelspec@protonmail.com (as specified in `project.config`).
 
 ## Process
 

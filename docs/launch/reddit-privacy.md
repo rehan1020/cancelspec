@@ -8,7 +8,7 @@ SPDX-License-Identifier: CC-BY-4.0
 **Title**: We built CancelSpec: a free, open-source subscription cancellation tool that makes zero network calls and stores nothing
 
 **Subreddit**: r/privacy  
-**Links**: https://cancelspec.org | https://github.com/cancelspec/cancelspec  
+**Links**: https://cancelspec.cancelspec.workers.dev | https://github.com/rehan1020/cancelspec  
 
 ---
 

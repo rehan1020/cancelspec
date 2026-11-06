@@ -28,10 +28,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 | Asset | Target Handle / URL | Verification Status | Maintainer Action Required |
 | --- | --- | --- | --- |
-| Official Repository | `github.com/cancelspec/cancelspec` | NOT DONE | Maintainer must confirm organization and repo setup |
-| Primary Domain | `cancelspec.org` | NOT DONE | Maintainer must acquire domain and configure DNS |
+| Official Repository | `github.com/rehan1020/cancelspec` | NOT DONE | Maintainer must confirm organization and repo setup |
+| Primary Domain | `cancelspec.cancelspec.workers.dev` | NOT DONE | Maintainer must acquire domain and configure DNS |
 | Secondary Mirror | `cancelspec.cancelspec.workers.dev` | NOT DONE | Maintainer must configure Cloudflare Pages project |
-| Bluesky Handle | `@cancelspec.org` | NOT DONE | Maintainer must verify via DNS TXT record |
+| Bluesky Handle | `@cancelspec` | NOT DONE | Maintainer must verify via DNS TXT record |
 | Package Namespace | `@cancelspec/*` | NOT DONE | Maintainer must register npm organization scope |
 
 ---

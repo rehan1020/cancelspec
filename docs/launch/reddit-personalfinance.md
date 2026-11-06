@@ -8,7 +8,7 @@ SPDX-License-Identifier: CC-BY-4.0
 **Title**: CancelSpec – Free, private tool to find unwanted subscriptions in your bank statement and cancel them
 
 **Subreddit**: r/personalfinance  
-**Links**: https://cancelspec.org | https://github.com/cancelspec/cancelspec  
+**Links**: https://cancelspec.cancelspec.workers.dev | https://github.com/rehan1020/cancelspec  
 
 ---
 
@@ -22,7 +22,7 @@ We created **CancelSpec** as a free, safe, and community-driven alternative.
 
 ### How to use it to audit your monthly budget:
 1. Log into your bank or credit card portal and download your recent statement export as a CSV or TSV file.
-2. Visit **https://cancelspec.org/tool/** and drop the file into the page.
+2. Visit **https://cancelspec.cancelspec.workers.dev/tool/** and drop the file into the page.
 3. The tool runs locally in your browser to cluster recurring payments by interval (monthly, quarterly, annual) and matches them against known subscription services.
 4. Review your active recurring costs annualized by currency.
 5. Click **"See how to cancel"** on any unwanted subscription to view step-by-step instructions. We include:

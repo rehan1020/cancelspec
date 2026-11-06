@@ -12,7 +12,7 @@ let config;
 try {
   config = JSON.parse(readFileSync(join(process.cwd(), 'project.config'), 'utf8'));
 } catch {
-  config = { project: { name: 'CancelSpec', version: '0.1.0' }, repo: { url: 'https://github.com/cancelspec/cancelspec' } };
+  config = { project: { name: 'CancelSpec', version: '0.1.0' }, repo: { url: 'https://github.com/rehan1020/cancelspec' } };
 }
 
 const USER_AGENT = `${config.project.name}/${config.project.version} (+${config.repo.url})`;

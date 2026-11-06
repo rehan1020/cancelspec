@@ -17,8 +17,24 @@ merchant_patterns:
 channels:
   - channel: direct
     entry_url: https://www.hotstar.com/in/my-account
-    steps: []
-    notes: Official JioHotstar cancellation help page cannot be fetched as static text (help portal is an SPA requiring client-side API/login). Steps left empty awaiting human verification.
+    steps:
+      - Go to My Space.
+      - Click Help & Settings.
+      - Click Account Settings.
+      - Click Subscription and Devices.
+      - Click Cancel.
+      - Confirm cancel on the prompt.
+    notes: Sourced from official JioHotstar Indian help article.
+  - channel: google-play
+    steps:
+      - Open the Google Play Store app.
+      - Tap your profile icon.
+      - Tap Payments & subscriptions.
+      - Tap Subscriptions.
+      - Select JioHotstar.
+      - Tap Cancel subscription.
+      - Confirm to finish.
+    notes: Sourced from official JioHotstar Indian help article.
   - channel: bank-mandate
     steps: []
     notes: Steps left empty awaiting human verification from official bank mandate documentation.
@@ -28,9 +44,9 @@ reviewers: []
 verified_on: 2026-11-04
 verification_method: official-help-page
 sources:
-  - url: https://help.hotstar.com/sg/en/support/solutions/articles/68000000202-how-to-cancel-my-subscription-
-    accessed_on: 2026-11-04
-    sha256: 096922ea5b9ae38a366e784d23dc007a989e959d929405e97adadbdb075ecf44
+  - url: https://help.hotstar.com/in/en/support/solutions/articles/68c541575b70f009aafaeb69
+    accessed_on: 2026-11-06
+    sha256: f7bfccbebeddb9c2b1bed9ec32c09f7e5601008fb3c1aa8be45393e6b5f2b2ae
 revision: 2
 status: draft
 status_reason: AI-drafted, awaiting human verification.

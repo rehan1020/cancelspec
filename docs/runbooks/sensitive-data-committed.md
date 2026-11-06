@@ -30,7 +30,7 @@ Do not use `git rm` (which leaves the file in past history). Use `git-filter-rep
 pip install git-filter-repo
 
 # 2. Make a fresh mirror clone of the repo in a clean directory
-git clone --mirror git@github.com:cancelspec/cancelspec.git repo-cleanup
+git clone --mirror git@github.com:rehan1020/cancelspec.git repo-cleanup
 cd repo-cleanup
 
 # 3. Completely scrub the offending file across all history
@@ -41,7 +41,7 @@ git filter-repo --invert-paths --path path/to/sensitive-file.csv
 git filter-repo --replace-text expressions.txt
 
 # 5. Re-add origin and force push all branches and tags
-git remote add origin git@github.com:cancelspec/cancelspec.git
+git remote add origin git@github.com:rehan1020/cancelspec.git
 git push origin --force --all
 git push origin --force --tags
 ```
