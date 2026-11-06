@@ -5,6 +5,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Reddit r/selfhosted Launch Post
 
+> [!WARNING]
+> DRAFT - DO NOT POST until the maintainer approves.
+
 **Title**: CancelSpec: Self-hostable, zero-backend subscription cancellation finder and playbook directory
 
 **Subreddit**: r/selfhosted  
@@ -16,7 +19,7 @@ Hey r/selfhosted,
 
 If you prefer to keep your financial audits strictly under your own control, we’ve published **CancelSpec**.
 
-CancelSpec is a browser-only, zero-backend static web application that lets you drop in your bank statement exports (CSV/TSV), detect recurring subscriptions, and view verified cancellation guides.
+CancelSpec is a browser-only, zero-backend static web application that lets you drop in your bank statement exports (CSV/TSV), detect recurring subscriptions, and view cancellation guides.
 
 ### Why it’s great for self-hosting:
 - **Zero Backend**: CancelSpec is 100% static HTML, CSS, and client-side JavaScript. No Node.js runtime, no Python daemon, no database, and no redis container needed in production.

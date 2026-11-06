@@ -34,19 +34,22 @@ channels:
       - Select JioHotstar.
       - Tap Cancel subscription.
       - Confirm to finish.
-    notes: Sourced from official JioHotstar Indian help article.
+    notes: Sourced from official Google Play help page (https://support.google.com/googleplay/answer/7018481?hl=en).
   - channel: bank-mandate
     steps: []
     notes: Steps left empty awaiting human verification from official bank mandate documentation.
 contributors:
   - ai-draft
 reviewers: []
-verified_on: 2026-11-04
+verified_on: 2026-11-06
 verification_method: official-help-page
 sources:
   - url: https://help.hotstar.com/in/en/support/solutions/articles/68c541575b70f009aafaeb69
     accessed_on: 2026-11-06
-    sha256: f7bfccbebeddb9c2b1bed9ec32c09f7e5601008fb3c1aa8be45393e6b5f2b2ae
+    sha256: c7c2bbf912218bd666d09f871c56c90680b9f99e1c5043e9ff582e4ceafdeb45
+  - url: https://support.google.com/googleplay/answer/7018481?hl=en
+    accessed_on: 2026-11-06
+    sha256: e65d12d7147f2b8a439dde6460a5d1d2d5600c7fe309ab2ec99577507eafec81
 revision: 2
 status: draft
 status_reason: AI-drafted, awaiting human verification.

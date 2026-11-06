@@ -5,6 +5,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Show HN: CancelSpec – Free, browser-only subscription finder with zero network calls
 
+> [!WARNING]
+> DRAFT - DO NOT POST until the maintainer approves.
+
 **Title**: Show HN: CancelSpec – Browser-only subscription cancellation tool (zero network requests, no storage)
 
 **URL**: https://cancelspec.cancelspec.workers.dev  
@@ -22,7 +25,7 @@ CancelSpec is a 100% free, open-source static web application and community play
 1. **Drop in a bank statement**: Ingests your standard checking or credit card export (CSV/TSV).
 2. **In-browser Web Worker parsing**: Normalizes transactions, infers column mapping, and runs a recurrence-detection engine (cadence clustering, date interval disjointness, amount variance bounds).
 3. **Deterministic playbook matching**: Matches merchant statement descriptors against an embedded community index of subscription services.
-4. **Actionable cancellation instructions**: Outputs step-by-step cancellation instructions with verified URLs, billing-channel branches (direct, App Store, Google Play, bank mandate), and objective friction scores.
+4. **Actionable cancellation instructions**: Outputs step-by-step cancellation instructions with direct cancellation links, billing-channel branches (direct, App Store, Google Play, bank mandate), and friction scores.
 5. **Printable checklist**: Mark services you want to cancel, calculate your annualized savings, and generate a printable or copyable checklist.
 
 ### Privacy and Architecture Guarantees:
@@ -30,7 +33,7 @@ CancelSpec is a 100% free, open-source static web application and community play
 - **Zero persistent storage**: No writes to `localStorage`, `sessionStorage`, `document.cookie`, `IndexedDB`, or `Cache API`. When you close the tab, your statement data vanishes from memory.
 - **Zero third-party runtime code**: No analytics, no fonts from external CDNs, no tracking pixels, and no external runtime JavaScript libraries. Every line of runtime code and CSS is authored directly in our repository.
 - **Static & reproducible**: Pre-compiled static site that builds deterministically with bit-identical hashes and deploys to GitHub Pages and Cloudflare Pages.
-- **Accessible (WCAG 2.2 AA)**: Fully accessible with 0 axe-core violations, and all public service instruction pages are 100% functional with JavaScript completely disabled.
+- **Accessibility**: Designed for WCAG 2.2 AA conformance, and all public service instruction pages function without JavaScript.
 
 ### The Dataset & Licensing:
 - Code is licensed under **AGPL-3.0-or-later**.

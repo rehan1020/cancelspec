@@ -41,8 +41,14 @@ describe('Repository Cleanliness & URL / Domain Consistency', () => {
       'REPLACE' + '_ME',
     ];
 
+    // Allowlist:
+    // - tests/repo_urls.test.ts: Contains the banned pattern definitions themselves.
+    // - .github/workflows/main-deploy.yml: Workflow step checks whether project.config contains REPLACE_ME placeholders before deployment.
+    // - packages/cli/src/commands/release_check.ts: CLI command checks whether project.config contains REPLACE_ME placeholders during release verification.
     const allowlist = new Set([
       'tests/repo_urls.test.ts',
+      '.github/workflows/main-deploy.yml',
+      'packages/cli/src/commands/release_check.ts',
     ]);
 
     const violations: { file: string; pattern: string }[] = [];

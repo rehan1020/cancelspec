@@ -5,6 +5,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Reddit r/privacy Launch Post
 
+> [!WARNING]
+> DRAFT - DO NOT POST until the maintainer approves.
+
 **Title**: We built CancelSpec: a free, open-source subscription cancellation tool that makes zero network calls and stores nothing
 
 **Subreddit**: r/privacy  

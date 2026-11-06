@@ -5,6 +5,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Video Demo and Screen Capture Walkthrough Script
 
+> [!WARNING]
+> DRAFT - DO NOT POST until the maintainer approves.
+
 **Project**: CancelSpec  
 **Duration**: ~60 seconds  
 **Target Output**: Silent WebM/MP4 video clip or animated GIF for README and launch announcements.  

@@ -5,6 +5,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Reddit r/personalfinance Launch Post
 
+> [!WARNING]
+> DRAFT - DO NOT POST until the maintainer approves.
+
 **Title**: CancelSpec – Free, private tool to find unwanted subscriptions in your bank statement and cancel them
 
 **Subreddit**: r/personalfinance  

@@ -51,8 +51,8 @@ jobs:
 
       - name: Check configuration placeholders
         run: |
-          if grep -q "REPLACE"'_ME' project.config; then
-            echo "ERROR: project.config contains placeholder values."
+          if grep -q "REPLACE_ME" project.config; then
+            echo "ERROR: project.config contains placeholder values (REPLACE_ME)."
             echo "Deployment to GitHub Pages is refused until maintainer sets production repository URLs and contact addresses."
             exit 1
           fi
