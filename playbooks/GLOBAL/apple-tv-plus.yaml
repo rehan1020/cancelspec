@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: apple-tv-plus
+name: Apple TV+
+aliases:
+  - Apple TV
+  - Apple TV Plus
+category: streaming-video
+website: https://tv.apple.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://tv.apple.com
+    steps:
+      - Open tv.apple.com in your web browser.
+      - Click Sign In at the top of the page.
+      - Click the account icon at the top.
+      - Click Settings.
+      - Scroll down to Subscriptions. Click Manage.
+      - Click Cancel Subscription. Confirm the choice.
+  - channel: apple
+    steps:
+      - Open Settings on your device.
+      - Tap your name at the top.
+      - Tap Subscriptions in the list.
+      - Tap Apple TV+.
+      - Tap Cancel Subscription. Confirm the choice.
+    notes: Sourced from Apple Support page. Refer to the Apple Subscriptions guide for details.
+  - channel: google-play
+    steps:
+      - Open the Apple TV app or go to play.google.com.
+      - Open your list of subscriptions.
+      - Choose Apple TV+.
+      - Tap Cancel Subscription. Confirm your choice.
+    notes: Subscriptions billed through Google Play must be cancelled through Google Play.
+  - channel: amazon
+    steps:
+      - Log in to Amazon. Open your subscriptions.
+      - Find Apple TV+ in the list.
+      - Click Manage Subscription. Choose cancel.
+    notes: Subscriptions billed through Amazon must be cancelled directly through Amazon.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-07
+verification_method: official-help-page
+sources:
+  - url: https://support.apple.com/en-us/118398
+    accessed_on: 2026-11-07
+    sha256: bf8acaa0e4d5aaebdf786e5940296351a3afe6d807feddb7bb5d5ba73f6149c0
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

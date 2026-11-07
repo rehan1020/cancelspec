@@ -1,10 +1,122 @@
 [
   {
-    "id": "dropbox",
-    "name": "Dropbox",
+    "id": "disney-plus",
+    "name": "Disney+",
     "region": "GLOBAL",
-    "website": "https://dropbox.com",
-    "category": "cloud-storage",
+    "website": "https://disneyplus.com",
+    "category": "streaming-video",
+    "priority": 1
+  },
+  {
+    "id": "max",
+    "name": "Max",
+    "region": "US",
+    "website": "https://max.com",
+    "category": "streaming-video",
+    "priority": 1
+  },
+  {
+    "id": "paramount-plus",
+    "name": "Paramount+",
+    "region": "GLOBAL",
+    "website": "https://paramountplus.com",
+    "category": "streaming-video",
+    "priority": 1
+  },
+  {
+    "id": "amazon-prime",
+    "name": "Amazon Prime",
+    "region": "GLOBAL",
+    "website": "https://amazon.com",
+    "category": "delivery-membership",
+    "priority": 1
+  },
+  {
+    "id": "apple-tv-plus",
+    "name": "Apple TV+",
+    "region": "GLOBAL",
+    "website": "https://tv.apple.com",
+    "category": "streaming-video",
+    "priority": 1
+  },
+  {
+    "id": "apple-music",
+    "name": "Apple Music",
+    "region": "GLOBAL",
+    "website": "https://music.apple.com",
+    "category": "streaming-music",
+    "priority": 1
+  },
+  {
+    "id": "audible",
+    "name": "Audible",
+    "region": "GLOBAL",
+    "website": "https://audible.com",
+    "category": "streaming-music",
+    "priority": 1
+  },
+  {
+    "id": "uber-one",
+    "name": "Uber One",
+    "region": "GLOBAL",
+    "website": "https://uber.com",
+    "category": "delivery-membership",
+    "priority": 1
+  },
+  {
+    "id": "doordash-dashpass",
+    "name": "DoorDash DashPass",
+    "region": "US",
+    "website": "https://doordash.com",
+    "category": "delivery-membership",
+    "priority": 1
+  },
+  {
+    "id": "swiggy-one",
+    "name": "Swiggy One",
+    "region": "IN",
+    "website": "https://swiggy.com",
+    "category": "delivery-membership",
+    "priority": 1
+  },
+  {
+    "id": "zomato-gold",
+    "name": "Zomato Gold",
+    "region": "IN",
+    "website": "https://zomato.com",
+    "category": "delivery-membership",
+    "priority": 1
+  },
+  {
+    "id": "xbox-game-pass",
+    "name": "Xbox Game Pass",
+    "region": "GLOBAL",
+    "website": "https://xbox.com",
+    "category": "gaming",
+    "priority": 1
+  },
+  {
+    "id": "playstation-plus",
+    "name": "PlayStation Plus",
+    "region": "GLOBAL",
+    "website": "https://playstation.com",
+    "category": "gaming",
+    "priority": 1
+  },
+  {
+    "id": "nintendo-switch-online",
+    "name": "Nintendo Switch Online",
+    "region": "GLOBAL",
+    "website": "https://nintendo.com",
+    "category": "gaming",
+    "priority": 1
+  },
+  {
+    "id": "duolingo",
+    "name": "Duolingo",
+    "region": "GLOBAL",
+    "website": "https://duolingo.com",
+    "category": "education",
     "priority": 1
   },
   {
@@ -13,7 +125,23 @@
     "region": "GLOBAL",
     "website": "https://linkedin.com",
     "category": "software",
-    "priority": 2
+    "priority": 1
+  },
+  {
+    "id": "tinder",
+    "name": "Tinder",
+    "region": "GLOBAL",
+    "website": "https://tinder.com",
+    "category": "other",
+    "priority": 1
+  },
+  {
+    "id": "bumble",
+    "name": "Bumble",
+    "region": "GLOBAL",
+    "website": "https://bumble.com",
+    "category": "other",
+    "priority": 1
   },
   {
     "id": "nordvpn",
@@ -21,22 +149,198 @@
     "region": "GLOBAL",
     "website": "https://nordvpn.com",
     "category": "vpn-security",
-    "priority": 3
+    "priority": 1
   },
   {
-    "id": "audible",
-    "name": "Audible",
+    "id": "expressvpn",
+    "name": "ExpressVPN",
     "region": "GLOBAL",
-    "website": "https://audible.com",
-    "category": "streaming-music",
-    "priority": 4
+    "website": "https://expressvpn.com",
+    "category": "vpn-security",
+    "priority": 1
   },
   {
-    "id": "grammarly",
-    "name": "Grammarly",
+    "id": "norton",
+    "name": "Norton",
     "region": "GLOBAL",
-    "website": "https://grammarly.com",
+    "website": "https://norton.com",
+    "category": "vpn-security",
+    "priority": 1
+  },
+  {
+    "id": "mcafee",
+    "name": "McAfee",
+    "region": "GLOBAL",
+    "website": "https://mcafee.com",
+    "category": "vpn-security",
+    "priority": 1
+  },
+  {
+    "id": "icloud-plus",
+    "name": "iCloud+",
+    "region": "GLOBAL",
+    "website": "https://icloud.com",
+    "category": "cloud-storage",
+    "priority": 1
+  },
+  {
+    "id": "dropbox",
+    "name": "Dropbox",
+    "region": "GLOBAL",
+    "website": "https://dropbox.com",
+    "category": "cloud-storage",
+    "priority": 1
+  },
+  {
+    "id": "microsoft-365",
+    "name": "Microsoft 365",
+    "region": "GLOBAL",
+    "website": "https://microsoft.com",
     "category": "software",
-    "priority": 5
+    "priority": 1
+  },
+  {
+    "id": "adobe-creative-cloud",
+    "name": "Adobe Creative Cloud",
+    "region": "GLOBAL",
+    "website": "https://adobe.com",
+    "category": "software",
+    "priority": 1
+  },
+  {
+    "id": "canva",
+    "name": "Canva",
+    "region": "GLOBAL",
+    "website": "https://canva.com",
+    "category": "software",
+    "priority": 1
+  },
+  {
+    "id": "zee5",
+    "name": "ZEE5",
+    "region": "IN",
+    "website": "https://zee5.com",
+    "category": "streaming-video",
+    "priority": 2
+  },
+  {
+    "id": "sonyliv",
+    "name": "SonyLIV",
+    "region": "IN",
+    "website": "https://sonyliv.com",
+    "category": "streaming-video",
+    "priority": 2
+  },
+  {
+    "id": "kindle-unlimited",
+    "name": "Kindle Unlimited",
+    "region": "GLOBAL",
+    "website": "https://amazon.com",
+    "category": "news-media",
+    "priority": 2
+  },
+  {
+    "id": "washington-post",
+    "name": "The Washington Post",
+    "region": "US",
+    "website": "https://washingtonpost.com",
+    "category": "news-media",
+    "priority": 2
+  },
+  {
+    "id": "financial-times",
+    "name": "Financial Times",
+    "region": "UK",
+    "website": "https://ft.com",
+    "category": "news-media",
+    "priority": 2
+  },
+  {
+    "id": "medium",
+    "name": "Medium",
+    "region": "GLOBAL",
+    "website": "https://medium.com",
+    "category": "news-media",
+    "priority": 2
+  },
+  {
+    "id": "instacart-plus",
+    "name": "Instacart+",
+    "region": "US",
+    "website": "https://instacart.com",
+    "category": "delivery-membership",
+    "priority": 2
+  },
+  {
+    "id": "hellofresh",
+    "name": "HelloFresh",
+    "region": "US",
+    "website": "https://hellofresh.com",
+    "category": "delivery-membership",
+    "priority": 2
+  },
+  {
+    "id": "walmart-plus",
+    "name": "Walmart+",
+    "region": "US",
+    "website": "https://walmart.com",
+    "category": "delivery-membership",
+    "priority": 2
+  },
+  {
+    "id": "planet-fitness",
+    "name": "Planet Fitness",
+    "region": "US",
+    "website": "https://planetfitness.com",
+    "category": "fitness-health",
+    "priority": 2
+  },
+  {
+    "id": "peloton",
+    "name": "Peloton",
+    "region": "US",
+    "website": "https://onepeloton.com",
+    "category": "fitness-health",
+    "priority": 2
+  },
+  {
+    "id": "strava",
+    "name": "Strava",
+    "region": "GLOBAL",
+    "website": "https://strava.com",
+    "category": "fitness-health",
+    "priority": 2
+  },
+  {
+    "id": "headspace",
+    "name": "Headspace",
+    "region": "GLOBAL",
+    "website": "https://headspace.com",
+    "category": "fitness-health",
+    "priority": 2
+  },
+  {
+    "id": "cult-fit",
+    "name": "Cult.fit",
+    "region": "IN",
+    "website": "https://cult.fit",
+    "category": "fitness-health",
+    "priority": 2
+  },
+  {
+    "id": "puregym",
+    "name": "PureGym",
+    "region": "UK",
+    "website": "https://puregym.com",
+    "category": "fitness-health",
+    "priority": 2
+  },
+  {
+    "id": "coursera-plus",
+    "name": "Coursera Plus",
+    "region": "GLOBAL",
+    "website": "https://coursera.org",
+    "category": "education",
+    "priority": 2
   }
 ]

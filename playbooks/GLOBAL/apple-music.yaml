@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: apple-music
+name: Apple Music
+category: streaming-music
+website: https://music.apple.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://music.apple.com
+    steps:
+      - Go to music.apple.com in a web browser.
+      - Click Sign In at the top of the page.
+      - Click the My Account icon.
+      - Click Settings.
+      - Scroll down to Subscriptions. Click Manage.
+      - Click Cancel Subscription. Confirm the choice.
+  - channel: apple
+    steps:
+      - Open Settings on your device.
+      - Tap your name at the top.
+      - Tap Subscriptions in the list.
+      - Choose Apple Music.
+      - Tap Cancel Subscription. Confirm the choice.
+    notes: Sourced from Apple Support page. Refer to the Apple Subscriptions guide for details.
+  - channel: google-play
+    steps:
+      - Open the Apple Music app or visit play.google.com.
+      - Open your list of subscriptions.
+      - Choose Apple Music.
+      - Tap Cancel Subscription. Confirm the choice.
+    notes: Subscriptions billed through Google Play must be cancelled through Google Play.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-07
+verification_method: official-help-page
+sources:
+  - url: https://support.apple.com/en-us/118399
+    accessed_on: 2026-11-07
+    sha256: f0d84dc8d40fcb752efaf742ae407760d1c7929860d1309f08def3d7c92adf55
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.
