@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: linkedin-premium
+name: LinkedIn Premium
+category: software
+website: https://linkedin.com
+merchant_patterns: []
+outcome: downgrade
+channels:
+  - channel: direct
+    entry_url: https://www.linkedin.com
+    steps:
+      - Log in to linkedin.com in your web browser.
+      - Click the Me icon at the top of the homepage.
+      - Click Premium features from the menu.
+      - Click Manage subscription on the page.
+      - Click Purchases on the left rail.
+      - Choose your active plan from the list.
+      - Click Cancel subscription under Actions. Confirm to end the plan.
+      - Confirm your choice to return to the Basic plan.
+  - channel: apple
+    notes: Purchases made through the Apple App Store must be cancelled through Apple settings.
+    steps:
+      - Open the Settings app on your device.
+      - Tap your name at the top.
+      - Tap Subscriptions in the list.
+      - Choose LinkedIn from the list.
+      - Tap Cancel Subscription and confirm.
+  - channel: google-play
+    notes: Purchases made through Google Play must be cancelled through Google Play.
+    steps:
+      - Open the Google Play Store on your device.
+      - Tap your profile icon at top right.
+      - Tap Payments and subscriptions.
+      - Tap Subscriptions in the list.
+      - Choose LinkedIn from the list.
+      - Tap Cancel subscription and confirm.
+notice_period:
+  value: 1 day
+  source: https://www.linkedin.com/help/linkedin/answer/a545578/
+  accessed_on: 2026-11-09
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-09
+verification_method: official-help-page
+sources:
+  - url: https://www.linkedin.com/help/linkedin/answer/a545578/
+    accessed_on: 2026-11-09
+    sha256: 861c51b6957774a909888c97a5f211960d91ef79ef2627953cde4b54ff613705
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

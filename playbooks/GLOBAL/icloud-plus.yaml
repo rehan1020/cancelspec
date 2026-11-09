@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: icloud-plus
+name: iCloud+
+aliases:
+  - iCloud
+  - iCloud Plus
+category: cloud-storage
+website: https://apple.com
+merchant_patterns: []
+outcome: downgrade
+channels:
+  - channel: apple
+    steps:
+      - Open the Settings app on your device.
+      - Tap your name at the top.
+      - Tap Subscriptions in the list.
+      - Choose iCloud+ from the active list.
+      - Tap Cancel Subscription to end the plan.
+      - Confirm your choice on the screen.
+  - channel: direct
+    notes: For Windows PC users with iCloud for Windows installed.
+    steps:
+      - Open the iCloud for Windows app on your PC.
+      - Click Manage next to storage.
+      - Click Change Storage Plan.
+      - Click Downgrade Options in the window.
+      - Enter your Apple password. Click Manage.
+      - Choose the free 5GB plan to cancel paid storage.
+      - Click Done to finish the downgrade.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-09
+verification_method: official-help-page
+sources:
+  - url: https://support.apple.com/en-us/108318
+    accessed_on: 2026-11-09
+    sha256: a680a089433a79ddaa511da0cb4b93f76b119c74a510655903069988383d0300
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

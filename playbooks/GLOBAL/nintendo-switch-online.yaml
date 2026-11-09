@@ -1,0 +1,49 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: nintendo-switch-online
+name: Nintendo Switch Online
+aliases:
+  - Switch Online
+  - NSO
+category: gaming
+website: https://nintendo.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://accounts.nintendo.com
+    steps:
+      - Go to accounts.nintendo.com on the web.
+      - Sign in with your Nintendo Account.
+      - Click Nintendo Switch Online in the menu.
+      - Find the Active Plan section.
+      - Click Turn Off Auto-Renewal to stop your plan.
+      - Click Confirm to complete the change.
+  - channel: other
+    notes: Steps for Nintendo Switch console.
+    steps:
+      - Open Nintendo eShop from the HOME Menu.
+      - Select your account icon in the top right.
+      - Highlight Nintendo Switch Online on the left side.
+      - Select Turn Off Auto-Renewal on the screen.
+      - Confirm your choice on the screen.
+notice_period:
+  value: 48 hours
+  source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
+  accessed_on: 2026-11-09
+auto_renews:
+  value: true
+  source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
+  accessed_on: 2026-11-09
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-09
+verification_method: official-help-page
+sources:
+  - url: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
+    accessed_on: 2026-11-09
+    sha256: 358473768761763eaf2ef03a79f5460a88cab7b62175c440867985bfca2dfeca
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

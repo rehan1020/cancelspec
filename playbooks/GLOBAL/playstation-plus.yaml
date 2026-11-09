@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: playstation-plus
+name: PlayStation Plus
+aliases:
+  - PS Plus
+  - PlayStation+
+category: gaming
+website: https://playstation.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.playstation.com
+    steps:
+      - Go to playstation.com in your web browser.
+      - Sign in to your account.
+      - Click your icon. Go to Account Management.
+      - Select Subscription from the left menu.
+      - Find PlayStation Plus and click Cancel.
+      - Confirm your choice to end the plan.
+  - channel: other
+    notes: Steps for PlayStation consoles.
+    steps:
+      - Turn on your PS5 console.
+      - Open Settings from the home screen.
+      - Select Users and Accounts.
+      - Choose Account, then Payment and Subscriptions.
+      - Select Subscriptions, then choose your plan.
+      - Select Cancel Subscription to finish the task.
+auto_renews:
+  value: true
+  source: https://www.playstation.com/en-us/support/subscriptions/cancel-playstation-plus/
+  accessed_on: 2026-11-09
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-09
+verification_method: official-help-page
+sources:
+  - url: https://www.playstation.com/en-us/support/subscriptions/cancel-playstation-plus/
+    accessed_on: 2026-11-09
+    sha256: 0b4fbdb14140a5447af6b4ecaccf7b4dea2de2fe9cb55a25d6f300907b254699
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

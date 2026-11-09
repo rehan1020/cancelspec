@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: norton
+name: Norton
+category: vpn-security
+website: https://norton.com
+merchant_patterns: []
+tags:
+  - retention-offer
+  - survey-wall
+channels:
+  - channel: direct
+    entry_url: https://my.norton.com
+    steps:
+      - Sign in to your account at my.norton.com.
+      - Click the My Subscriptions tab.
+      - Find the plan you want to stop.
+      - Click Cancel Subscription Renewal next to it.
+      - Click Unsubscribe next to Plan Renewal.
+      - Choose a reason for leaving and click Next.
+      - Click No thanks, cancel my subscription.
+      - Click Next to view the confirmation.
+auto_renews:
+  value: true
+  source: https://support.norton.com/sp/en/us/home/current/solutions/kb20090818144126EN
+  accessed_on: 2026-11-09
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-09
+verification_method: official-help-page
+sources:
+  - url: https://support.norton.com/sp/en/us/home/current/solutions/kb20090818144126EN
+    accessed_on: 2026-11-09
+    sha256: eab988beb8a3c27c0fcc8568d8f641a4ea025bf3b1f5299df177bdf1c09de07f
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

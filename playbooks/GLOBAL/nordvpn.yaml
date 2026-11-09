@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: nordvpn
+name: NordVPN
+category: vpn-security
+website: https://nordvpn.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://my.nordaccount.com
+    steps:
+      - Log in to my.nordaccount.com in your web browser.
+      - Click Billing on the left menu.
+      - Find the Subscriptions section.
+      - Click Cancel next to auto-renew.
+      - Click Cancel. Turn off auto-renewal for your plan.
+      - Check that auto-renewal now says off.
+  - channel: apple
+    notes: Subscriptions purchased through Apple App Store must be cancelled through Apple.
+    steps:
+      - Open the Settings app on your device.
+      - Tap your name at the top.
+      - Tap Subscriptions in the list.
+      - Choose NordVPN.
+      - Tap Cancel Subscription and confirm.
+  - channel: google-play
+    notes: Subscriptions purchased through Google Play Store must be cancelled through Google Play.
+    steps:
+      - Open the Google Play Store on your device.
+      - Tap your profile icon at top right.
+      - Tap Payments and subscriptions.
+      - Tap Subscriptions in the list.
+      - Choose NordVPN.
+      - Tap Cancel subscription and confirm.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-09
+verification_method: official-help-page
+sources:
+  - url: https://support.nordvpn.com/hc/en-us/articles/19556844985489-How-to-cancel-auto-renewal-for-your-NordVPN-subscription
+    accessed_on: 2026-11-09
+    sha256: 53154b1b3044727e5200615bd017a938bcbd47db4eb495f9d7d11333cb1ad0a9
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

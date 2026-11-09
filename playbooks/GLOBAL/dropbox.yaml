@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: dropbox
+name: Dropbox
+category: cloud-storage
+website: https://dropbox.com
+merchant_patterns: []
+outcome: downgrade
+tags:
+  - survey-wall
+channels:
+  - channel: direct
+    entry_url: https://www.dropbox.com
+    steps:
+      - Log in to your account on dropbox.com.
+      - Click your profile icon at the bottom left.
+      - Choose Manage account from the menu.
+      - Click Cancel plan at the bottom of the page.
+      - Choose a reason for canceling your plan.
+      - Click Continue canceling and follow the prompts.
+      - Check your inbox. Look for the email notice.
+  - channel: apple
+    notes: Subscriptions purchased through Apple must be cancelled through Apple App Store settings.
+    steps: []
+  - channel: google-play
+    notes: Subscriptions purchased through Google Play must be cancelled through Google Play settings.
+    steps: []
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-09
+verification_method: official-help-page
+sources:
+  - url: https://help.dropbox.com/plans/downgrade-dropbox-individual-plans
+    accessed_on: 2026-11-09
+    sha256: 68fc9eec7e4d9487beef06ddbfc761ee0f67b6e672570152df33bafa4c0ae78a
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.
