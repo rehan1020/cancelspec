@@ -19,12 +19,11 @@ channels:
       - Find Membership. Click Cancel.
       - Click Finish. Confirm that you want to stop.
     notes: You can continue watching until the end of your current billing period.
+    source: https://help.netflix.com/node/407
   - channel: google-play
-    steps:
-      - Open the Google Play Store on your Android device.
-      - Tap your profile icon at top right.
-      - Tap Payments. Tap Subscriptions.
-      - Select Netflix. Tap to cancel.
+    steps: []
+    notes: Subscriptions billed through Google Play are cancelled through Google
+      Play; see the Google Play Subscriptions guide.
 tags:
   - retention-offer
 accessible_alternative: Browser cancellation available without CAPTCHA or phone call.

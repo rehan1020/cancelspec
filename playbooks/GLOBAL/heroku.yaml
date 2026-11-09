@@ -20,6 +20,7 @@ channels:
       - Scroll to the bottom of the page.
       - Click Close account. Confirm to finish.
     notes: Any unpaid balance must be paid before you can close your account.
+    source: https://devcenter.heroku.com/articles/account-management
 contributors:
   - ai-draft
 reviewers: []

@@ -21,16 +21,15 @@ channels:
       - Choose your reason and click next.
       - Click Yes, cancel to finish.
     notes: Your benefits will continue until the end of your billing cycle.
+    source: https://support.google.com/youtube/answer/6308278?hl=en
   - channel: apple
-    steps:
-      - Open Settings on your iPhone or iPad.
-      - Tap your name at the top.
-      - Tap Subscriptions. Open your active list.
-      - Select YouTube. Tap to cancel.
+    steps: []
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the
+      Apple Subscriptions guide.
   - channel: google-play
-    steps:
-      - Open your Google Play settings.
-      - Find YouTube Premium and tap Cancel.
+    steps: []
+    notes: Subscriptions billed through Google Play are cancelled through Google
+      Play; see the Google Play Subscriptions guide.
 tags:
   - survey-wall
 auto_renews:

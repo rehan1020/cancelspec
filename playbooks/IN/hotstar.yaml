@@ -25,6 +25,7 @@ channels:
       - Click Cancel.
       - Confirm cancel on the prompt.
     notes: Sourced from official JioHotstar Indian help article.
+    source: https://help.hotstar.com/in/en/support/solutions/articles/68c541575b70f009aafaeb69
   - channel: google-play
     steps:
       - Open the Google Play Store app.
@@ -34,10 +35,13 @@ channels:
       - Select JioHotstar.
       - Tap Cancel subscription.
       - Confirm to finish.
-    notes: Sourced from official Google Play help page (https://support.google.com/googleplay/answer/7018481?hl=en).
+    notes: Sourced from official Google Play help page
+      (https://support.google.com/googleplay/answer/7018481?hl=en).
+    source: https://support.google.com/googleplay/answer/7018481?hl=en
   - channel: bank-mandate
     steps: []
-    notes: Steps left empty awaiting human verification from official bank mandate documentation.
+    notes: Subscriptions paid via bank mandate or UPI autopay are managed through
+      your banking or payment app.
 contributors:
   - ai-draft
 reviewers: []

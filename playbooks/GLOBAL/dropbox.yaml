@@ -20,11 +20,14 @@ channels:
       - Choose a reason for canceling your plan.
       - Click Continue canceling and follow the prompts.
       - Check your inbox. Look for the email notice.
+    source: https://help.dropbox.com/plans/downgrade-dropbox-individual-plans
   - channel: apple
-    notes: Subscriptions purchased through Apple must be cancelled through Apple App Store settings.
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the
+      Apple Subscriptions guide.
     steps: []
   - channel: google-play
-    notes: Subscriptions purchased through Google Play must be cancelled through Google Play settings.
+    notes: Subscriptions billed through Google Play are cancelled through Google
+      Play; see the Google Play Subscriptions guide.
     steps: []
 contributors:
   - ai-draft

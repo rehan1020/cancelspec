@@ -71,6 +71,7 @@ describe('Conformance fixtures — Invalid Playbooks rejected with clear message
       {
         channel: 'direct',
         entry_url: 'https://testservice.com/cancel',
+        source: 'https://testservice.com/cancel',
         steps: ['Log into your account and select Cancel.'],
       },
     ],
@@ -80,7 +81,7 @@ describe('Conformance fixtures — Invalid Playbooks rejected with clear message
     verification_method: 'official-help-page',
     sources: [
       {
-        url: 'https://testservice.com/help',
+        url: 'https://testservice.com/cancel',
         accessed_on: '2026-10-31',
         sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
       },
@@ -345,7 +346,97 @@ describe('Conformance fixtures — Invalid Playbooks rejected with clear message
           sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
         },
       ],
+      channels: [
+        {
+          channel: 'direct',
+          source: 'https://support.google.com/youtube/answer/6308278',
+          steps: ['Go to account and cancel.'],
+        },
+      ],
     });
     expect(resGoogleHelp.valid).toBe(true);
+  });
+
+  it('validates channel source constraints: required for active, warns for draft, must match sources', () => {
+    // 1. Channel with steps carrying valid source matching one of sources
+    const validWithSource = validatePlaybook({
+      ...baseValidPlaybook,
+      channels: [
+        {
+          channel: 'direct',
+          source: 'https://testservice.com/cancel',
+          steps: ['Log in and click cancel.'],
+        },
+      ],
+    });
+    expect(validWithSource.valid).toBe(true);
+    expect(validWithSource.errors).toHaveLength(0);
+    expect(validWithSource.warnings).toHaveLength(0);
+
+    // 2. Draft channel with steps lacking source emits a warning
+    const draftWithoutSource = validatePlaybook({
+      ...baseValidPlaybook,
+      status: 'draft',
+      channels: [
+        {
+          channel: 'direct',
+          steps: ['Log in and click cancel.'],
+        },
+      ],
+    });
+    expect(draftWithoutSource.valid).toBe(true);
+    expect(draftWithoutSource.warnings.some((w) => w.path === 'channels[0].source')).toBe(true);
+
+    // 3. Active channel with steps lacking source emits an error (cannot become active)
+    const activeWithoutSource = validatePlaybook({
+      ...baseValidPlaybook,
+      status: 'active',
+      channels: [
+        {
+          channel: 'direct',
+          steps: ['Log in and click cancel.'],
+        },
+      ],
+    });
+    expect(activeWithoutSource.valid).toBe(false);
+    expect(activeWithoutSource.errors.some((e) => e.path === 'channels[0].source')).toBe(true);
+
+    // 4. Channel source pointing to a URL not in sources emits an error
+    const mismatchedSource = validatePlaybook({
+      ...baseValidPlaybook,
+      channels: [
+        {
+          channel: 'direct',
+          source: 'https://someothersite.com/cancel-steps',
+          steps: ['Log in and click cancel.'],
+        },
+      ],
+    });
+    expect(mismatchedSource.valid).toBe(false);
+    expect(
+      mismatchedSource.errors.some(
+        (e) => e.path === 'channels[0].source' && e.message.includes('must point to one of the playbook\'s sources'),
+      ),
+    ).toBe(true);
+
+    // 5. Channel without steps (empty steps with notes) does not require source
+    const emptyStepsBranch = validatePlaybook({
+      ...baseValidPlaybook,
+      status: 'draft',
+      channels: [
+        {
+          channel: 'direct',
+          source: 'https://testservice.com/cancel',
+          steps: ['Log in and click cancel.'],
+        },
+        {
+          channel: 'apple',
+          steps: [],
+          notes: 'Cancelled through Apple settings.',
+        },
+      ],
+    });
+    expect(emptyStepsBranch.valid).toBe(true);
+    expect(emptyStepsBranch.warnings.filter((w) => w.path === 'channels[1].source')).toHaveLength(0);
   });
 });

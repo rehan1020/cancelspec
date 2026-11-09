@@ -18,12 +18,11 @@ channels:
       - Open Profile. View plan details.
       - Turn off auto renew.
       - Confirm to turn off recurring charges.
+    source: https://www.timesprime.com/faq
   - channel: bank-mandate
-    steps:
-      - Open your UPI app (Google Pay, PhonePe, or Paytm).
-      - Open settings. Tap the Autopay list.
-      - Select Times Prime from the list.
-      - Tap Cancel Autopay and enter your UPI PIN.
+    steps: []
+    notes: Subscriptions paid via bank mandate or UPI autopay are managed through
+      your banking or payment app.
 auto_renews:
   value: true
   source: https://www.timesprime.com/faq

@@ -20,6 +20,7 @@ channels:
       - Scroll to Cancel Subscription. Click Cancel.
       - Click Continue to Cancel. Confirm to finish.
     notes: You keep access until the end of your billing cycle.
+    source: https://help.hulu.com/article/hulu-cancel-subscription
 tags:
   - retention-offer
 accessible_alternative: Full online cancellation flow without phone or CAPTCHA.

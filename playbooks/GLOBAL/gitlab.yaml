@@ -22,6 +22,7 @@ channels:
       - Pick a reason from the dropdown list.
       - Click Cancel subscription to finish.
     notes: Your subscription remains active until the end of the term, then expires.
+    source: https://docs.gitlab.com/subscriptions/manage_subscription/
 tags:
   - survey-wall
 contributors:

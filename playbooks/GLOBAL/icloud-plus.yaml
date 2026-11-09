@@ -19,6 +19,7 @@ channels:
       - Choose iCloud+ from the active list.
       - Tap Cancel Subscription to end the plan.
       - Confirm your choice on the screen.
+    source: https://support.apple.com/en-us/108318
   - channel: direct
     notes: For Windows PC users with iCloud for Windows installed.
     steps:
@@ -29,6 +30,7 @@ channels:
       - Enter your Apple password. Click Manage.
       - Choose the free 5GB plan to cancel paid storage.
       - Click Done to finish the downgrade.
+    source: https://support.apple.com/en-us/108318
 contributors:
   - ai-draft
 reviewers: []

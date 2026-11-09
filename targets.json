@@ -5,7 +5,8 @@
     "region": "GLOBAL",
     "website": "https://disneyplus.com",
     "category": "streaming-video",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "needs scripts"
   },
   {
     "id": "max",
@@ -13,7 +14,8 @@
     "region": "US",
     "website": "https://max.com",
     "category": "streaming-video",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "not fetchable"
   },
   {
     "id": "paramount-plus",
@@ -21,7 +23,8 @@
     "region": "GLOBAL",
     "website": "https://paramountplus.com",
     "category": "streaming-video",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "needs scripts"
   },
   {
     "id": "amazon-prime",
@@ -29,7 +32,8 @@
     "region": "GLOBAL",
     "website": "https://amazon.com",
     "category": "delivery-membership",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "not fetchable"
   },
   {
     "id": "apple-tv-plus",
@@ -53,7 +57,8 @@
     "region": "GLOBAL",
     "website": "https://audible.com",
     "category": "streaming-music",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "needs scripts"
   },
   {
     "id": "uber-one",
@@ -61,7 +66,8 @@
     "region": "GLOBAL",
     "website": "https://uber.com",
     "category": "delivery-membership",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "not fetchable"
   },
   {
     "id": "doordash-dashpass",
@@ -69,7 +75,8 @@
     "region": "US",
     "website": "https://doordash.com",
     "category": "delivery-membership",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "not fetchable"
   },
   {
     "id": "swiggy-one",
@@ -77,7 +84,8 @@
     "region": "IN",
     "website": "https://swiggy.com",
     "category": "delivery-membership",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "no official cancel page"
   },
   {
     "id": "zomato-gold",
@@ -85,7 +93,8 @@
     "region": "IN",
     "website": "https://zomato.com",
     "category": "delivery-membership",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "not fetchable"
   },
   {
     "id": "xbox-game-pass",
@@ -93,7 +102,8 @@
     "region": "GLOBAL",
     "website": "https://xbox.com",
     "category": "gaming",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "needs scripts"
   },
   {
     "id": "playstation-plus",
@@ -117,7 +127,8 @@
     "region": "GLOBAL",
     "website": "https://duolingo.com",
     "category": "education",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "needs scripts"
   },
   {
     "id": "linkedin-premium",
@@ -133,7 +144,8 @@
     "region": "GLOBAL",
     "website": "https://tinder.com",
     "category": "other",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "not fetchable"
   },
   {
     "id": "bumble",
@@ -141,7 +153,8 @@
     "region": "GLOBAL",
     "website": "https://bumble.com",
     "category": "other",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "not fetchable"
   },
   {
     "id": "nordvpn",
@@ -173,7 +186,8 @@
     "region": "GLOBAL",
     "website": "https://mcafee.com",
     "category": "vpn-security",
-    "priority": 1
+    "priority": 1,
+    "skipped_reason": "not fetchable"
   },
   {
     "id": "icloud-plus",

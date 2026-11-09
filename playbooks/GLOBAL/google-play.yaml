@@ -20,6 +20,7 @@ channels:
       - Pick a reason for canceling.
       - Click Continue. Confirm to finish.
     notes: Uninstalling an app does not cancel your subscription.
+    source: https://support.google.com/googleplay/answer/7018481?hl=en
 tags:
   - survey-wall
 contributors:

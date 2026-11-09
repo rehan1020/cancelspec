@@ -16,21 +16,15 @@ channels:
       - Click Settings.
       - Scroll down to Subscriptions. Click Manage.
       - Click Cancel Subscription. Confirm the choice.
+    source: https://support.apple.com/en-us/118399
   - channel: apple
-    steps:
-      - Open Settings on your device.
-      - Tap your name at the top.
-      - Tap Subscriptions in the list.
-      - Choose Apple Music.
-      - Tap Cancel Subscription. Confirm the choice.
-    notes: Sourced from Apple Support page. Refer to the Apple Subscriptions guide for details.
+    steps: []
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the
+      Apple Subscriptions guide.
   - channel: google-play
-    steps:
-      - Open the Apple Music app or visit play.google.com.
-      - Open your list of subscriptions.
-      - Choose Apple Music.
-      - Tap Cancel Subscription. Confirm the choice.
-    notes: Subscriptions billed through Google Play must be cancelled through Google Play.
+    steps: []
+    notes: Subscriptions billed through Google Play are cancelled through Google
+      Play; see the Google Play Subscriptions guide.
 contributors:
   - ai-draft
 reviewers: []

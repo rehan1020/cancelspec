@@ -12,6 +12,7 @@ export interface TargetEntry {
   website: string;
   category: string;
   priority: number;
+  skipped_reason?: string;
 }
 
 export function loadTargetsFile(filePath: string): TargetEntry[] {

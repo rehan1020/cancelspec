@@ -100,7 +100,7 @@ Files: playbooks/REGION/SERVICE-ID.yaml. Regions: US, UK, EU, IN, GLOBAL. One fi
 | Identity | category | yes | Enum below |
 | Identity | website | yes | Official domain as text; never used for tracking |
 | Matching | merchant\_patterns | yes | Statement descriptor strings, uppercase; only the star wildcard |
-| Channels | channels | yes | List; each has channel (enum), steps (ordered list of plain-text actions, 200 characters max each, optional https link), entry\_url, notes |
+| Channels | channels | yes | List; each has channel (enum), steps (ordered list of plain-text actions, 200 characters max each, optional https link), entry\_url, notes, optional source (URL pointing to one of sources; required for active playbooks with steps) |
 | Friction | tags | no | Enum list below |
 | Friction | accessible\_alternative | no | Plain text describing a non-phone, non-CAPTCHA route if one exists |
 | Facts | notice\_period, refund\_window, auto\_renews | no | Each fact carries source URL and date |

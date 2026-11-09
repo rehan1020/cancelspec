@@ -34,6 +34,7 @@ WP2 defines the core schema, types, enums, constants, and validation logic for c
    - Dates: YYYY-MM-DD ISO format
    - Draft promotion check: non-draft playbooks must have `verified_on` and `verification_method`
    - Banned legal-advice phrases: flagged as errors
+   - Channel provenance: channels with steps require an explicit `source` pointing to one of the playbook's source URLs (warning in draft, blocking error before leaving draft)
    - Readability check: warning if Flesch-Kincaid grade level > 8.0
 
 4. **Conformance Fixtures**:

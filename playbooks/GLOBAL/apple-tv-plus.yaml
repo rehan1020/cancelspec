@@ -19,27 +19,18 @@ channels:
       - Click Settings.
       - Scroll down to Subscriptions. Click Manage.
       - Click Cancel Subscription. Confirm the choice.
+    source: https://support.apple.com/en-us/118398
   - channel: apple
-    steps:
-      - Open Settings on your device.
-      - Tap your name at the top.
-      - Tap Subscriptions in the list.
-      - Tap Apple TV+.
-      - Tap Cancel Subscription. Confirm the choice.
-    notes: Sourced from Apple Support page. Refer to the Apple Subscriptions guide for details.
+    steps: []
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the
+      Apple Subscriptions guide.
   - channel: google-play
-    steps:
-      - Open the Apple TV app or go to play.google.com.
-      - Open your list of subscriptions.
-      - Choose Apple TV+.
-      - Tap Cancel Subscription. Confirm your choice.
-    notes: Subscriptions billed through Google Play must be cancelled through Google Play.
+    steps: []
+    notes: Subscriptions billed through Google Play are cancelled through Google
+      Play; see the Google Play Subscriptions guide.
   - channel: amazon
-    steps:
-      - Log in to Amazon. Open your subscriptions.
-      - Find Apple TV+ in the list.
-      - Click Manage Subscription. Choose cancel.
-    notes: Subscriptions billed through Amazon must be cancelled directly through Amazon.
+    steps: []
+    notes: Subscriptions billed through Amazon are cancelled directly through Amazon.
 contributors:
   - ai-draft
 reviewers: []

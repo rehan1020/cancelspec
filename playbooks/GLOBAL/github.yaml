@@ -20,6 +20,7 @@ channels:
       - Select Edit next to your plan and choose Downgrade to Free.
       - Follow the prompts to confirm your downgrade.
     notes: Access remains active until the end of your billing cycle.
+    source: https://docs.github.com/billing-and-payments/managing-billing-for-your-products/managing-your-github-subscription/downgrading-your-plan
 contributors:
   - ai-draft
 reviewers: []

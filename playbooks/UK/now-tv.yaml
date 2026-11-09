@@ -21,6 +21,7 @@ channels:
       - Select Cancel next to each pass you wish to cancel.
       - Skip survey offers. Click Confirm to finish.
     notes: You must cancel each membership pass individually.
+    source: https://help.nowtv.com/article/how-do-i-cancel-now
 tags:
   - retention-offer
   - survey-wall

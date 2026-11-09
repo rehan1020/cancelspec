@@ -18,7 +18,9 @@ channels:
       - Select Manage Plan.
       - Click Cancel service.
       - Follow the on-screen prompts to confirm.
-    notes: Your service remains active until your phone number transfers or the billing cycle ends.
+    notes: Your service remains active until your phone number transfers or the
+      billing cycle ends.
+    source: https://support.google.com/fi/answer/6079398?hl=en
 contributors:
   - ai-draft
 reviewers: []

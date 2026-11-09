@@ -15,23 +15,15 @@ channels:
       - Navigate to the My subscription page.
       - Click Cancel subscription to stop the plan.
       - Follow the on-screen prompts to confirm.
+    source: https://www.expressvpn.com/support/manage-account/cancel-expressvpn-subscription/
   - channel: apple
-    notes: Purchases through the Apple App Store must be cancelled through Apple.
-    steps:
-      - Open the App Store on your Apple device.
-      - Tap your profile icon at top right.
-      - Tap Subscriptions in the list.
-      - Choose ExpressVPN.
-      - Tap Cancel Subscription and confirm.
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the
+      Apple Subscriptions guide.
+    steps: []
   - channel: google-play
-    notes: Purchases through the Google Play Store must be cancelled through Google Play.
-    steps:
-      - Open the Google Play Store app.
-      - Tap your profile icon at top right.
-      - Tap Payment and subscriptions.
-      - Tap Subscriptions in the list.
-      - Choose ExpressVPN.
-      - Tap Cancel Subscription and confirm.
+    notes: Subscriptions billed through Google Play are cancelled through Google
+      Play; see the Google Play Subscriptions guide.
+    steps: []
 notice_period:
   value: 24 hours
   source: https://www.expressvpn.com/support/manage-account/cancel-expressvpn-subscription/

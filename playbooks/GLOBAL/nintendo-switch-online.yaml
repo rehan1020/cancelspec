@@ -19,6 +19,7 @@ channels:
       - Find the Active Plan section.
       - Click Turn Off Auto-Renewal to stop your plan.
       - Click Confirm to complete the change.
+    source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
   - channel: other
     notes: Steps for Nintendo Switch console.
     steps:
@@ -27,6 +28,7 @@ channels:
       - Highlight Nintendo Switch Online on the left side.
       - Select Turn Off Auto-Renewal on the screen.
       - Confirm your choice on the screen.
+    source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
 notice_period:
   value: 48 hours
   source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196

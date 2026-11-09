@@ -19,23 +19,15 @@ channels:
       - Choose your active plan from the list.
       - Click Cancel subscription under Actions. Confirm to end the plan.
       - Confirm your choice to return to the Basic plan.
+    source: https://www.linkedin.com/help/linkedin/answer/a545578/
   - channel: apple
-    notes: Purchases made through the Apple App Store must be cancelled through Apple settings.
-    steps:
-      - Open the Settings app on your device.
-      - Tap your name at the top.
-      - Tap Subscriptions in the list.
-      - Choose LinkedIn from the list.
-      - Tap Cancel Subscription and confirm.
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the
+      Apple Subscriptions guide.
+    steps: []
   - channel: google-play
-    notes: Purchases made through Google Play must be cancelled through Google Play.
-    steps:
-      - Open the Google Play Store on your device.
-      - Tap your profile icon at top right.
-      - Tap Payments and subscriptions.
-      - Tap Subscriptions in the list.
-      - Choose LinkedIn from the list.
-      - Tap Cancel subscription and confirm.
+    notes: Subscriptions billed through Google Play are cancelled through Google
+      Play; see the Google Play Subscriptions guide.
+    steps: []
 notice_period:
   value: 1 day
   source: https://www.linkedin.com/help/linkedin/answer/a545578/

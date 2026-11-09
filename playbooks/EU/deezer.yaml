@@ -18,12 +18,11 @@ channels:
       - Click Manage plan.
       - Click Cancel subscription. Confirm choice.
     notes: Your account reverts to the free Deezer tier at cycle end.
+    source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
   - channel: apple
-    steps:
-      - Open Settings on your phone or tablet.
-      - Tap your Apple ID banner.
-      - Tap Subscriptions. Open your active list.
-      - Select Deezer. Tap Cancel to end plan.
+    steps: []
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the
+      Apple Subscriptions guide.
 refund_window:
   value: 14 days statutory cooling-off in EU
   source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription

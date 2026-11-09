@@ -18,7 +18,9 @@ channels:
       - Tap Subscriptions. Open your active list.
       - Select the subscription you want to cancel.
       - Tap Cancel Subscription. Confirm to finish.
-    notes: If you see an expiration message in red text, the subscription is already cancelled.
+    notes: If you see an expiration message in red text, the subscription is already
+      cancelled.
+    source: https://support.apple.com/en-us/118428
   - channel: direct
     entry_url: https://account.apple.com
     steps:
@@ -27,6 +29,7 @@ channels:
       - Select Subscriptions from the menu.
       - Choose the subscription you want to cancel.
       - Click Cancel Subscription. Confirm to finish.
+    source: https://support.apple.com/en-us/118428
 contributors:
   - ai-draft
 reviewers: []

@@ -22,6 +22,7 @@ channels:
       - Pick a reason for canceling and click Continue.
       - Check the box, enter your email, and click Cancel My Subscription.
     notes: Requires having billing management privileges in Google Workspace.
+    source: https://knowledge.workspace.google.com/admin/billing/cancel-google-workspace
 tags:
   - survey-wall
 contributors:

@@ -74,7 +74,7 @@ export function renderSpecDocsPage(config: ProjectConfig): string {
             <td><code>channels</code></td>
             <td>list</td>
             <td>Yes</td>
-            <td>List of cancellation channels with ordered steps (max 200 chars each)</td>
+            <td>List of cancellation channels with ordered steps (max 200 chars each) and optional source URL pointing to one of the playbook sources</td>
           </tr>
           <tr>
             <td><code>tags</code></td>

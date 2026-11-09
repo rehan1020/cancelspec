@@ -20,6 +20,7 @@ channels:
       - Choose the seller you want to stop.
       - Click Cancel. Confirm your choice to finish.
     notes: Cancelling an automatic payment stops future billings from that merchant.
+    source: https://www.paypal.com/us/cshelp/article/what-is-an-automatic-payment-and-how-do-i-update-or-cancel-one-help240
 contributors:
   - ai-draft
 reviewers: []

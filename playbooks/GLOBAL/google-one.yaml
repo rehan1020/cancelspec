@@ -20,12 +20,11 @@ channels:
       - Click Cancel membership to view options.
       - Click Cancel membership. Confirm to finish.
     notes: Your storage stays active until your billing period ends.
+    source: https://support.google.com/googleone/answer/9056360?hl=en
   - channel: apple
-    steps:
-      - Open the App Store on your Apple device.
-      - Tap your name at the top.
-      - Tap Subscriptions and select Google One.
-      - Tap Cancel Subscription. Confirm to finish.
+    steps: []
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the
+      Apple Subscriptions guide.
 refund_window:
   value: Non-refundable in most regions
   source: https://support.google.com/googleone/answer/9056360?hl=en

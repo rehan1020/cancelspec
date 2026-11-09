@@ -19,6 +19,7 @@ channels:
       - Select Subscription from the left menu.
       - Find PlayStation Plus and click Cancel.
       - Confirm your choice to end the plan.
+    source: https://www.playstation.com/en-us/support/subscriptions/cancel-playstation-plus/
   - channel: other
     notes: Steps for PlayStation consoles.
     steps:
@@ -28,6 +29,7 @@ channels:
       - Choose Account, then Payment and Subscriptions.
       - Select Subscriptions, then choose your plan.
       - Select Cancel Subscription to finish the task.
+    source: https://www.playstation.com/en-us/support/subscriptions/cancel-playstation-plus/
 auto_renews:
   value: true
   source: https://www.playstation.com/en-us/support/subscriptions/cancel-playstation-plus/

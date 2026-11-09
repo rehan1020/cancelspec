@@ -19,7 +19,9 @@ channels:
       - Open Account Settings. Click your plan details.
       - Click Cancel Subscription. Confirm to proceed.
       - Chat with the bot. Answer questions to finish.
-    notes: Some accounts may be prompted to chat or call customer care to complete cancellation.
+    notes: Some accounts may be prompted to chat or call customer care to complete
+      cancellation.
+    source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
 tags:
   - chat-only
   - retention-offer

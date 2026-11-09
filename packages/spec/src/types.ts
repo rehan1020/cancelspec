@@ -23,6 +23,7 @@ export interface PlaybookChannel {
   entry_url?: string;
   steps: ChannelStep[];
   notes?: string;
+  source?: string;
 }
 
 export interface Fact {

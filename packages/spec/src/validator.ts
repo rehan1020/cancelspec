@@ -312,6 +312,13 @@ export function validatePlaybook(data: unknown): ValidationResult {
   }
 
   // 3. Channels
+  const availableSourceUrls: string[] = Array.isArray(data.sources)
+    ? data.sources
+        .filter(isPlainObject)
+        .map((s) => (typeof s.url === 'string' ? s.url : ''))
+        .filter(Boolean)
+    : [];
+
   if (!Array.isArray(data.channels) || data.channels.length === 0) {
     errors.push({
       path: 'channels',
@@ -319,7 +326,7 @@ export function validatePlaybook(data: unknown): ValidationResult {
     });
   } else {
     data.channels.forEach((ch, idx) => {
-      validateChannel(ch, `channels[${idx}]`, errors, warnings, data.status as Status);
+      validateChannel(ch, `channels[${idx}]`, errors, warnings, data.status as Status, availableSourceUrls);
     });
   }
 
@@ -514,10 +521,18 @@ function validateChannel(
   errors: ValidationError[],
   warnings: ValidationWarning[],
   status?: Status,
+  availableSourceUrls: string[] = [],
 ): void {
   if (!isPlainObject(channelData)) {
     errors.push({ path, message: 'channel must be an object' });
     return;
+  }
+
+  const allowedChannelKeys = new Set(['channel', 'entry_url', 'steps', 'notes', 'source']);
+  for (const key of Object.keys(channelData)) {
+    if (!allowedChannelKeys.has(key)) {
+      errors.push({ path: `${path}.${key}`, message: `Unknown channel property: ${key}` });
+    }
   }
 
   if (!channelData.channel || typeof channelData.channel !== 'string') {
@@ -534,6 +549,20 @@ function validateChannel(
       errors.push({
         path: `${path}.entry_url`,
         message: 'entry_url must be a valid https URL',
+      });
+    }
+  }
+
+  if (channelData.source !== undefined) {
+    if (typeof channelData.source !== 'string' || !isValidHttpsUrl(channelData.source)) {
+      errors.push({
+        path: `${path}.source`,
+        message: 'channel source must be a valid https URL',
+      });
+    } else if (!availableSourceUrls.includes(channelData.source)) {
+      errors.push({
+        path: `${path}.source`,
+        message: `channel source "${channelData.source}" must point to one of the playbook's sources`,
       });
     }
   }
@@ -556,6 +585,20 @@ function validateChannel(
       });
     }
   } else {
+    if (!channelData.source) {
+      if (status === 'draft') {
+        warnings.push({
+          path: `${path}.source`,
+          message: 'channel with steps should specify a source URL pointing to one of the playbook\'s sources',
+        });
+      } else {
+        errors.push({
+          path: `${path}.source`,
+          message: 'A channel with steps must carry a source pointing to one of the playbook\'s sources before leaving draft status',
+        });
+      }
+    }
+
     channelData.steps.forEach((step, sIdx) => {
       const stepPath = `${path}.steps[${sIdx}]`;
       let action = '';

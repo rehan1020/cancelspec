@@ -20,6 +20,7 @@ channels:
       - Click Downgrade Plan in the Plan section.
       - Follow the prompts to confirm.
     notes: When downgrading a Pro team, all members except the team owner are removed.
+    source: https://vercel.com/docs/plans/pro-plan
 contributors:
   - ai-draft
 reviewers: []
