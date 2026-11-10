@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: medium
+name: Medium
+aliases:
+  - Medium Membership
+category: news-media
+website: https://medium.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://medium.com/me/settings
+    steps:
+      - On your homepage, click on your profile picture and select Settings.
+      - Navigate to the Membership and payment tab.
+      - Select Cancel membership and follow the prompts to confirm.
+    notes: Membership benefits remain active until the end of the current billing cycle.
+    source: https://help.medium.com/hc/en-us/articles/360006277374-Manage-your-subscription
+  - channel: apple
+    steps: []
+    notes: Subscriptions purchased through Apple App Store / iTunes are managed through Apple; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions purchased through Google Play Store are managed through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://help.medium.com/hc/en-us/articles/360006277374-Manage-your-subscription
+    accessed_on: 2026-11-10
+    sha256: f7bfc7e2df56c6c1a3ba66d3bfd44c1f0e459e6441923bd37f58d71838bf1dad
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

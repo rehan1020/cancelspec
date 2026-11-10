@@ -6,7 +6,7 @@
     "website": "https://disneyplus.com",
     "category": "streaming-video",
     "priority": 1,
-    "skipped_reason": "needs scripts"
+    "skipped_reason": "not fetchable: geo-redirects to home page"
   },
   {
     "id": "max",
@@ -23,8 +23,7 @@
     "region": "GLOBAL",
     "website": "https://paramountplus.com",
     "category": "streaming-video",
-    "priority": 1,
-    "skipped_reason": "needs scripts"
+    "priority": 1
   },
   {
     "id": "amazon-prime",
@@ -58,7 +57,7 @@
     "website": "https://audible.com",
     "category": "streaming-music",
     "priority": 1,
-    "skipped_reason": "needs scripts"
+    "skipped_reason": "not fetchable: geo-redirects to regional store"
   },
   {
     "id": "uber-one",
@@ -102,8 +101,7 @@
     "region": "GLOBAL",
     "website": "https://xbox.com",
     "category": "gaming",
-    "priority": 1,
-    "skipped_reason": "needs scripts"
+    "priority": 1
   },
   {
     "id": "playstation-plus",
@@ -127,8 +125,7 @@
     "region": "GLOBAL",
     "website": "https://duolingo.com",
     "category": "education",
-    "priority": 1,
-    "skipped_reason": "needs scripts"
+    "priority": 1
   },
   {
     "id": "linkedin-premium",
@@ -243,7 +240,8 @@
     "region": "IN",
     "website": "https://sonyliv.com",
     "category": "streaming-video",
-    "priority": 2
+    "priority": 2,
+    "skipped_reason": "not fetchable: host timeout"
   },
   {
     "id": "kindle-unlimited",
@@ -283,7 +281,8 @@
     "region": "US",
     "website": "https://instacart.com",
     "category": "delivery-membership",
-    "priority": 2
+    "priority": 2,
+    "skipped_reason": "disallowed by robots.txt"
   },
   {
     "id": "hellofresh",
@@ -291,7 +290,8 @@
     "region": "US",
     "website": "https://hellofresh.com",
     "category": "delivery-membership",
-    "priority": 2
+    "priority": 2,
+    "skipped_reason": "not fetchable: HTTP 403 error"
   },
   {
     "id": "walmart-plus",

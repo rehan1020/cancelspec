@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: peloton
+name: Peloton
+aliases:
+  - Peloton All-Access
+  - Peloton App
+category: fitness-health
+website: https://www.onepeloton.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.onepeloton.com/mymembership
+    steps:
+      - Go to onepeloton.com/mymembership in a web browser.
+      - Click Manage next to the subscription.
+      - Select Pause or cancel to make your cancellation selection.
+    notes: Access to Peloton content continues through the end of the current billing period, at which point the membership cancels rather than renews.
+    source: https://support.onepeloton.com/s/article/Peloton-Membership-How-to-Manage-Your-All-Access-Membership?language=en_US
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://support.onepeloton.com/s/article/Peloton-Membership-How-to-Manage-Your-All-Access-Membership?language=en_US
+    accessed_on: 2026-11-10
+    sha256: f87ae91ca277af03f9f9b33dddc447a3197674b77e5ec236ec19ccfb73d14eb0
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

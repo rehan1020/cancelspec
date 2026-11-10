@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: planet-fitness
+name: Planet Fitness
+aliases: []
+category: fitness-health
+website: https://www.planetfitness.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.planetfitness.com/my-account
+    steps:
+      - Log into your account online through the member portal at planetfitness.com.
+      - Follow the account management options to request membership cancellation.
+    notes: To stop monthly billing on your next billing date, cancel at least 7 days before your next billing date. To stop annual fee billing, cancel at least 7 days prior to annual fee date. If your membership has a minimum term ended prior to contract end, a buyout fee may apply.
+    source: https://www.planetfitness.com/about-planet-fitness/customer-service/
+  - channel: other
+    steps:
+      - Visit your home club in person and speak with the club team, or send a written cancellation notification via mail to your home club requesting to end your membership.
+    notes: In-person or mail cancellation. Policies and procedures may vary by location based on state and local guidelines.
+    source: https://www.planetfitness.com/about-planet-fitness/customer-service/
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://www.planetfitness.com/about-planet-fitness/customer-service/
+    accessed_on: 2026-11-10
+    sha256: 73a77fa24529d0765688b3dcd018f001c5047175d817681616d22ede3873343e
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

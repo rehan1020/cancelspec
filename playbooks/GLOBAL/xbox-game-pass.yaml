@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: xbox-game-pass
+name: Xbox Game Pass
+aliases:
+  - Game Pass
+  - PC Game Pass
+  - Xbox Game Pass Ultimate
+category: gaming
+website: https://www.xbox.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://account.microsoft.com/services
+    steps:
+      - Go to Subscriptions on account.microsoft.com/services and sign in with the Microsoft account used to purchase the subscription.
+      - Find your subscription and select Manage.
+      - Select Cancel subscription and follow the on-screen instructions.
+    notes: Turning off recurring billing stops future charges and preserves benefits until the expiration date. Eligible accounts may receive an option to cancel immediately with a refund.
+    source: https://support.xbox.com/en-US/help/subscriptions-billing/manage-subscriptions/cancel-recurring-billing-or-subscription
+  - channel: other
+    steps:
+      - Press the Xbox button on the controller to open the guide.
+      - Go to Profile & system > Settings > Account > Subscriptions.
+      - Choose the subscription to manage, select Cancel subscription, and follow the steps.
+    notes: Xbox console cancellation. If eligible, you may be prompted to initiate a refund.
+    source: https://support.xbox.com/en-US/help/subscriptions-billing/manage-subscriptions/cancel-recurring-billing-or-subscription
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://support.xbox.com/en-US/help/subscriptions-billing/manage-subscriptions/cancel-recurring-billing-or-subscription
+    accessed_on: 2026-11-10
+    sha256: de10377b8daef6c827e46a83034220a767d801081ba33fa80c90776e3e6408b2
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

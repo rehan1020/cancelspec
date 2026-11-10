@@ -19,7 +19,7 @@ function getAllFiles(dir: string, baseDir: string = dir): string[] {
       }
       files.push(...getAllFiles(fullPath, baseDir));
     } else if (entry.isFile()) {
-      if (entry.name === 'package-lock.json') {
+      if (entry.name === 'package-lock.json' || entry.name === 'repomix-output.xml') {
         continue;
       }
       files.push(relPath);

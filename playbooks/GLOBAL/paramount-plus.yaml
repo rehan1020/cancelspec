@@ -1,0 +1,55 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: paramount-plus
+name: Paramount+
+aliases:
+  - Paramount Plus
+category: streaming-video
+website: https://paramountplus.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://paramountplus.com/account
+    steps:
+      - Go to your Paramount+ account page (paramountplus.com/account).
+      - Click the Cancel Subscription link.
+      - Follow the online prompts to confirm cancellation.
+    notes: Available for subscriptions purchased directly through the Paramount+ website.
+    source: https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription?language=en_US
+  - channel: apple
+    steps:
+      - Open the Settings app on your iPhone or iPad.
+      - Tap your name.
+      - Tap Subscriptions.
+      - Tap Paramount+.
+      - Tap Cancel Subscription and tap Confirm.
+    notes: Also cancellable on Apple TV (4th Generation or later) via Settings > Users & Accounts > Subscriptions.
+    source: https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription?language=en_US
+  - channel: google-play
+    steps:
+      - Visit payments.google.com in a web browser and sign in.
+      - Along the left side of your screen, select Bills and Accounts.
+      - Select the Paramount+ subscription and click Cancel Subscription.
+    notes: Can also be cancelled on Android devices in the Google Play Store app under Payments & Subscriptions > Subscriptions.
+    source: https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription?language=en_US
+  - channel: amazon
+    steps:
+      - Visit amazon.com/appstoresubscriptions and sign in with your Amazon account.
+      - Next to the Paramount+ subscription, select Actions.
+      - Select Turn Off Auto-Renewal from the dropdown menu.
+      - Click Turn Off Auto-Renewal to confirm your cancellation.
+    notes: For subscriptions started on Fire TV devices. Deleting the app does not cancel the subscription.
+    source: https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription?language=en_US
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription?language=en_US
+    accessed_on: 2026-11-10
+    sha256: 6ecb1479a32b3970c926a0b20a18d9fb85173abb95d680e39cb46f8629967d75
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

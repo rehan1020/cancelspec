@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: strava
+name: Strava
+aliases:
+  - Strava Subscription
+  - Strava Premium
+category: fitness-health
+website: https://www.strava.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.strava.com/settings/account
+    steps:
+      - Log in to your Strava account at strava.com.
+      - Go to Settings and select My Account.
+      - Select Cancel Subscription and follow the prompts to confirm.
+    notes: You will retain access to subscription features until the end of your current subscription term. Canceling does not delete your uploaded activities or data.
+    source: https://support.strava.com/en-us/articles/15401936-how-do-i-cancel-my-subscription
+  - channel: apple
+    steps: []
+    notes: Subscriptions started in the iOS app are managed through the Apple App Store; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions started via Google Play are managed through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://support.strava.com/en-us/articles/15401936-how-do-i-cancel-my-subscription
+    accessed_on: 2026-11-10
+    sha256: d7cf2625c9bb5824a8e89430795ab223d824c86dea86322fd332b20e433d0f61
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

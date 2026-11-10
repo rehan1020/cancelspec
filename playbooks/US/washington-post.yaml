@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: washington-post
+name: The Washington Post
+aliases:
+  - Washington Post
+  - WashPost
+category: news-media
+website: https://www.washingtonpost.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.washingtonpost.com/my-post/account/subscription/
+    steps:
+      - Go to your My Post profile at washingtonpost.com/my-post/account/subscription/ and sign in.
+      - Follow the cancellation prompts to cancel the subscription.
+    notes: When cancelled, charging stops for the following billing cycle. Digital access continues for the remainder of the current billing period.
+    source: https://helpcenter.washingtonpost.com/hc/en-us/articles/360000177571-How-to-cancel-your-digital-only-subscription
+  - channel: apple
+    steps: []
+    notes: Subscriptions purchased through Apple App Store are managed through Apple; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions purchased through Google Play are managed through Google Play; see the Google Play guide.
+  - channel: amazon
+    steps: []
+    notes: Subscriptions purchased through Amazon are managed through Amazon; see the Amazon guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://helpcenter.washingtonpost.com/hc/en-us/articles/360000177571-How-to-cancel-your-digital-only-subscription
+    accessed_on: 2026-11-10
+    sha256: 5ecafbe40f1dd48fa47ed14a779a1aae3ea1cc6dd25915fad99f1c4126ee4e5b
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

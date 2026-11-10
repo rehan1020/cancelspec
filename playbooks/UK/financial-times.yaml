@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: financial-times
+name: Financial Times
+aliases:
+  - FT
+category: news-media
+website: https://www.ft.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.ft.com/myaccount
+    steps:
+      - Log into your FT account at ft.com.
+      - Go to My Account and navigate to the Subscription tab.
+      - Select the Cancel subscription option and confirm.
+    notes: For assistance, customer care is also reachable via phone or live chat.
+    source: https://help.ft.com/faq/manage-your-subscription/how-do-i-cancel-my-subscription/
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://help.ft.com/faq/manage-your-subscription/how-do-i-cancel-my-subscription/
+    accessed_on: 2026-11-10
+    sha256: 82f1529b3a8646578c68d29c0e0eff2ddd65bb00452347654bce13b91322c2b1
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: walmart-plus
+name: Walmart+
+aliases:
+  - Walmart Plus
+category: delivery-membership
+website: https://www.walmart.com/plus
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.walmart.com/account
+    steps:
+      - Go to your walmart.com account.
+      - Select Walmart+.
+      - Select Manage membership.
+      - Select Manage beside Walmart+ plan.
+      - Select Cancel beside Cancel membership.
+      - Select Confirm cancellation to finish.
+    notes: A prompt to get a Remind Me Later email may be offered before confirming cancellation.
+    source: https://www.walmart.com/help/article/manage-walmart-membership/126c9a990a944c3abd8531de52a87440
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://www.walmart.com/help/article/manage-walmart-membership/126c9a990a944c3abd8531de52a87440
+    accessed_on: 2026-11-10
+    sha256: a978b5f166b32f7b86dbcb4676182fd84db7421c55db666eaad80c5afd0ae8cf
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

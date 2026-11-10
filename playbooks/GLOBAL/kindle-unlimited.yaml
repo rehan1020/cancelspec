@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: kindle-unlimited
+name: Kindle Unlimited
+aliases:
+  - Kindle+
+category: education
+website: https://www.amazon.com/kindle-dbs/ku/ku-central
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.amazon.com/kindle-dbs/ku/ku-central
+    steps:
+      - Go to Manage your Kindle Unlimited Membership (or ku-central) and sign in to your Amazon account.
+      - Select Cancel membership.
+      - Confirm the cancellation.
+    notes: Your membership remains active until the next billing date, after which checked-out content is no longer accessible. Monthly subscriptions can optionally be paused for 1 month instead of cancelled.
+    source: https://www.amazon.com/gp/help/customer/display.html?nodeId=GLSQ4722655M4ZEJ
+  - channel: google-play
+    steps:
+      - Open the Google Play Store app on your Android device.
+      - Go to Payments & Subscriptions.
+      - Select Subscriptions.
+      - Select Kindle Unlimited and cancel.
+    notes: For subscriptions billed through Google Play Billing.
+    source: https://www.amazon.com/gp/help/customer/display.html?nodeId=GLSQ4722655M4ZEJ
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://www.amazon.com/gp/help/customer/display.html?nodeId=GLSQ4722655M4ZEJ
+    accessed_on: 2026-11-10
+    sha256: 943920d779b4d4d78b689cda9198b19e7e18ffc8a66c557bc03b8592607ba1f1
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

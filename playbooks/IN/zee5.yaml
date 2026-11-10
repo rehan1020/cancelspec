@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: zee5
+name: ZEE5
+aliases:
+  - Zee5 Premium
+category: streaming-video
+website: https://www.zee5.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.zee5.com
+    steps:
+      - Sign in to your ZEE5 account on the website.
+      - Click Profile and open Control Center.
+      - Select Account Management.
+      - Click My Subscription.
+      - Choose Cancel Renewal and confirm.
+    notes: Available for web subscriptions. Can also be managed from desktop or mobile web browsers.
+    source: https://helpcenter.zee5.com/portal/en/kb/articles/how-do-i-cancel-auto-renewal-of-my-subscription
+  - channel: apple
+    steps:
+      - Open the Settings app on your iPhone or iPad.
+      - Tap your Apple ID / Name at the top.
+      - Select Subscriptions.
+      - Choose ZEE5.
+      - Tap Cancel Subscription and confirm.
+    notes: For subscriptions billed through Apple App Store.
+    source: https://helpcenter.zee5.com/portal/en/kb/articles/how-do-i-cancel-auto-renewal-of-my-subscription
+  - channel: google-play
+    steps: []
+    notes: Subscriptions billed through Google Play are managed through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://helpcenter.zee5.com/portal/en/kb/articles/how-do-i-cancel-auto-renewal-of-my-subscription
+    accessed_on: 2026-11-10
+    sha256: d5d28e0ae29a672d0f18846fd67315401548751d3eab79e4a185e1d29272b4bf
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

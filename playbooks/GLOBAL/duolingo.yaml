@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: duolingo
+name: Duolingo
+aliases:
+  - Super Duolingo
+  - Duolingo Plus
+category: education
+website: https://www.duolingo.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.duolingo.com
+    steps:
+      - Sign in to your Duolingo account via a web browser.
+      - Click your profile picture at the top of the home screen and choose Settings.
+      - Select Super Duolingo.
+      - Select Cancel subscription and confirm.
+    notes: Deleting the app or account does not cancel your subscription. Learning progress is retained.
+    source: https://www.duolingo.com/help/cancel-my-super-duolingo-subscription
+  - channel: apple
+    steps: []
+    notes: Subscriptions started via Apple App Store are cancelled through Apple device settings; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions started via Google Play are managed through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-10
+verification_method: official-help-page
+sources:
+  - url: https://www.duolingo.com/help/cancel-my-super-duolingo-subscription
+    accessed_on: 2026-11-10
+    sha256: 152230d548ec28cd59e528a814e0fa4eee017fada36bbe94242d79d175db7f98
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.
