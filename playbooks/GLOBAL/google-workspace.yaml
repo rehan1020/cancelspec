@@ -8,9 +8,7 @@ aliases:
   - Google Apps
 category: software
 website: https://workspace.google.com
-merchant_patterns:
-  - GOOGLE*WORKSPACE*
-  - GOOGLE*GSUITE*
+merchant_patterns: []
 channels:
   - channel: direct
     entry_url: https://admin.google.com
@@ -23,8 +21,6 @@ channels:
       - Check the box, enter your email, and click Cancel My Subscription.
     notes: Requires having billing management privileges in Google Workspace.
     source: https://knowledge.workspace.google.com/admin/billing/cancel-google-workspace
-tags:
-  - survey-wall
 contributors:
   - ai-draft
 reviewers: []

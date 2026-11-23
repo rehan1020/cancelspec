@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: google-fi
+name: Google Fi Wireless
+category: telecom-bundle
+website: https://fi.google.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://fi.google.com/account
+    steps:
+      - Log in
+      - Manage Plan
+      - Leave Google Fi
+    source: https://fi.google.com/help
+contributors:
+  - ai-draft
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://fi.google.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: draft
+status_reason: Draft test fixture
+aliases:
+  - Google Fi
+  - Project Fi

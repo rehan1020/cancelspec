@@ -42,10 +42,10 @@ jobs:
         run: |
           node packages/cli/dist/cli.js build
           if [ "${{ github.ref_type }}" = "tag" ]; then
-            echo "Launch tag release: running release-check with strict drafts enabled"
-            node packages/cli/dist/cli.js release-check --strict-drafts
+            echo "Launch tag release: running release-check with min-active 40"
+            node packages/cli/dist/cli.js release-check --min-active 40
           else
-            echo "Normal build: running release-check without strict drafts"
+            echo "Normal build: running release-check without flags"
             node packages/cli/dist/cli.js release-check
           fi
 

@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: the-guardian
+name: The Guardian
+category: news-media
+website: https://www.theguardian.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://manage.theguardian.com
+    steps:
+      - Log in to Manage My Account at manage.theguardian.com.
+      - Select Manage subscription/contribution/membership under your account overview.
+      - Scroll to the bottom of the page and follow the cancellation instructions.
+    notes: Print and Guardian Weekly subscriptions in the UK cannot be cancelled online and require contacting customer service (+44 (0) 330 333 6767).
+    source: https://help.theguardian.com/article/how-do-i-cancel-my-subscription-or-recurring-contribution
+  - channel: apple
+    steps:
+      - Go to Settings on your Apple device.
+      - Tap your name, then tap Subscriptions.
+      - Select the Guardian to disable auto-renewal.
+    source: https://help.theguardian.com/article/how-do-i-cancel-my-subscription-or-recurring-contribution
+  - channel: google-play
+    steps:
+      - Open the Google Play Store.
+      - Search for the Guardian or open Subscriptions.
+      - Select Cancel.
+    source: https://help.theguardian.com/article/how-do-i-cancel-my-subscription-or-recurring-contribution
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://help.theguardian.com/article/how-do-i-cancel-my-subscription-or-recurring-contribution
+    accessed_on: 2026-11-12
+    sha256: 6b9decd4a26bb5a120cbf278649e6377d7a9f0f7d3530f72f561f43034bc8056
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

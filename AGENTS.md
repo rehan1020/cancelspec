@@ -36,6 +36,8 @@ ui → site-builder → cli
 6. **No innerHTML/eval**: Use textContent for untrusted content.
 7. **Agent boundaries**: Agents never claim human testing, external registry searches, account or domain actions, or reviews.
 8. **Draft playbooks only**: Agents never mark a playbook active; all agent-authored playbooks must remain status draft with contributor ai-draft and empty reviewers.
+9. **Exact wording over readability**: Readability warnings are informational. Never change a UI label, URL, or condition to improve readability; exact names from the official page win over reading grade.
+10. **Scope boundaries**: Edit only the files a task names; never rewrite wording for style; list every changed file in the report and flag any that were not named.
 
 ## Build and test
 

@@ -9,7 +9,7 @@ category: streaming-video
 website: https://youtube.com
 merchant_patterns:
   - GOOGLE*YOUTUBE PREMIUM*
-  - YOUTUBE PREMIUM*
+pattern_source: https://support.google.com/youtube/answer/9346937?hl=en
 channels:
   - channel: direct
     entry_url: https://www.youtube.com/paid_memberships
@@ -24,14 +24,10 @@ channels:
     source: https://support.google.com/youtube/answer/6308278?hl=en
   - channel: apple
     steps: []
-    notes: Subscriptions billed through Apple are cancelled through Apple; see the
-      Apple Subscriptions guide.
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the Apple Subscriptions guide.
   - channel: google-play
     steps: []
-    notes: Subscriptions billed through Google Play are cancelled through Google
-      Play; see the Google Play Subscriptions guide.
-tags:
-  - survey-wall
+    notes: Subscriptions billed through Google Play are cancelled through Google Play; see the Google Play Subscriptions guide.
 auto_renews:
   value: true
   source: https://support.google.com/youtube/answer/6308278?hl=en
@@ -45,6 +41,9 @@ sources:
   - url: https://support.google.com/youtube/answer/6308278?hl=en
     accessed_on: 2026-11-02
     sha256: 69eacaa7a1ec601acc4d024a6ea10826bd90fac8e425cdaad2ed86da9f2a0559
+  - url: https://support.google.com/youtube/answer/9346937?hl=en
+    accessed_on: 2026-11-14
+    sha256: cc96d8ae5f067a3900ae08a958d1482c6e96c8655746545631a33b4fb3cc8268
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

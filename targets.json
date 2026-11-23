@@ -339,7 +339,8 @@
     "region": "IN",
     "website": "https://cult.fit",
     "category": "fitness-health",
-    "priority": 2
+    "priority": 2,
+    "skipped_reason": "no official cancel page"
   },
   {
     "id": "puregym",
@@ -356,5 +357,233 @@
     "website": "https://coursera.org",
     "category": "education",
     "priority": 2
+  },
+  {
+    "id": "crunchyroll",
+    "name": "Crunchyroll",
+    "region": "GLOBAL",
+    "website": "https://www.crunchyroll.com",
+    "category": "streaming-video",
+    "priority": 3
+  },
+  {
+    "id": "peacock",
+    "name": "Peacock",
+    "region": "US",
+    "website": "https://www.peacocktv.com",
+    "category": "streaming-video",
+    "priority": 3,
+    "skipped_reason": "not fetchable: geo-blocked (US only)"
+  },
+  {
+    "id": "britbox",
+    "name": "BritBox",
+    "region": "GLOBAL",
+    "website": "https://www.britbox.com",
+    "category": "streaming-video",
+    "priority": 3,
+    "skipped_reason": "not fetchable: Cloudflare anti-bot challenge"
+  },
+  {
+    "id": "discovery-plus",
+    "name": "Discovery+",
+    "region": "GLOBAL",
+    "website": "https://www.discoveryplus.com",
+    "category": "streaming-video",
+    "priority": 3
+  },
+  {
+    "id": "siriusxm",
+    "name": "SiriusXM",
+    "region": "US",
+    "website": "https://www.siriusxm.com",
+    "category": "streaming-music",
+    "priority": 3
+  },
+  {
+    "id": "tidal",
+    "name": "Tidal",
+    "region": "GLOBAL",
+    "website": "https://tidal.com",
+    "category": "streaming-music",
+    "priority": 3
+  },
+  {
+    "id": "pandora",
+    "name": "Pandora",
+    "region": "US",
+    "website": "https://www.pandora.com",
+    "category": "streaming-music",
+    "priority": 3
+  },
+  {
+    "id": "everand",
+    "name": "Everand",
+    "region": "GLOBAL",
+    "website": "https://www.everand.com",
+    "category": "education",
+    "priority": 3
+  },
+  {
+    "id": "babbel",
+    "name": "Babbel",
+    "region": "GLOBAL",
+    "website": "https://www.babbel.com",
+    "category": "education",
+    "priority": 3
+  },
+  {
+    "id": "masterclass",
+    "name": "MasterClass",
+    "region": "GLOBAL",
+    "website": "https://www.masterclass.com",
+    "category": "education",
+    "priority": 3
+  },
+  {
+    "id": "skillshare",
+    "name": "Skillshare",
+    "region": "GLOBAL",
+    "website": "https://www.skillshare.com",
+    "category": "education",
+    "priority": 3
+  },
+  {
+    "id": "noom",
+    "name": "Noom",
+    "region": "GLOBAL",
+    "website": "https://www.noom.com",
+    "category": "fitness-health",
+    "priority": 3
+  },
+  {
+    "id": "weightwatchers",
+    "name": "WeightWatchers",
+    "region": "GLOBAL",
+    "website": "https://www.weightwatchers.com",
+    "category": "fitness-health",
+    "priority": 3
+  },
+  {
+    "id": "myfitnesspal",
+    "name": "MyFitnessPal",
+    "region": "GLOBAL",
+    "website": "https://www.myfitnesspal.com",
+    "category": "fitness-health",
+    "priority": 3
+  },
+  {
+    "id": "fitbit-premium",
+    "name": "Fitbit Premium",
+    "region": "GLOBAL",
+    "website": "https://www.fitbit.com",
+    "category": "fitness-health",
+    "priority": 3
+  },
+  {
+    "id": "calm",
+    "name": "Calm",
+    "region": "GLOBAL",
+    "website": "https://www.calm.com",
+    "category": "fitness-health",
+    "priority": 3
+  },
+  {
+    "id": "bitwarden-premium",
+    "name": "Bitwarden Premium",
+    "region": "GLOBAL",
+    "website": "https://bitwarden.com",
+    "category": "software",
+    "priority": 3
+  },
+  {
+    "id": "dashlane",
+    "name": "Dashlane",
+    "region": "GLOBAL",
+    "website": "https://www.dashlane.com",
+    "category": "software",
+    "priority": 3
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "region": "GLOBAL",
+    "website": "https://www.notion.so",
+    "category": "software",
+    "priority": 3
+  },
+  {
+    "id": "evernote",
+    "name": "Evernote",
+    "region": "GLOBAL",
+    "website": "https://evernote.com",
+    "category": "software",
+    "priority": 3
+  },
+  {
+    "id": "malwarebytes",
+    "name": "Malwarebytes",
+    "region": "GLOBAL",
+    "website": "https://www.malwarebytes.com",
+    "category": "vpn-security",
+    "priority": 3,
+    "skipped_reason": "not fetchable: HTTP 403 anti-bot from help.malwarebytes.com"
+  },
+  {
+    "id": "chewy-autoship",
+    "name": "Chewy Autoship",
+    "region": "US",
+    "website": "https://www.chewy.com",
+    "category": "delivery-membership",
+    "priority": 3
+  },
+  {
+    "id": "the-economist",
+    "name": "The Economist",
+    "region": "GLOBAL",
+    "website": "https://www.economist.com",
+    "category": "news-media",
+    "priority": 3,
+    "skipped_reason": "not fetchable: Cloudflare anti-bot challenge"
+  },
+  {
+    "id": "wall-street-journal",
+    "name": "The Wall Street Journal",
+    "region": "US",
+    "website": "https://www.wsj.com",
+    "category": "news-media",
+    "priority": 3
+  },
+  {
+    "id": "the-guardian",
+    "name": "The Guardian",
+    "region": "UK",
+    "website": "https://www.theguardian.com",
+    "category": "news-media",
+    "priority": 3
+  },
+  {
+    "id": "blue-apron",
+    "name": "Blue Apron",
+    "region": "US",
+    "website": "https://www.blueapron.com",
+    "category": "delivery-membership",
+    "priority": 3
+  },
+  {
+    "id": "ea-play",
+    "name": "EA Play",
+    "region": "GLOBAL",
+    "website": "https://www.ea.com/ea-play",
+    "category": "gaming",
+    "priority": 3
+  },
+  {
+    "id": "geforce-now",
+    "name": "GeForce NOW",
+    "region": "GLOBAL",
+    "website": "https://www.nvidia.com/geforce-now/",
+    "category": "gaming",
+    "priority": 3
   }
 ]

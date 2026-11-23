@@ -13,12 +13,19 @@ outcome: downgrade
 channels:
   - channel: apple
     steps:
-      - Open the Settings app on your device.
-      - Tap your name at the top.
-      - Tap Subscriptions in the list.
-      - Choose iCloud+ from the active list.
-      - Tap Cancel Subscription to end the plan.
-      - Confirm your choice on the screen.
+      - Open the Settings app on your device, then tap your name.
+      - Tap Subscriptions.
+      - Choose iCloud+.
+      - Tap Cancel Subscription.
+    notes: For devices running iOS 18.4 and later.
+    source: https://support.apple.com/en-us/108318
+  - channel: apple
+    notes: For devices running iOS 18.3 and earlier.
+    steps:
+      - Open the Settings app, then tap your name.
+      - Tap iCloud, then tap Manage Plan or Manage Account Storage.
+      - Tap Downgrade Options. If prompted, enter your Apple Account password.
+      - Select a free or new plan, then tap Done.
     source: https://support.apple.com/en-us/108318
   - channel: direct
     notes: For Windows PC users with iCloud for Windows installed.
@@ -31,6 +38,7 @@ channels:
       - Choose the free 5GB plan to cancel paid storage.
       - Click Done to finish the downgrade.
     source: https://support.apple.com/en-us/108318
+    entry_url: https://www.icloud.com
 contributors:
   - ai-draft
 reviewers: []
@@ -38,8 +46,8 @@ verified_on: 2026-11-09
 verification_method: official-help-page
 sources:
   - url: https://support.apple.com/en-us/108318
-    accessed_on: 2026-11-09
-    sha256: a680a089433a79ddaa511da0cb4b93f76b119c74a510655903069988383d0300
+    accessed_on: 2026-11-17
+    sha256: e8531018451da157b45660121be3a9e37dce90569bceb1614a55db40ac2ab266
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

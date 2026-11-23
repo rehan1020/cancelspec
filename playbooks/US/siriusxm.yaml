@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: siriusxm
+name: SiriusXM
+category: streaming-music
+website: https://www.siriusxm.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.siriusxm.com
+    steps:
+      - Log in to the SiriusXM Online Account Center.
+      - Go to the Subscriptions tab.
+      - Select your subscription and proceed with the cancellation prompts.
+    notes: Direct-billed accounts can also cancel by chatting with an online agent or calling 866-635-8641. Cancel at least 24 hours before renewal.
+    source: https://www.siriusxm.com/help/manage-or-cancel-service
+  - channel: apple
+    steps: []
+    notes: Subscriptions billed through Apple must be cancelled via Apple ID settings; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions billed through Google Play must be cancelled via Google Play settings; see the Google Play guide.
+  - channel: roku
+    steps: []
+    notes: Subscriptions billed through Roku must be managed via Roku device settings or online; see the Roku guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://www.siriusxm.com/help/manage-or-cancel-service
+    accessed_on: 2026-11-12
+    sha256: 62766461eac432bb7e243655de179c285f198fb23325ad4b51e82d79f0a24bf3
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

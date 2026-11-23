@@ -11,32 +11,31 @@ website: https://nintendo.com
 merchant_patterns: []
 channels:
   - channel: direct
-    entry_url: https://accounts.nintendo.com
+    entry_url: https://accounts.nintendo.com/portal
     steps:
-      - Go to accounts.nintendo.com on the web.
-      - Sign in with your Nintendo Account.
-      - Click Nintendo Switch Online in the menu.
-      - Find the Active Plan section.
-      - Click Turn Off Auto-Renewal to stop your plan.
-      - Click Confirm to complete the change.
+      - Visit accounts.nintendo.com/portal and sign in to your Nintendo Account.
+      - Select Nintendo Switch Online.
+      - Select Cancel Your Subscription by Turning Off Automatic Renewal.
+      - Select Confirm to turn off automatic renewal.
+    notes: Turn off auto-renewal at least 48 hours before renewal. Once turned off, auto-renewal cannot be turned back on.
     source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
   - channel: other
-    notes: Steps for Nintendo Switch console.
+    notes: Steps for Nintendo Switch console. Turn off auto-renewal at least 48 hours before renewal. Once turned off, it cannot be turned on again.
     steps:
-      - Open Nintendo eShop from the HOME Menu.
-      - Select your account icon in the top right.
-      - Highlight Nintendo Switch Online on the left side.
-      - Select Turn Off Auto-Renewal on the screen.
-      - Confirm your choice on the screen.
+      - Select Nintendo eShop on the HOME Menu.
+      - Select the account that purchased the Nintendo Switch Online membership.
+      - Select the picture of your icon in the upper-right corner for Account Information.
+      - Highlight Nintendo Switch Online on the left side of the screen.
+      - Select Cancel Your Subscription by Turning Off Automatic Renewal.
     source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
 notice_period:
   value: 48 hours
   source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
-  accessed_on: 2026-11-09
+  accessed_on: 2026-11-17
 auto_renews:
   value: true
   source: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
-  accessed_on: 2026-11-09
+  accessed_on: 2026-11-17
 contributors:
   - ai-draft
 reviewers: []
@@ -44,8 +43,8 @@ verified_on: 2026-11-09
 verification_method: official-help-page
 sources:
   - url: https://en-americas-support.nintendo.com/app/answers/detail/a_id/41196
-    accessed_on: 2026-11-09
-    sha256: 358473768761763eaf2ef03a79f5460a88cab7b62175c440867985bfca2dfeca
+    accessed_on: 2026-11-17
+    sha256: 56380731887c7bcfa773850dcb011faee69052873f5dfc5c1f172ec15d734caa
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

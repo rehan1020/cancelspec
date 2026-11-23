@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: apple-subscriptions
+name: Apple Subscriptions
+category: software
+website: https://apple.com
+merchant_patterns:
+  - APPLE.COM/BILL*
+channels:
+  - channel: apple
+    entry_url: https://account.apple.com
+    steps:
+      - Open Settings
+      - Cancel Subscription
+    source: https://apple.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://apple.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+kind: channel-guide
+pattern_source: https://apple.com/help
+content_seal: bc5aefe3ccca15cea7cae3d90dab25a7d036b9bbaaf5ab402eb3390e55fcf1aa

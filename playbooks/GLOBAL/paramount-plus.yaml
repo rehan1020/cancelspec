@@ -35,10 +35,10 @@ channels:
     source: https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription?language=en_US
   - channel: amazon
     steps:
-      - Visit amazon.com/appstoresubscriptions and sign in with your Amazon account.
+      - Visit amazon.com/appstoresubscriptions and sign in with your Amazon username and password.
       - Next to the Paramount+ subscription, select Actions.
       - Select Turn Off Auto-Renewal from the dropdown menu.
-      - Click Turn Off Auto-Renewal to confirm your cancellation.
+      - Click on Turn Off Auto-Renewal to confirm your cancellation.
     notes: For subscriptions started on Fire TV devices. Deleting the app does not cancel the subscription.
     source: https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription?language=en_US
 contributors:
@@ -48,7 +48,7 @@ verified_on: 2026-11-10
 verification_method: official-help-page
 sources:
   - url: https://support.paramountplus.com/s/article/PI-How-do-I-cancel-my-subscription?language=en_US
-    accessed_on: 2026-11-10
+    accessed_on: 2026-11-17
     sha256: 6ecb1479a32b3970c926a0b20a18d9fb85173abb95d680e39cb46f8629967d75
 revision: 1
 status: draft

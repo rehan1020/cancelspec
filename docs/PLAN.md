@@ -93,20 +93,72 @@ Dependency direction is one-way (spec, core, scanner, ui, site-builder, cli). CI
 
 Files: playbooks/REGION/SERVICE-ID.yaml. Regions: US, UK, EU, IN, GLOBAL. One file per service per region. Service IDs are lowercase kebab-case ASCII and unique within a region.
 
+### Format Rules
+
+| Item | Rule |
+|---|---|
+| Path and header | `playbooks/REGION/ID.yaml` (REGION is US, UK, EU, IN, or GLOBAL). Header: `# SPDX-FileCopyrightText: 2026 CancelSpec contributors` and `# SPDX-License-Identifier: CC-BY-NC-SA-4.0` |
+| `id` | Lowercase kebab-case ASCII, matching the file name |
+| `name`, `aliases` | Plain text. Channel guides carry no aliases |
+| `category` | One of: `streaming-video`, `streaming-music`, `cloud-storage`, `software`, `vpn-security`, `fitness-health`, `news-media`, `gaming`, `education`, `telecom-bundle`, `delivery-membership`, `finance-tools`, `other` |
+| `website` | Domain or https URL of the brand; no placeholders |
+| `kind`, `outcome` | `service` or `channel-guide`; `cancel`, `downgrade`, or `close-account` (defaults: service, cancel) |
+| `merchant_patterns` | Uppercase letters, digits, spaces, and `*` only. Literal text of >= 6 characters and a word of >= 4 characters after processor prefixes. Optional for both draft and active playbooks |
+| `pattern_source` | https URL referencing one of the sources with a sha256 hash. Required when `merchant_patterns` are present; must be omitted when `merchant_patterns` is empty |
+| `channels` | At least one. Each has `channel` (`direct`, `apple`, `google-play`, `carrier-billing`, `paypal`, `bank-mandate`, `amazon`, `roku`, `other`), optional `entry_url` (https, required for direct channels with steps), `steps`, optional `notes`, and `source` |
+| Steps | Plain text, 200 characters or fewer, no HTML or Markdown; a step may also be `action` plus an https `link` |
+| Channel `source` | Required when the channel has steps, and it must equal one URL in `sources` |
+| Empty steps | Allowed only in a draft, with a `notes` text explaining why |
+| `tags` | Subset of: `phone-required`, `chat-only`, `email-only`, `retention-offer`, `survey-wall`, `hidden-entry`, `captcha`, `app-required`, `in-person`, `fee-on-exit`, `long-notice`. Must be absent or empty for drafts authored by `ai-draft` |
+| Facts (`notice_period`, `refund_window`, `auto_renews`) | Each is `value` (text or true/false), `source` (https, must equal a URL in `sources`), `accessed_on` (date). Never use "None"; omit when unknown |
+| `contributors`, `reviewers` | Contributors: at least one handle. Reviewers: a list; `active` needs at least one human, and `ai-draft` is never a reviewer |
+| `sources` | At least one: `url`, `accessed_on`, optional `sha256` (64 hex characters, required for automated sources to leave draft), optional `retrieval` (`automated` [default] or `manual`). Manual sources require no sha256, are skipped by packet and recheck, and show an informational lint note. Reject manual sources in any playbook whose contributors include ai-draft, and require a human reviewer plus verification_method first-hand or official-help-page for any active playbook that has one. At least one source host must match website domain or an allowlisted official help host |
+| `content_seal` | 64-character lowercase hex SHA-256 seal computed over normalized channels, steps, facts, and patterns. Set by verify upon activation. Required for active playbooks; rejected if missing or mismatched ('content changed after verification; re-run verify'). Draft playbooks unaffected |
+| `verified_on`, `verification_method` | Date; `official-help-page`, `first-hand`, `community-report`, or `ai-assisted` |
+| `revision`, `status`, `status_reason` | Integer >= 1; `draft`, `active`, `stale`, `broken`, or `discontinued`; plain text |
+| Banned | Legal phrases such as "legal advice" or "under the law" in any text |
+
+### How to Write the Content
+
+| Do | Don't |
+|---|---|
+| One action per step, starting with a verb | Filler like "Confirm to finish" or "Confirm your choice" unless the page states a confirmation |
+| Use button, menu, and page names exactly as the official page prints them (*Finish Cancellation*, *Manage your plan*) | Rename labels for readability |
+| Put the URL in `entry_url` or a step `link` when the page gives one | Invent a URL or point to a blog |
+| Describe only what the fetched page states | Fill in from memory |
+| Write original wording (no 8 consecutive words copied) | Copy sentences verbatim |
+| For a billing branch with no page of its own, use `steps: []` plus a note | Write Apple or Google Play steps from a vendor page that doesn't contain them |
+| Billing-branch note, exact form: "Subscriptions billed through Apple are cancelled through Apple; see the Apple Subscriptions guide." (same pattern for Google Play, PayPal, carrier, bank mandate, Amazon, Roku) | Free-form unsupported notes |
+
+### Who Sets What (Provenance and Roles)
+
+| Field | Agent draft | Human at verification |
+|---|---|---|
+| Steps, channels, facts, sources, hash | Set from the fetched page | Check each against the live page; fix |
+| `tags`, `accessible_alternative` | **Leave out**: official pages rarely state friction | Add from first-hand experience |
+| `merchant_patterns`, `pattern_source` | Empty unless an official page lists descriptor; pattern_source points to that source | Add from your own statement (descriptor text only, no amounts or dates) or verify official source |
+| `contributors` | `ai-draft` | Replace with your handle |
+| `reviewers` | Empty (`[]`) | Your handle |
+| `verified_on`, `verification_method` | Fetch date, `official-help-page` | Today's date; `first-hand` if you tested it, `official-help-page` if you reviewed page |
+| `status`, `status_reason` | `draft`, "AI-drafted, awaiting human verification." | `active`, "Verified by HANDLE on DATE" |
+| `revision` | 1 | Increment on every later change |
+
 | Group | Field | Required | Rules |
 | --- | --- | --- | --- |
 | Identity | id, name | yes | name is plain text |
 | Identity | aliases | no | List of other names people use |
 | Identity | category | yes | Enum below |
 | Identity | website | yes | Official domain as text; never used for tracking |
-| Matching | merchant\_patterns | yes | Statement descriptor strings, uppercase; only the star wildcard |
+| Matching | merchant\_patterns | no | Statement descriptor strings, uppercase; only the star wildcard. Optional for draft and active |
+| Matching | pattern\_source | conditional | Required if merchant_patterns is present; must match a URL in sources with sha256 |
 | Channels | channels | yes | List; each has channel (enum), steps (ordered list of plain-text actions, 200 characters max each, optional https link), entry\_url, notes, optional source (URL pointing to one of sources; required for active playbooks with steps) |
 | Friction | tags | no | Enum list below |
 | Friction | accessible\_alternative | no | Plain text describing a non-phone, non-CAPTCHA route if one exists |
 | Facts | notice\_period, refund\_window, auto\_renews | no | Each fact carries source URL and date |
 | Provenance | contributors, reviewers | yes | Handles; pseudonyms allowed |
 | Provenance | verified\_on, verification\_method | yes | Method enum below |
-| Provenance | sources | yes | URLs with accessed dates |
+| Provenance | sources | yes | URLs with accessed dates and optional retrieval (automated or manual) |
+| Provenance | content_seal | conditional | SHA-256 seal required for active playbooks; computed by verify |
 | Provenance | revision | yes | Integer, increments on each change |
 | Status | status, status\_reason | yes | Enum below |
 | Derived (build only) | difficulty, accessible\_to\_cancel, staleness\_days, matcher\_key | never authored | Computed by core |

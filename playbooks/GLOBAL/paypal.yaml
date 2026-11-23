@@ -7,28 +7,28 @@ kind: channel-guide
 outcome: cancel
 category: software
 website: https://paypal.com
-merchant_patterns:
-  - PAYPAL*
+merchant_patterns: []
 channels:
   - channel: paypal
     entry_url: https://www.paypal.com/myaccount/autopay/
     steps:
-      - Go to the PayPal site and sign in.
-      - Click Settings at the top of the page.
+      - Log in to your PayPal account.
+      - Go to Settings.
       - Click Payments.
-      - Click Manage automatic payments. Look for this on your page.
-      - Choose the seller you want to stop.
-      - Click Cancel. Confirm your choice to finish.
+      - Select Subscriptions and saved businesses or Automatic Payments.
+      - Select the merchant.
+      - Cancel the automatic payment.
     notes: Cancelling an automatic payment stops future billings from that merchant.
     source: https://www.paypal.com/us/cshelp/article/what-is-an-automatic-payment-and-how-do-i-update-or-cancel-one-help240
 contributors:
   - ai-draft
 reviewers: []
-verified_on: 2026-11-01
+verified_on: 2026-11-14
 verification_method: official-help-page
 sources:
   - url: https://www.paypal.com/us/cshelp/article/what-is-an-automatic-payment-and-how-do-i-update-or-cancel-one-help240
-    accessed_on: 2026-11-02
+    accessed_on: 2026-11-14
+    sha256: 08df080aa3448014faf62c5c03d6435bf09c06f1e55cf0b7bcadbb0848b9bffa
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

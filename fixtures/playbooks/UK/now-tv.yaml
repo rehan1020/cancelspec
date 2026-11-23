@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: now-tv
+name: NOW
+category: streaming-video
+website: https://nowtv.com
+merchant_patterns:
+  - NOWTV.COM*
+  - NOW DIGITAL*
+channels:
+  - channel: direct
+    entry_url: https://www.nowtv.com/myaccount
+    steps:
+      - Log in
+      - Cancel pass
+    source: https://nowtv.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://nowtv.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://nowtv.com/help
+content_seal: b094236ee7ff320323ab39133467eb1bbefe911018fc08b542bbfbd04cafa993

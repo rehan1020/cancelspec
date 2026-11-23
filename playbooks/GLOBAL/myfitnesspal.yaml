@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: myfitnesspal
+name: MyFitnessPal
+category: fitness-health
+website: https://www.myfitnesspal.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.myfitnesspal.com
+    steps:
+      - Log in to the website at myfitnesspal.com.
+      - Click Settings, then click Subscription Settings.
+      - Set the Auto-Renewal toggle at the bottom from On to Off.
+    notes: Premium features will remain available until the end of your current paid subscription period. Cancel at least 24 hours before your next renewal date to avoid a renewal charge.
+    source: https://support.myfitnesspal.com/hc/en-us/articles/360032625371-How-to-cancel-your-Premium-subscription-renewal
+  - channel: apple
+    steps:
+      - Open the Settings App on your phone.
+      - Tap on your name at the top.
+      - Tap Subscriptions.
+      - Select MyFitnessPal.
+      - Tap Cancel Subscription.
+    source: https://support.myfitnesspal.com/hc/en-us/articles/360032625371-How-to-cancel-your-Premium-subscription-renewal
+  - channel: google-play
+    steps:
+      - Open your Play Store App.
+      - Tap your Profile Icon in the upper right to open the menu.
+      - Tap Payments and subscriptions, then tap Subscriptions.
+      - Select your MyFitnessPal Subscription.
+      - Tap Cancel Subscription at the bottom.
+    source: https://support.myfitnesspal.com/hc/en-us/articles/360032625371-How-to-cancel-your-Premium-subscription-renewal
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-22
+verification_method: official-help-page
+sources:
+  - url: https://support.myfitnesspal.com/hc/en-us/articles/360032625371-How-to-cancel-your-Premium-subscription-renewal
+    accessed_on: 2026-11-22
+    sha256: 45c970e88ff8ebe12ae9896f8d429817a53b0802beb37796167d2f0498e4164c
+revision: 2
+status: draft
+status_reason: AI-drafted, awaiting human verification.

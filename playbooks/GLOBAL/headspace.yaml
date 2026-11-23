@@ -1,0 +1,48 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: headspace
+name: Headspace
+category: fitness-health
+website: https://headspace.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.headspace.com/subscription/manage
+    steps:
+      - Log in to your account at www.headspace.com using a desktop or mobile browser.
+      - Open https://www.headspace.com/subscription/manage.
+      - Click or tap CANCEL MEMBERSHIP.
+    notes: If the button is not there, send an email to help@headspace.com for processing.
+    source: https://help.headspace.com/hc/en-us/articles/115008364888-How-can-I-turn-off-the-auto-renew-feature-for-my-subscription
+  - channel: apple
+    steps:
+      - Open the App Store.
+      - Tap on your picture in the top right of the screen.
+      - Tap Subscriptions.
+      - Select the Headspace subscription.
+      - Tap Cancel Subscription.
+    notes: Disables auto-renewal at the end of the current billing cycle.
+    source: https://help.headspace.com/hc/en-us/articles/115008364888-How-can-I-turn-off-the-auto-renew-feature-for-my-subscription
+  - channel: google-play
+    steps:
+      - Open the Google Play Store.
+      - Tap the Account Icon on the top right of the Google Play screen.
+      - Tap Payments & Subscriptions.
+      - Select Subscriptions.
+      - Click on the Headspace subscription.
+      - Tap Cancel Subscription.
+    notes: Disables auto-renewal at the end of the current billing cycle.
+    source: https://help.headspace.com/hc/en-us/articles/115008364888-How-can-I-turn-off-the-auto-renew-feature-for-my-subscription
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://help.headspace.com/hc/en-us/articles/115008364888-How-can-I-turn-off-the-auto-renew-feature-for-my-subscription
+    accessed_on: 2026-11-12
+    sha256: 148bab55d27b9ea57e046e2b992d8803f298d77f39fedce1035a7e422df1ced0
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

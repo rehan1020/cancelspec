@@ -67,8 +67,14 @@ export function renderSpecDocsPage(config: ProjectConfig): string {
           <tr>
             <td><code>merchant_patterns</code></td>
             <td>string[]</td>
-            <td>Yes</td>
-            <td>Uppercase statement descriptor patterns. Only <code>*</code> wildcard allowed.</td>
+            <td>No</td>
+            <td>Uppercase statement descriptor patterns. Only <code>*</code> wildcard allowed. Optional for draft and active playbooks.</td>
+          </tr>
+          <tr>
+            <td><code>pattern_source</code></td>
+            <td>string (URL)</td>
+            <td>Conditional</td>
+            <td>Descriptor source: required when <code>merchant_patterns</code> are present. Must equal one of the URLs in <code>sources</code> with a sha256 hash.</td>
           </tr>
           <tr>
             <td><code>channels</code></td>
@@ -98,13 +104,19 @@ export function renderSpecDocsPage(config: ProjectConfig): string {
             <td><code>verification_method</code></td>
             <td>enum</td>
             <td>Yes</td>
-            <td>first-hand, official-help-page, or community-report</td>
+            <td>first-hand, official-help-page, community-report, or ai-assisted</td>
           </tr>
           <tr>
             <td><code>sources</code></td>
             <td>list</td>
             <td>Yes</td>
-            <td>Reference URLs with access dates</td>
+            <td>Reference URLs with access dates, optional sha256 checksums, and optional retrieval (automated or manual).</td>
+          </tr>
+          <tr>
+            <td><code>content_seal</code></td>
+            <td>string (SHA-256)</td>
+            <td>Conditional</td>
+            <td>Cryptographic seal computed over normalized content; required for active playbooks.</td>
           </tr>
           <tr>
             <td><code>status</code></td>

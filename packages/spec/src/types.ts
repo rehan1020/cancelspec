@@ -6,6 +6,7 @@ import type {
   Channel,
   Outcome,
   PlaybookKind,
+  RetrievalMethod,
   Status,
   Tag,
   VerificationMethod,
@@ -36,6 +37,7 @@ export interface Source {
   url: string;
   accessed_on: string;
   sha256?: string;
+  retrieval?: RetrievalMethod;
 }
 
 export interface Playbook {
@@ -49,7 +51,8 @@ export interface Playbook {
   outcome?: Outcome;
 
   // Matching
-  merchant_patterns: string[];
+  merchant_patterns?: string[];
+  pattern_source?: string;
 
   // Channels
   channels: PlaybookChannel[];
@@ -68,6 +71,7 @@ export interface Playbook {
   reviewers: string[];
   verified_on: string;
   verification_method: VerificationMethod;
+  content_seal?: string;
   sources: Source[];
   revision: number;
 

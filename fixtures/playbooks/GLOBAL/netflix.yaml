@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: netflix
+name: Netflix
+category: streaming-video
+website: https://netflix.com
+merchant_patterns:
+  - NETFLIX*
+  - NETFLIX.COM*
+channels:
+  - channel: direct
+    entry_url: https://www.netflix.com/youraccount
+    steps:
+      - Log in
+      - Click Cancel Membership
+    source: https://netflix.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://netflix.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://netflix.com/help
+content_seal: 9a9c66b230c805910102218ace84ae85f96dd8268e1c4cc8acbff8242d60fa6b

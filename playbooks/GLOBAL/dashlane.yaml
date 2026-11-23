@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: dashlane
+name: Dashlane
+category: software
+website: https://www.dashlane.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://app.dashlane.com
+    steps:
+      - Log in to the Dashlane web app in a computer browser.
+      - Open the Vault menu in the top-left of the page and select Subscription.
+      - On the Subscription page, select Cancel your subscription in the right panel.
+      - On the next page, select Continue cancellation.
+    notes: For subscriptions paid with a credit card on the website. Cannot be cancelled in mobile apps or macOS app.
+    source: https://support.dashlane.com/hc/en-us/articles/12247552144786-Cancel-my-Dashlane-subscription-and-stop-autorenewal
+  - channel: apple
+    steps: []
+    notes: Subscriptions paid through Apple App Store must be cancelled through Apple ID settings; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions paid through Google Play Store must be managed through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://support.dashlane.com/hc/en-us/articles/12247552144786-Cancel-my-Dashlane-subscription-and-stop-autorenewal
+    accessed_on: 2026-11-12
+    sha256: 5094ade10221aeffe90be11f399574ac15a00a7a593d1d563b56201be2ee982f
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

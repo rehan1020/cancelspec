@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: nordvpn
+name: NordVPN
+category: vpn-security
+website: https://nordvpn.com
+merchant_patterns:
+  - NORDVPN*
+channels:
+  - channel: direct
+    entry_url: https://my.nordaccount.com
+    steps:
+      - Log in
+      - Cancel auto-renewal
+    source: https://nordvpn.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://nordvpn.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://nordvpn.com/help
+content_seal: 7babacf96fe99c6e851351748edd72b31646223b9d88938215b54f3251b649d6

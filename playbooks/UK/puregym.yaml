@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: puregym
+name: PureGym
+category: fitness-health
+website: https://puregym.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.puregym.com/members/
+    steps:
+      - Open the menu in the top left and select Sign in to log in to your Member's Area at puregym.com.
+      - Select Manage on the Your gym pass tile.
+      - Select Manage under the Freeze or cancel your membership tile.
+      - Select Cancel my contract free membership under the Cancel your membership tile.
+      - Follow the on-screen steps to complete the cancellation process.
+    notes: Cancel at least 4 working days before your next payment date. Membership ends the day before your next payment day.
+    source: https://www.puregym.com/help-centre/freezing-or-ending/how-do-i-cancel-my-monthly-membership/
+notice_period:
+  value: 4 working days
+  source: https://www.puregym.com/help-centre/freezing-or-ending/how-do-i-cancel-my-monthly-membership/
+  accessed_on: 2026-11-12
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://www.puregym.com/help-centre/freezing-or-ending/how-do-i-cancel-my-monthly-membership/
+    accessed_on: 2026-11-12
+    sha256: c91f7910f93af9a787fe26f12d7bf771eb8bf24f516de343890b8d5e00236448
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

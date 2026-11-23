@@ -4,6 +4,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { loadAllPlaybooks } from '@cancelspec/core';
+import type { CompiledPlaybook } from '@cancelspec/spec';
 import { lintAllPlaybooks } from './lint.js';
 import { buildDataBundle } from './build.js';
 
@@ -23,6 +24,8 @@ export interface ReleaseCheckOptions {
   referenceDate?: Date | undefined;
   quiet?: boolean | undefined;
   strictDrafts?: boolean | undefined;
+  minActive?: number | undefined;
+  allowAiAssisted?: boolean | undefined;
 }
 
 export interface ReleaseCheckResult {
@@ -48,10 +51,20 @@ export function runReleaseCheck(
   });
 
   // 2. Draft check (for a release tag, all playbooks must be verified and non-draft)
-  const allPlaybooks = loadAllPlaybooks(playbooksDir, {
-    includeDrafts: true,
-    referenceDate: refDate,
-  });
+  let allPlaybooks: CompiledPlaybook[] = [];
+  try {
+    allPlaybooks = loadAllPlaybooks(playbooksDir, {
+      includeDrafts: true,
+      referenceDate: refDate,
+    });
+  } catch (err) {
+    checks.push({
+      name: 'Playbook Loading',
+      passed: false,
+      message: `Failed to load playbooks: ${(err as Error).message}`,
+    });
+    return { passed: false, checks };
+  }
   const draftPlaybooks = allPlaybooks.filter((p) => p.status === 'draft');
   const draftsPassed = options.strictDrafts ? draftPlaybooks.length === 0 : true;
   checks.push({
@@ -109,7 +122,10 @@ export function runReleaseCheck(
   let configPassed = true;
   let configMsg = 'project.config configuration verified.';
   try {
-    const configPath = findProjectConfigFile(playbooksDir) || join(process.cwd(), 'project.config');
+    const configPath =
+      findProjectConfigFile(playbooksDir) ||
+      findProjectConfigFile(process.cwd()) ||
+      join(process.cwd(), 'project.config');
     const cfgRaw = readFileSync(configPath, 'utf8');
     const hasPlaceholders = cfgRaw.includes('REPLACE_ME');
     if (hasPlaceholders) {
@@ -130,6 +146,49 @@ export function runReleaseCheck(
     passed: configPassed,
     message: configMsg,
   });
+
+  // 6. Minimum Active Playbooks Check (for tag builds)
+  if (options.minActive !== undefined) {
+    const minActive = options.minActive;
+
+    const humanVerified = allPlaybooks.filter((p) => {
+      if (p.status !== 'active') return false;
+      const hasHumanReviewer =
+        Array.isArray(p.reviewers) &&
+        p.reviewers.some((r) => r && r !== 'ai-draft' && r !== 'claude-ai');
+      if (!hasHumanReviewer) return false;
+      const validMethod =
+        p.verification_method === 'first-hand' ||
+        p.verification_method === 'official-help-page';
+      if (!validMethod) return false;
+      if (typeof p.staleness_days === 'number' && p.staleness_days > 30) return false;
+      return true;
+    });
+
+    const aiAssisted = allPlaybooks.filter((p) => {
+      if (p.status !== 'active') return false;
+      if (p.verification_method !== 'ai-assisted') return false;
+      const hasAiReviewer =
+        Array.isArray(p.reviewers) &&
+        p.reviewers.includes('claude-ai');
+      if (!hasAiReviewer) return false;
+      if (typeof p.staleness_days === 'number' && p.staleness_days > 30) return false;
+      return true;
+    });
+
+    const humanCount = humanVerified.length;
+    const aiCount = aiAssisted.length;
+    const effectiveCount = options.allowAiAssisted ? humanCount + aiCount : humanCount;
+
+    const minActivePassed = effectiveCount >= minActive;
+    checks.push({
+      name: 'Minimum Active Playbooks Check',
+      passed: minActivePassed,
+      message: minActivePassed
+        ? `Found ${effectiveCount} qualified active playbooks (${humanCount} human-verified, ${aiCount} AI-assisted; meets minimum requirement of ${minActive}).`
+        : `Found ${effectiveCount} qualified active playbooks (${humanCount} human-verified, ${aiCount} AI-assisted), but minimum required is ${minActive}.`,
+    });
+  }
 
   const passed = checks.every((c) => c.passed);
 

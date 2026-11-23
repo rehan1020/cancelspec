@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: spotify
+name: Spotify
+category: streaming-music
+website: https://spotify.com
+merchant_patterns:
+  - SPOTIFY*
+  - SPOTIFY USA*
+channels:
+  - channel: direct
+    entry_url: https://www.spotify.com/account
+    steps:
+      - Log into your account page in a web browser.
+      - Go to Manage your plan.
+      - Select Cancel subscription.
+    source: https://support.spotify.com/article/cancel-premium/
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://support.spotify.com/article/cancel-premium/
+    accessed_on: 2026-10-31
+    sha256: 993e39f1f4eae1b0771272f0a4ac4c2178ac2559ccd9db12f12ef9ef129d874b
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://support.spotify.com/article/cancel-premium/
+content_seal: e64f5aaec0bcc1154f48f3539c5eb7bcd97f9bb3dcb934b4efc2ab0fc67d40e4

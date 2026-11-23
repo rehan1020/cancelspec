@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: times-prime
+name: Times Prime
+category: delivery-membership
+website: https://timesprime.com
+merchant_patterns:
+  - TIMES PRIME*
+  - TIMES INTERNET*
+channels:
+  - channel: direct
+    entry_url: https://www.timesprime.com/profile
+    steps:
+      - Log in
+      - Turn off auto renew
+    source: https://timesprime.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://timesprime.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://timesprime.com/help
+content_seal: c56c372487279f9eb51ae7169b5f0edbdbe2b753312efe1a58948b6be59ba7ac

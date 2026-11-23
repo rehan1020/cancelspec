@@ -81,9 +81,11 @@ export function buildAliasIndex(playbooks: CompiledPlaybook[]): AliasIndex {
     }
 
     // 4. Merchant patterns
-    for (const pattern of playbook.merchant_patterns) {
-      const isWildcard = pattern.endsWith('*') || pattern.includes('*');
-      addEntry(pattern, playbook, isWildcard);
+    if (playbook.merchant_patterns) {
+      for (const pattern of playbook.merchant_patterns) {
+        const isWildcard = pattern.endsWith('*') || pattern.includes('*');
+        addEntry(pattern, playbook, isWildcard);
+      }
     }
   }
 

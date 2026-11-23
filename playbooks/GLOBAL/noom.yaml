@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: noom
+name: Noom
+category: fitness-health
+website: https://www.noom.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.noom.com
+    steps:
+      - Sign into the Noom Subscription Portal using your Noom login.
+      - On the main page, click Cancel Subscription and follow the on-screen steps.
+    notes: Uninstalling the app does not cancel your subscription. Your subscription stays active until the end of the current billing cycle.
+    source: https://www.noom.com/support/faqs/subscription-and-billing/2025/10/how-to-cancel-your-noom-subscription-or-trial/
+  - channel: other
+    notes: Steps for the Noom mobile app.
+    steps:
+      - Open the Noom app and tap your profile picture.
+      - Tap Settings, then Manage Subscription.
+      - Follow the prompts to cancel.
+    source: https://www.noom.com/support/faqs/subscription-and-billing/2025/10/how-to-cancel-your-noom-subscription-or-trial/
+  - channel: apple
+    steps: []
+    notes: Subscriptions purchased via iOS must be cancelled directly through the Apple App Store; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions purchased via Android must be cancelled directly through the Google Play Store; see the Google Play guide.
+refund_window:
+  value: Initial subscription or add-on charges within 14 days of purchase
+  source: https://www.noom.com/support/faqs/subscription-and-billing/2025/10/how-to-cancel-your-noom-subscription-or-trial/
+  accessed_on: 2026-11-22
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-22
+verification_method: official-help-page
+sources:
+  - url: https://www.noom.com/support/faqs/subscription-and-billing/2025/10/how-to-cancel-your-noom-subscription-or-trial/
+    accessed_on: 2026-11-22
+    sha256: 47de5360c61e4e86ef6f5ecac4264e4bcd00fbda134fb4b7f9259122a17a6103
+revision: 2
+status: draft
+status_reason: AI-drafted, awaiting human verification.

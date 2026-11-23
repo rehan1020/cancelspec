@@ -7,9 +7,7 @@ aliases:
   - TimesPrime
 category: delivery-membership
 website: https://timesprime.com
-merchant_patterns:
-  - TIMES PRIME*
-  - TIMES INTERNET*
+merchant_patterns: []
 channels:
   - channel: direct
     entry_url: https://www.timesprime.com/profile
@@ -17,12 +15,10 @@ channels:
       - Log into Times Prime on the web or mobile browser.
       - Open Profile. View plan details.
       - Turn off auto renew.
-      - Confirm to turn off recurring charges.
     source: https://www.timesprime.com/faq
   - channel: bank-mandate
     steps: []
-    notes: Subscriptions paid via bank mandate or UPI autopay are managed through
-      your banking or payment app.
+    notes: Subscriptions paid via bank mandate or UPI autopay are managed through your banking or payment app.
 auto_renews:
   value: true
   source: https://www.timesprime.com/faq

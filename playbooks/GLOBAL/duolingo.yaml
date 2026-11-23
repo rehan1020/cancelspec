@@ -32,7 +32,7 @@ verified_on: 2026-11-10
 verification_method: official-help-page
 sources:
   - url: https://www.duolingo.com/help/cancel-my-super-duolingo-subscription
-    accessed_on: 2026-11-10
+    accessed_on: 2026-11-17
     sha256: 152230d548ec28cd59e528a814e0fa4eee017fada36bbe94242d79d175db7f98
 revision: 1
 status: draft

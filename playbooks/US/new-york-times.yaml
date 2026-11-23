@@ -9,41 +9,47 @@ aliases:
 category: news-media
 website: https://nytimes.com
 outcome: cancel
-merchant_patterns:
-  - NYTIMES*
+merchant_patterns: []
 channels:
   - channel: direct
     entry_url: https://www.nytimes.com/subscription/cancel
     steps:
-      - Log into your New York Times account in a web browser.
-      - Open Account Settings. Click your plan details.
-      - Click Cancel Subscription. Confirm to proceed.
-      - Chat with the bot. Answer questions to finish.
-    notes: Some accounts may be prompted to chat or call customer care to complete
-      cancellation.
-    source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
-tags:
-  - chat-only
-  - retention-offer
-  - survey-wall
-accessible_alternative: Online cancellation chat is available 24/7 as an alternative to phone.
-refund_window:
-  value: Prorated refund for annual plans
-  source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
-  accessed_on: 2026-10-31
+      - Log into your account and select Subscription Overview.
+      - Select Cancel your Subscription in the Manage Subscription section.
+      - Follow the instructions to cancel.
+    notes: Eligible digital and Home Delivery subscriptions can be cancelled online. Once cancelled, you will have limited access to content.
+    source: https://help.nytimes.com/360003499613-Cancel-Your-Subscription
+  - channel: other
+    notes: Chat route.
+    steps:
+      - Select Contact Customer Care at the bottom of the page to chat with a Customer Care Advocate.
+      - Request cancellation during support hours (7 a.m. to 5 p.m. ET Monday-Friday, 7 a.m. to 2 p.m. ET weekends/holidays).
+    source: https://help.nytimes.com/360003499613-Cancel-Your-Subscription
+  - channel: other
+    notes: Phone route.
+    steps:
+      - Call 866-273-3612 if in the U.S. (international contact info available online).
+      - Request cancellation during support hours (7 a.m. to 5 p.m. ET Monday-Friday, 7 a.m. to 2 p.m. ET weekends/holidays).
+    source: https://help.nytimes.com/360003499613-Cancel-Your-Subscription
+  - channel: apple
+    steps: []
+    notes: Subscriptions purchased through Apple App Store must be cancelled directly through Apple.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions purchased through Google Play must be cancelled directly through Google Play.
 auto_renews:
   value: true
-  source: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
-  accessed_on: 2026-10-31
+  source: https://help.nytimes.com/360003499613-Cancel-Your-Subscription
+  accessed_on: 2026-11-17
 contributors:
   - ai-draft
 reviewers: []
 verified_on: 2026-10-31
 verification_method: official-help-page
 sources:
-  - url: https://help.nytimes.com/hc/en-us/articles/360003499613-Cancellation
-    accessed_on: 2026-11-02
-    sha256: 24e19422acb4f2a8b7335f115982a313819bc4d63a1944116045902b341465b5
+  - url: https://help.nytimes.com/360003499613-Cancel-Your-Subscription
+    accessed_on: 2026-11-17
+    sha256: 5bee420f0bb1d2a1a5726244f9c1e277abc6ef8e38452a5f197d08466d5b54e4
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

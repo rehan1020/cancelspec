@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: bbc-select
+name: BBC Select
+category: streaming-video
+website: https://bbcselect.com
+merchant_patterns:
+  - BBC SELECT*
+channels:
+  - channel: amazon
+    entry_url: https://www.primevideo.com
+    steps:
+      - Open Account
+      - Cancel
+    source: https://bbcselect.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://bbcselect.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://bbcselect.com/help
+content_seal: 8c75c4bb74e582cfae8e121c1bc411835efc148901f7e93ad000a4c17f1784a1

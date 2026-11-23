@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: evernote
+name: Evernote
+category: software
+website: https://evernote.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.evernote.com
+    steps:
+      - Log in to your Account Settings on Evernote Web.
+      - Select Billing from the left-hand side menu.
+      - Next to Your plan, select Manage.
+      - Select Cancel plan at the bottom of the page.
+      - Scroll to the bottom of the page and click Cancel and lose all benefits.
+      - If multiple devices are connected, disconnect all devices except one, then click Disconnect and cancel plan.
+    notes: Your subscription remains active until the end of the billing cycle, then automatically reverts to Evernote Free.
+    source: https://help.evernote.com/hc/en-us/articles/115005949208-How-to-cancel-your-Evernote-subscription
+  - channel: apple
+    steps: []
+    notes: Subscriptions billed through iTunes or the Mac App Store must be cancelled through Apple; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions billed through Google Play must be cancelled through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-13
+verification_method: official-help-page
+sources:
+  - url: https://help.evernote.com/hc/en-us/articles/115005949208-How-to-cancel-your-Evernote-subscription
+    accessed_on: 2026-11-17
+    sha256: d611f30efdb9c697e1e7a33d91678880c0d007bbb38b0a35e874409d1d9d1c63
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

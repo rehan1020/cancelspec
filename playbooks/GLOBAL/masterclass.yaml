@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: masterclass
+name: MasterClass
+category: education
+website: https://www.masterclass.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.masterclass.com
+    steps:
+      - Log into your account at www.masterclass.com using a web browser.
+      - Click your profile or account menu in the top right, then select Settings.
+      - In Account Settings, navigate to the Membership section and click Cancel Membership.
+      - Select Cancel Now to confirm and complete your cancellation.
+    notes: Cancellations cannot be made through the MasterClass mobile app.
+    source: https://www.masterclass.com/help-center/masterclass/answers/cancelling-your-subscription-renewal--id--M2McWBvNTh-WNRR6llmkAw
+  - channel: apple
+    steps: []
+    notes: Subscriptions purchased through the iOS App Store must be cancelled through Apple ID settings; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions purchased through Google Play must be cancelled through Google Play settings; see the Google Play guide.
+refund_window:
+  value: 30 days
+  source: https://www.masterclass.com/help-center/masterclass/answers/cancelling-your-subscription-renewal--id--M2McWBvNTh-WNRR6llmkAw
+  accessed_on: 2026-11-12
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://www.masterclass.com/help-center/masterclass/answers/cancelling-your-subscription-renewal--id--M2McWBvNTh-WNRR6llmkAw
+    accessed_on: 2026-11-12
+    sha256: 04a440b402736771ab5af73c74a04d73e6569c0e1ae712ca3d8937b91cc118fc
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

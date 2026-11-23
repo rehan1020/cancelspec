@@ -678,6 +678,9 @@ export function createScannerApp(container: HTMLElement, options: AppOptions = {
         sub.topMatch
           ? el('span', { className: 'badge badge-success', style: 'margin-left: 0.5rem; font-size: 0.75rem;' }, 'Verified')
           : el('span', { className: 'badge badge-warning', style: 'margin-left: 0.5rem; font-size: 0.75rem;' }, 'Unmatched'),
+        (sub.note === 'shared descriptor' || sub.topMatch?.note === 'shared descriptor')
+          ? el('span', { className: 'badge badge-warning', style: 'margin-left: 0.5rem; font-size: 0.75rem;' }, 'shared descriptor')
+          : null,
         sub.isOverdue
           ? el('div', { style: 'color: var(--danger); font-size: 0.8rem; margin-top: 0.25rem;' }, 'May have ended (charge overdue)')
           : null,

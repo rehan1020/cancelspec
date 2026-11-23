@@ -8,8 +8,8 @@ outcome: cancel
 category: software
 website: https://apple.com
 merchant_patterns:
-  - APPLE.COM*
-  - APPLE BILL*
+  - APPLE.COM/BILL*
+pattern_source: https://support.apple.com/en-us/108092
 channels:
   - channel: apple
     steps:
@@ -17,9 +17,8 @@ channels:
       - Tap your name at the top.
       - Tap Subscriptions. Open your active list.
       - Select the subscription you want to cancel.
-      - Tap Cancel Subscription. Confirm to finish.
-    notes: If you see an expiration message in red text, the subscription is already
-      cancelled.
+      - Tap Cancel Subscription.
+    notes: If you see an expiration message in red text, the subscription is already cancelled.
     source: https://support.apple.com/en-us/118428
   - channel: direct
     entry_url: https://account.apple.com
@@ -28,7 +27,7 @@ channels:
       - Sign in with your Apple Account.
       - Select Subscriptions from the menu.
       - Choose the subscription you want to cancel.
-      - Click Cancel Subscription. Confirm to finish.
+      - Click Cancel Subscription.
     source: https://support.apple.com/en-us/118428
 contributors:
   - ai-draft
@@ -39,6 +38,9 @@ sources:
   - url: https://support.apple.com/en-us/118428
     accessed_on: 2026-11-04
     sha256: 0e661c506de6a9cda9e29570ef88ca531aaca1b0b3f0a4c780c1da27ec85496f
+  - url: https://support.apple.com/en-us/108092
+    accessed_on: 2026-11-14
+    sha256: ce4c169c2a2920b2942da9aba71258ca94a21488171a11cb7487643c6eb3d583
 revision: 2
 status: draft
 status_reason: AI-drafted, awaiting human verification.

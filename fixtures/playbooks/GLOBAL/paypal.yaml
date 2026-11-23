@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: paypal
+name: PayPal Automatic Payments
+kind: channel-guide
+outcome: cancel
+category: software
+website: https://paypal.com
+merchant_patterns: []
+channels:
+  - channel: paypal
+    entry_url: https://www.paypal.com/myaccount/autopay/
+    steps:
+      - Go to PayPal Settings
+      - Manage automatic payments
+      - Cancel
+    source: https://paypal.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://paypal.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture
+content_seal: 9bfcce41d5a808f1c3dc9924f4d005bea19e83f643366703915891aaf0b8813c

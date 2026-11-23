@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: babbel
+name: Babbel
+category: education
+website: https://www.babbel.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.babbel.com
+    steps:
+      - Go to babbel.com and log in to your account.
+      - Click on the profile icon in the top right corner and choose Profile and settings.
+      - Open Account Information.
+      - Choose the subscription and click the Cancel auto-renewal button.
+    notes: Cancel at least the day before renewal. Deleting the app or account does not cancel the subscription.
+    source: https://support.babbel.com/hc/en-gb/articles/205600298-Cancelling-a-subscription
+  - channel: apple
+    steps:
+      - Go to Settings on your iPhone or iPad and tap your name.
+      - Tap on Subscriptions.
+      - Select Babbel and confirm the cancellation.
+    source: https://support.babbel.com/hc/en-gb/articles/205600298-Cancelling-a-subscription
+  - channel: google-play
+    steps:
+      - Open the Google Play Store and tap the profile icon in the top right corner.
+      - Choose Payment and subscriptions and then Subscriptions.
+      - Select Babbel and click Cancel subscription.
+    source: https://support.babbel.com/hc/en-gb/articles/205600298-Cancelling-a-subscription
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://support.babbel.com/hc/en-gb/articles/205600298-Cancelling-a-subscription
+    accessed_on: 2026-11-12
+    sha256: 38a8cae9b18723e13184ba8eb28a75794214af1bbdafdf8766b5ef3b7a9037fc
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

@@ -15,16 +15,14 @@ channels:
       - Click the My Account icon.
       - Click Settings.
       - Scroll down to Subscriptions. Click Manage.
-      - Click Cancel Subscription. Confirm the choice.
+      - Click Cancel Subscription.
     source: https://support.apple.com/en-us/118399
   - channel: apple
     steps: []
-    notes: Subscriptions billed through Apple are cancelled through Apple; see the
-      Apple Subscriptions guide.
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the Apple Subscriptions guide.
   - channel: google-play
     steps: []
-    notes: Subscriptions billed through Google Play are cancelled through Google
-      Play; see the Google Play Subscriptions guide.
+    notes: Subscriptions billed through Google Play are cancelled through Google Play; see the Google Play Subscriptions guide.
 contributors:
   - ai-draft
 reviewers: []

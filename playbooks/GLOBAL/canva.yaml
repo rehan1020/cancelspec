@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: canva
+name: Canva
+category: software
+website: https://www.canva.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.canva.com
+    steps:
+      - On the Canva homepage, select your account profile to open the menu.
+      - Select Settings.
+      - Go to Billing.
+      - Under your plan, select Cancel plan.
+      - Select Continue cancellation.
+      - Choose your cancellation reason and select Continue cancellation.
+      - Select Cancel subscription.
+    source: https://www.canva.com/help/cancel-canva-plan/
+  - channel: apple
+    steps: []
+    notes: Subscriptions purchased through Apple must be cancelled in your Apple ID account; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions purchased through Google Play must be cancelled in your Google Play account; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-13
+verification_method: official-help-page
+sources:
+  - url: https://www.canva.com/help/cancel-canva-plan/
+    accessed_on: 2026-11-13
+    sha256: 9d49a7f8543c2279ef66da5aa12c54e814c00683ac04587a283f7ec4f92eb8b9
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

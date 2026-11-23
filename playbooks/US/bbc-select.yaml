@@ -7,8 +7,7 @@ aliases:
   - BBC Select US
 category: streaming-video
 website: https://bbcselect.com
-merchant_patterns:
-  - BBC SELECT*
+merchant_patterns: []
 channels:
   - channel: amazon
     entry_url: https://www.primevideo.com/help?nodeId=G3BQ95AL4WZLV9ZG
@@ -16,7 +15,7 @@ channels:
       - Open Account & Settings on the Prime Video website.
       - Select Subscriptions from the top menu.
       - Find BBC Select on the list.
-      - Click Unsubscribe. Confirm to finish.
+      - Click Unsubscribe.
     notes: Access continues until the current billing cycle ends.
     source: https://www.primevideo.com/help?nodeId=G3BQ95AL4WZLV9ZG
   - channel: apple
@@ -26,7 +25,7 @@ channels:
       - Tap your name at the top of the screen.
       - Tap Subscriptions. Open your active list.
       - Select BBC Select from your list.
-      - Tap Cancel Subscription. Confirm to finish.
+      - Tap Cancel Subscription.
     notes: If billed through Apple, cancel at least 24 hours before renewal.
     source: https://support.apple.com/en-us/118428
   - channel: roku
@@ -35,7 +34,7 @@ channels:
       - Open the Roku website and sign in.
       - Find BBC Select on the page.
       - Select Manage subscription to see your plan.
-      - Click Turn off auto-renew. Confirm to finish.
+      - Click Turn off auto-renew.
     notes: You can also manage the subscription directly on your Roku device.
     source: https://support.roku.com/article/manage-or-cancel-subscriptions
 contributors:

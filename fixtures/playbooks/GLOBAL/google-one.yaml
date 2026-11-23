@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: google-one
+name: Google One
+category: cloud-storage
+website: https://one.google.com
+merchant_patterns:
+  - GOOGLE*GOOGLE ONE*
+  - GOOGLE*STORAGE*
+channels:
+  - channel: direct
+    entry_url: https://one.google.com/settings
+    steps:
+      - Log in
+      - Cancel membership
+    source: https://one.google.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://one.google.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://one.google.com/help
+content_seal: 4288569ce90d72622f171efcfe0620e3c7bc45029c1c0c7561f3e38ab1cb0b5a

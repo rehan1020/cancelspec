@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { get as httpGet } from 'node:http';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { buildSite, loadProjectConfig } from './index.js';
+import { renderServicePage } from './templates/service.js';
 import { createPreviewServer } from '../../../scripts/serve.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -115,7 +116,7 @@ describe('Site Builder', () => {
     expect(spotifyHtml).not.toContain('<script');
     expect(spotifyHtml).toContain('How to cancel Spotify (GLOBAL)');
     expect(spotifyHtml).toContain('Where do you pay?');
-    expect(spotifyHtml).toContain('Log into your Spotify account page');
+    expect(spotifyHtml).toContain('Log in to your account page in a web browser.');
   });
 
   it('enforces page size budget (< 100 KB for service page)', () => {
@@ -279,5 +280,65 @@ describe('Site Builder', () => {
     } finally {
       await new Promise<void>((res) => subpathServer.close(() => res()));
     }
+  });
+
+  it('renders distinct verification notices for ai-assisted and human-verified playbooks', () => {
+    const baseMockPlaybook = {
+      id: 'mock-service',
+      name: 'Mock Service',
+      region: 'GLOBAL',
+      category: 'software',
+      website: 'https://mock.com',
+      channels: [
+        {
+          channel: 'direct',
+          entry_url: 'https://mock.com/cancel',
+          steps: ['Log in and cancel.'],
+        },
+      ],
+      tags: [],
+      sources: [
+        {
+          url: 'https://mock.com/cancel',
+          accessed_on: '2026-11-20',
+          sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+        },
+      ],
+      revision: 1,
+      status: 'active',
+      difficulty: 1,
+      accessible_to_cancel: true,
+      staleness_days: 3,
+      days_to_notice: null,
+      refund_available: false,
+    } as any;
+
+    const aiPlaybook = {
+      ...baseMockPlaybook,
+      verification_method: 'ai-assisted',
+      verified_on: '2026-11-20',
+      reviewers: ['claude-ai'],
+      contributors: ['ai-draft'],
+      status_reason: 'AI-assisted check, not yet confirmed by a person.',
+    };
+
+    const humanPlaybook = {
+      ...baseMockPlaybook,
+      verification_method: 'official-help-page',
+      verified_on: '2026-11-20',
+      reviewers: ['alice'],
+      contributors: ['alice'],
+      status_reason: 'Verified by alice on 2026-11-20',
+    };
+
+    const aiHtml = renderServicePage(aiPlaybook, config);
+    expect(aiHtml).toContain(
+      'Checked against the official page on 2026-11-20 by an AI assistant. Not yet confirmed by a person.',
+    );
+    expect(aiHtml).toContain('href="/methodology/"');
+
+    const humanHtml = renderServicePage(humanPlaybook, config);
+    expect(humanHtml).toContain('Verified by alice on 2026-11-20');
+    expect(humanHtml).not.toContain('by an AI assistant');
   });
 });

@@ -8,35 +8,39 @@ aliases:
 category: streaming-video
 website: https://hulu.com
 outcome: cancel
-merchant_patterns:
-  - HULU.COM*
-  - HULU LLC*
+merchant_patterns: []
 channels:
   - channel: direct
     entry_url: https://secure.hulu.com/account
     steps:
-      - Log into your Hulu account on a web browser.
-      - Select your name in the top-right corner and select Account.
-      - Scroll to Cancel Subscription. Click Cancel.
-      - Click Continue to Cancel. Confirm to finish.
+      - Go to your Account page in a computer or mobile browser.
+      - Select Cancel under Your Subscription.
+      - If Hulu offers a pause, select Continue to Cancel.
+      - Select Cancel Subscription.
     notes: You keep access until the end of your billing cycle.
-    source: https://help.hulu.com/article/hulu-cancel-subscription
-tags:
-  - retention-offer
-accessible_alternative: Full online cancellation flow without phone or CAPTCHA.
+    source: https://help.hulu.com/article/hulu-cancel-hulu-subscription
+  - channel: apple
+    steps: []
+    notes: If billed through Apple, cancel through Apple; confirm your billing party on your Hulu Account page under Payment Information.
+  - channel: google-play
+    steps: []
+    notes: If billed through Google, cancel through Google; confirm your billing party on your Hulu Account page under Payment Information.
+  - channel: amazon
+    steps: []
+    notes: If billed through Amazon, cancel through Amazon; confirm your billing party on your Hulu Account page under Payment Information.
 auto_renews:
   value: true
-  source: https://help.hulu.com/article/hulu-cancel-subscription
-  accessed_on: 2026-10-31
+  source: https://help.hulu.com/article/hulu-cancel-hulu-subscription
+  accessed_on: 2026-11-17
 contributors:
   - ai-draft
 reviewers: []
 verified_on: 2026-10-31
 verification_method: official-help-page
 sources:
-  - url: https://help.hulu.com/article/hulu-cancel-subscription
-    accessed_on: 2026-11-02
-    sha256: f9f71ffc22a8a18445ba0ab3ee50898442164b1d86aaba6075d269a5ebf9899a
+  - url: https://help.hulu.com/article/hulu-cancel-hulu-subscription
+    accessed_on: 2026-11-17
+    sha256: 885fe840bb8167918c0018eebf719f5ef22511e504df83d31b33494ee62bc7aa
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

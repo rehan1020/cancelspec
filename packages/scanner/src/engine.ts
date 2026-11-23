@@ -168,6 +168,10 @@ export function scanStatement(
       amount: t.amount,
     }));
 
+    const topMatch = matches[0];
+    const isShared =
+      topMatch?.note === 'shared descriptor' || matches.some((m) => m.note === 'shared descriptor');
+
     rawSubscriptions.push({
       id: `sub-${subIndex++}`,
       merchantKey: group.merchantKey,
@@ -178,12 +182,14 @@ export function scanStatement(
       chargeCount: recurrence.chargeCount,
       firstDate: txDates[0]?.date || '',
       lastDate: txDates[txDates.length - 1]?.date || '',
-      confidenceScore: confidence.score,
-      tier: confidence.tier,
+      confidenceScore: isShared ? Math.min(confidence.score, 45) : confidence.score,
+      tier: isShared ? 'possible' : confidence.tier,
+      confidence: isShared ? 'low' : confidence.tier === 'likely' ? 'high' : 'medium',
+      note: isShared ? 'shared descriptor' : undefined,
       isOverdue: recurrence.isOverdue,
       processorHint: group.processorHint,
       matches,
-      topMatch: matches[0],
+      topMatch,
       transactions: txDates,
     });
   }

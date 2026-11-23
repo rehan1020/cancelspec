@@ -41,7 +41,6 @@ export function scaffoldPlaybook(
 
   const name = options.name || titleCase(serviceId);
   const website = options.website || `https://${serviceId.replace(/-/g, '')}.TODO-fill-domain`;
-  const pattern = `${serviceId.replace(/-/g, ' ').toUpperCase()}*`;
 
   const content = `# SPDX-FileCopyrightText: 2026 CancelSpec contributors
 # SPDX-License-Identifier: CC-BY-NC-SA-4.0
@@ -50,8 +49,7 @@ id: ${serviceId}
 name: ${name}
 category: software
 website: ${website}
-merchant_patterns:
-  - ${pattern}
+merchant_patterns: []
 channels:
   - channel: direct
     entry_url: ${website}/account

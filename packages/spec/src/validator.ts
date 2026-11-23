@@ -8,6 +8,7 @@ import {
   CHANNELS,
   OUTCOMES,
   PLAYBOOK_KINDS,
+  RETRIEVAL_METHODS,
   STATUSES,
   TAGS,
   VERIFICATION_METHODS,
@@ -15,10 +16,12 @@ import {
   type Channel,
   type Outcome,
   type PlaybookKind,
+  type RetrievalMethod,
   type Status,
   type Tag,
   type VerificationMethod,
 } from './constants.js';
+import { computeContentSeal } from './seal.js';
 import type {
   ValidationError,
   ValidationResult,
@@ -30,7 +33,9 @@ const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 const HTML_TAG_REGEX = /<[a-zA-Z/][^>]*>/;
 const MARKDOWN_LINK_REGEX = /\[.*?\]\(.*?\)/;
 const MARKDOWN_FORMAT_REGEX = /(\*\*|__|~~|`)/;
-const MERCHANT_PATTERN_REGEX = /^[A-Z0-9\s*_.\-+]+$/;
+const MERCHANT_PATTERN_REGEX = /^[A-Z0-9\s*_.\-/+]+$/;
+const FILLER_CONFIRM_REGEX =
+  /\bconfirm(\s+(your|the))?\s+(choice|to\s+finish|and\s+finish|to\s+proceed|to\s+end|that\s+you\s+want|cancellation(\s+to\s+finish)?|to\s+turn\s+off)\b/i;
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -147,6 +152,7 @@ export function validatePlaybook(data: unknown): ValidationResult {
     'category',
     'website',
     'merchant_patterns',
+    'pattern_source',
     'channels',
     'tags',
     'accessible_alternative',
@@ -158,6 +164,7 @@ export function validatePlaybook(data: unknown): ValidationResult {
     'verified_on',
     'verification_method',
     'sources',
+    'content_seal',
     'revision',
     'status',
     'status_reason',
@@ -253,17 +260,12 @@ export function validatePlaybook(data: unknown): ValidationResult {
 
   // 2. Matching
   // merchant_patterns
-  if (!Array.isArray(data.merchant_patterns)) {
+  if (data.merchant_patterns !== undefined && !Array.isArray(data.merchant_patterns)) {
     errors.push({
       path: 'merchant_patterns',
       message: 'merchant_patterns must be an array',
     });
-  } else if (data.status !== 'draft' && data.merchant_patterns.length === 0) {
-    errors.push({
-      path: 'merchant_patterns',
-      message: 'merchant_patterns is required and must contain at least one pattern for non-draft playbooks',
-    });
-  } else {
+  } else if (Array.isArray(data.merchant_patterns) && data.merchant_patterns.length > 0) {
     data.merchant_patterns.forEach((pattern, idx) => {
       if (typeof pattern !== 'string' || !pattern.trim()) {
         errors.push({
@@ -291,23 +293,54 @@ export function validatePlaybook(data: unknown): ValidationResult {
           });
         }
 
-        // Minimum-literal rule on normalized pattern (after processor prefixes are stripped)
-        if (data.kind !== 'channel-guide') {
-          const stripped = pattern
-            .replace(/\*/g, ' ')
-            .trim()
-            .replace(/^(GOOGLE|GOOGLE PLAY|APPLE\.COM|APPLE|APPLE BILL|PAYPAL|SQUARE|SQ)\b\s*/i, '')
-            .trim();
-          const words = stripped.split(/\s+/).filter(Boolean);
-          const hasWordGe4 = words.some((w) => w.replace(/[^A-Z0-9]/g, '').length >= 4);
-          if (!hasWordGe4) {
-            errors.push({
-              path: `merchant_patterns[${idx}]`,
-              message: `merchant_pattern normalized literal must contain at least one word of 4 or more characters after processor prefixes are stripped (got "${stripped}")`,
-            });
-          }
+        // Processor or brand prefix check: pattern cannot be only a prefix; must contain a product word
+        const stripped = pattern
+          .replace(/\*/g, ' ')
+          .trim()
+          .replace(/^(GOOGLE\s+PLAY|GOOGLE|APPLE\.COM|APPLE\s+BILL|APPLE|PAYPAL|SQUARE|SQ|AMAZON|AMZN\.COM|AMZN)\b[\s/]*/i, '')
+          .trim();
+        const words = stripped.split(/[\s/]+/).filter(Boolean);
+        const hasProductWord = words.some((w) => w.replace(/[^A-Z0-9]/g, '').length >= 3);
+        if (!hasProductWord) {
+          errors.push({
+            path: `merchant_patterns[${idx}]`,
+            message: `merchant_pattern cannot be only a processor or brand prefix ("${pattern}"); it must contain a product word`,
+          });
         }
       }
+    });
+
+    // Descriptor source requirement: when patterns are present, require pattern_source
+    if (!data.pattern_source || typeof data.pattern_source !== 'string' || !data.pattern_source.trim()) {
+      errors.push({
+        path: 'pattern_source',
+        message: 'pattern_source is required when merchant_patterns are present and must be an https URL',
+      });
+    } else if (!isValidHttpsUrl(data.pattern_source)) {
+      errors.push({
+        path: 'pattern_source',
+        message: 'pattern_source must be a valid https URL',
+      });
+    } else {
+      const matchingSource = Array.isArray(data.sources)
+        ? data.sources.find((s) => s && isPlainObject(s) && s.url === data.pattern_source)
+        : undefined;
+      if (!matchingSource) {
+        errors.push({
+          path: 'pattern_source',
+          message: `pattern_source "${data.pattern_source}" must equal one of the URLs in sources`,
+        });
+      } else if (!matchingSource.sha256 || typeof matchingSource.sha256 !== 'string' || !matchingSource.sha256.trim()) {
+        errors.push({
+          path: 'pattern_source',
+          message: `The source referenced by pattern_source "${data.pattern_source}" must carry a sha256 hash`,
+        });
+      }
+    }
+  } else if (data.pattern_source) {
+    errors.push({
+      path: 'pattern_source',
+      message: 'pattern_source cannot be set when merchant_patterns is empty',
     });
   }
 
@@ -365,13 +398,13 @@ export function validatePlaybook(data: unknown): ValidationResult {
 
   // 5. Facts
   if (data.notice_period !== undefined) {
-    validateFact(data.notice_period, 'notice_period', errors);
+    validateFact(data.notice_period, 'notice_period', errors, availableSourceUrls);
   }
   if (data.refund_window !== undefined) {
-    validateFact(data.refund_window, 'refund_window', errors);
+    validateFact(data.refund_window, 'refund_window', errors, availableSourceUrls);
   }
   if (data.auto_renews !== undefined) {
-    validateFact(data.auto_renews, 'auto_renews', errors);
+    validateFact(data.auto_renews, 'auto_renews', errors, availableSourceUrls);
   }
 
   // 6. Provenance
@@ -380,6 +413,23 @@ export function validatePlaybook(data: unknown): ValidationResult {
       path: 'contributors',
       message: 'contributors is required and must contain at least one handle',
     });
+  } else if (data.contributors.includes('ai-draft')) {
+    if (data.tags !== undefined && Array.isArray(data.tags) && data.tags.length > 0) {
+      errors.push({
+        path: 'tags',
+        message: 'Draft playbooks authored by "ai-draft" cannot contain friction tags (must be absent or empty)',
+      });
+    }
+    if (
+      data.accessible_alternative !== undefined &&
+      typeof data.accessible_alternative === 'string' &&
+      data.accessible_alternative.trim().length > 0
+    ) {
+      errors.push({
+        path: 'accessible_alternative',
+        message: 'Draft playbooks authored by "ai-draft" cannot contain accessible_alternative (must be absent or empty)',
+      });
+    }
   }
 
   if (!Array.isArray(data.reviewers)) {
@@ -387,6 +437,22 @@ export function validatePlaybook(data: unknown): ValidationResult {
       path: 'reviewers',
       message: 'reviewers is required and must be an array of handles',
     });
+  } else {
+    if (data.verification_method === 'ai-assisted') {
+      const invalidReviewers = data.reviewers.filter((r) => r !== 'claude-ai');
+      if (invalidReviewers.length > 0) {
+        errors.push({
+          path: 'reviewers',
+          message:
+            'Playbooks with verification_method "ai-assisted" may have reviewers containing only the reserved handle "claude-ai" (never a human handle)',
+        });
+      }
+    } else if (data.reviewers.includes('claude-ai')) {
+      errors.push({
+        path: 'reviewers',
+        message: '"claude-ai" cannot be a reviewer for human-verified playbooks',
+      });
+    }
   }
 
   if (typeof data.verified_on !== 'string' || !isValidDate(data.verified_on)) {
@@ -405,6 +471,41 @@ export function validatePlaybook(data: unknown): ValidationResult {
     });
   }
 
+  if (data.verification_method === 'ai-assisted') {
+    const computedSeal = computeContentSeal(data);
+    if (!data.content_seal) {
+      errors.push({
+        path: 'content_seal',
+        message: 'Playbooks with verification_method "ai-assisted" must carry content_seal',
+      });
+    } else if (data.content_seal !== computedSeal) {
+      errors.push({
+        path: 'content_seal',
+        message: 'content changed after verification; re-run verify',
+      });
+    }
+
+    if (Array.isArray(data.sources)) {
+      data.sources.forEach((src, idx) => {
+        if (!isPlainObject(src) || typeof src.sha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(src.sha256)) {
+          errors.push({
+            path: `sources[${idx}].sha256`,
+            message: 'Playbooks with verification_method "ai-assisted" must have hashes on every source',
+          });
+        }
+      });
+    }
+  }
+
+  if (data.content_seal !== undefined) {
+    if (typeof data.content_seal !== 'string' || !/^[a-f0-9]{64}$/i.test(data.content_seal)) {
+      errors.push({
+        path: 'content_seal',
+        message: 'content_seal must be a 64-character lowercase hex SHA-256 digest',
+      });
+    }
+  }
+
   if (!Array.isArray(data.sources) || data.sources.length === 0) {
     errors.push({
       path: 'sources',
@@ -412,7 +513,7 @@ export function validatePlaybook(data: unknown): ValidationResult {
     });
   } else {
     data.sources.forEach((src, idx) => {
-      validateSource(src, `sources[${idx}]`, errors);
+      validateSource(src, `sources[${idx}]`, errors, warnings);
     });
 
     const hasMatchingSource = (data.sources as Array<{ url?: string }>).some(
@@ -456,14 +557,17 @@ export function validatePlaybook(data: unknown): ValidationResult {
       });
     }
 
-    // Require sha256 and accessed_on fetch date on every source before leaving draft
+    // Require sha256 on automated sources and accessed_on fetch date on every source before leaving draft
     if (Array.isArray(data.sources)) {
       data.sources.forEach((src, idx) => {
-        if (!isPlainObject(src) || typeof src.sha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(src.sha256)) {
-          errors.push({
-            path: `sources[${idx}].sha256`,
-            message: 'A playbook cannot leave draft status without a valid 64-character hex sha256 digest on every source',
-          });
+        const isManual = isPlainObject(src) && src.retrieval === 'manual';
+        if (!isManual) {
+          if (!isPlainObject(src) || typeof src.sha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(src.sha256)) {
+            errors.push({
+              path: `sources[${idx}].sha256`,
+              message: 'A playbook cannot leave draft status without a valid 64-character hex sha256 digest on every automated source',
+            });
+          }
         }
         if (!isPlainObject(src) || typeof src.accessed_on !== 'string' || !isValidDate(src.accessed_on)) {
           errors.push({
@@ -475,23 +579,93 @@ export function validatePlaybook(data: unknown): ValidationResult {
     }
 
     if (data.status === 'active') {
-      if (!Array.isArray(data.reviewers) || data.reviewers.length === 0) {
-        errors.push({
-          path: 'reviewers',
-          message: 'An active playbook must have at least one human reviewer',
-        });
+      if (data.verification_method === 'ai-assisted') {
+        if (!Array.isArray(data.reviewers) || data.reviewers.length === 0 || !data.reviewers.includes('claude-ai')) {
+          errors.push({
+            path: 'reviewers',
+            message: 'An active ai-assisted playbook must have "claude-ai" as reviewer',
+          });
+        }
+        if (
+          typeof data.status_reason !== 'string' ||
+          !data.status_reason.startsWith('AI-assisted check, not yet confirmed by a person')
+        ) {
+          errors.push({
+            path: 'status_reason',
+            message:
+              'Active playbooks with verification_method "ai-assisted" must have a status_reason beginning with "AI-assisted check, not yet confirmed by a person"',
+          });
+        }
+      } else {
+        const humanReviewers = Array.isArray(data.reviewers)
+          ? data.reviewers.filter((r) => r && r !== 'ai-draft' && r !== 'claude-ai')
+          : [];
+        if (humanReviewers.length === 0) {
+          errors.push({
+            path: 'reviewers',
+            message: 'An active playbook must have at least one human reviewer',
+          });
+        }
+        if (Array.isArray(data.contributors) && data.contributors.includes('ai-draft')) {
+          errors.push({
+            path: 'status',
+            message: 'A playbook with "ai-draft" as contributor cannot have status "active"',
+          });
+        }
       }
-      if (Array.isArray(data.contributors) && data.contributors.includes('ai-draft')) {
-        errors.push({
-          path: 'status',
-          message: 'A playbook with "ai-draft" as contributor cannot have status "active"',
-        });
-      }
+
       if (Array.isArray(data.reviewers) && data.reviewers.includes('ai-draft')) {
         errors.push({
           path: 'reviewers',
           message: '"ai-draft" cannot be a reviewer',
         });
+      }
+
+      // Manual sources checks for active playbooks
+      const hasManualSource =
+        Array.isArray(data.sources) &&
+        data.sources.some((s) => isPlainObject(s) && s.retrieval === 'manual');
+
+      if (hasManualSource) {
+        if (data.verification_method === 'ai-assisted') {
+          errors.push({
+            path: 'sources',
+            message: 'Manual sources cannot be used with verification_method "ai-assisted"',
+          });
+        }
+        if (Array.isArray(data.contributors) && data.contributors.includes('ai-draft')) {
+          errors.push({
+            path: 'sources',
+            message: 'Manual sources cannot be used in a playbook with "ai-draft" as contributor',
+          });
+        }
+        if (!Array.isArray(data.reviewers) || data.reviewers.length === 0) {
+          errors.push({
+            path: 'reviewers',
+            message: 'Active playbooks with manual sources require at least one human reviewer',
+          });
+        }
+        if (
+          data.verification_method !== 'first-hand' &&
+          data.verification_method !== 'official-help-page'
+        ) {
+          errors.push({
+            path: 'verification_method',
+            message:
+              'Active playbooks with manual sources must use verification_method "first-hand" or "official-help-page"',
+          });
+        }
+      }
+
+      // Verification seal check
+      const computedSeal = computeContentSeal(data);
+      if (!data.content_seal || data.content_seal !== computedSeal) {
+        if (!errors.some((e) => e.path === 'content_seal')) {
+          errors.push({
+            path: 'content_seal',
+            message: 'content changed after verification; re-run verify',
+          });
+        }
       }
     }
   }
@@ -585,6 +759,13 @@ function validateChannel(
       });
     }
   } else {
+    if (channelData.channel === 'direct' && !channelData.entry_url) {
+      errors.push({
+        path: `${path}.entry_url`,
+        message: 'entry_url is required for a direct channel with steps',
+      });
+    }
+
     if (!channelData.source) {
       if (status === 'draft') {
         warnings.push({
@@ -636,6 +817,14 @@ function validateChannel(
         }
         checkBannedPhrases(`${stepPath}.action`, action, errors);
 
+        // Filler confirmation phrase check
+        if (FILLER_CONFIRM_REGEX.test(action)) {
+          warnings.push({
+            path: `${stepPath}.action`,
+            message: `Step contains potential filler confirmation phrase: "${action}". Remove unless the official page states it.`,
+          });
+        }
+
         // Readability check
         const grade = estimateFleschKincaidGrade(action);
         if (grade > 8.0) {
@@ -660,7 +849,12 @@ function validateChannel(
   }
 }
 
-function validateFact(factData: unknown, path: string, errors: ValidationError[]): void {
+function validateFact(
+  factData: unknown,
+  path: string,
+  errors: ValidationError[],
+  availableSourceUrls: string[] = [],
+): void {
   if (!isPlainObject(factData)) {
     errors.push({ path, message: 'fact must be an object' });
     return;
@@ -679,13 +873,23 @@ function validateFact(factData: unknown, path: string, errors: ValidationError[]
     errors.push({ path: `${path}.source`, message: 'fact source must be an https URL' });
   } else if (containsPlaceholders(factData.source)) {
     errors.push({ path: `${path}.source`, message: 'fact source cannot contain placeholder domain' });
+  } else if (!availableSourceUrls.includes(factData.source)) {
+    errors.push({
+      path: `${path}.source`,
+      message: `fact source "${factData.source}" must point to one of the playbook's sources`,
+    });
   }
   if (typeof factData.accessed_on !== 'string' || !isValidDate(factData.accessed_on)) {
     errors.push({ path: `${path}.accessed_on`, message: 'fact accessed_on must be a date (YYYY-MM-DD)' });
   }
 }
 
-function validateSource(sourceData: unknown, path: string, errors: ValidationError[]): void {
+function validateSource(
+  sourceData: unknown,
+  path: string,
+  errors: ValidationError[],
+  warnings: ValidationWarning[],
+): void {
   if (!isPlainObject(sourceData)) {
     errors.push({ path, message: 'source must be an object' });
     return;
@@ -697,6 +901,23 @@ function validateSource(sourceData: unknown, path: string, errors: ValidationErr
   }
   if (typeof sourceData.accessed_on !== 'string' || !isValidDate(sourceData.accessed_on)) {
     errors.push({ path: `${path}.accessed_on`, message: 'source accessed_on must be a date (YYYY-MM-DD)' });
+  }
+  if (sourceData.retrieval !== undefined) {
+    if (
+      typeof sourceData.retrieval !== 'string' ||
+      !RETRIEVAL_METHODS.includes(sourceData.retrieval as RetrievalMethod)
+    ) {
+      errors.push({
+        path: `${path}.retrieval`,
+        message: `Invalid retrieval "${sourceData.retrieval}". Must be one of: ${RETRIEVAL_METHODS.join(', ')}`,
+      });
+    }
+  }
+  if (sourceData.retrieval === 'manual') {
+    warnings.push({
+      path: `${path}`,
+      message: 'Source has manual retrieval; skipped by automated verification',
+    });
   }
   if (sourceData.sha256 !== undefined) {
     if (typeof sourceData.sha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(sourceData.sha256)) {

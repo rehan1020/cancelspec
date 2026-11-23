@@ -16,6 +16,12 @@ CancelSpec is a browser-only tool that helps you find and cancel your subscripti
 - **No third-party code.** Every line of JavaScript, CSS, and SVG is authored in this repository.
 - **Free forever.** No paid tier, no donations, no ads.
 
+## Verification standards
+
+CancelSpec publishes cancellation guides with clear verification disclosures:
+- **Human-verified**: Verified first-hand or against official documentation by community reviewers (`first-hand`, `official-help-page`, `community-report`).
+- **AI-assisted check**: Checked against the official support page by an AI assistant (`claude-ai`). Every source carries a cryptographic SHA-256 hash and the playbook carries a `content_seal`. Service pages display: *"Checked against the official page on DATE by an AI assistant. Not yet confirmed by a person."*
+
 ## Official repository
 
 The repository URL specified in `project.config` (**https://github.com/rehan1020/cancelspec**) is the only official repository.

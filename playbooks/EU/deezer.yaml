@@ -7,38 +7,47 @@ aliases:
   - Deezer Premium
 category: streaming-music
 website: https://deezer.com
-merchant_patterns:
-  - DEEZER*
+merchant_patterns: []
 channels:
   - channel: direct
     entry_url: https://www.deezer.com/account
     steps:
-      - Log into your Deezer account on a web browser.
-      - Click your profile image. Choose Settings.
-      - Click Manage plan.
-      - Click Cancel subscription. Confirm choice.
-    notes: Your account reverts to the free Deezer tier at cycle end.
-    source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
+      - Go to Deezer and sign in.
+      - Go to your profile.
+      - Select Account Settings.
+      - Select Manage my subscription.
+      - Select Cancel my subscription.
+      - Select the reason for canceling and then select Confirm.
+    notes: If you cancel your Deezer Premium subscription, you keep access to Premium features until the end of your current subscription period. After that, your account will revert to Deezer Free.
+    source: https://support.deezer.com/hc/en-gb/articles/214349245-Cancel-Your-Deezer-Subscription
+  - channel: other
+    notes: Steps for the Deezer mobile app.
+    steps:
+      - In the Deezer app, select your profile icon.
+      - Select the Settings cog icon.
+      - Select Manage my subscription.
+      - Select Cancel my subscription.
+      - Select the reason for canceling and then select Confirm.
+    source: https://support.deezer.com/hc/en-gb/articles/214349245-Cancel-Your-Deezer-Subscription
   - channel: apple
     steps: []
-    notes: Subscriptions billed through Apple are cancelled through Apple; see the
-      Apple Subscriptions guide.
-refund_window:
-  value: 14 days statutory cooling-off in EU
-  source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
-  accessed_on: 2026-10-31
+    notes: If you subscribe to Deezer through your Apple account, you can only cancel directly with Apple.
+  - channel: carrier-billing
+    steps: []
+    notes: If you pay as part of a mobile provider bundle or partnership, you must cancel through the respective partner directly.
 auto_renews:
   value: true
-  source: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
-  accessed_on: 2026-10-31
+  source: https://support.deezer.com/hc/en-gb/articles/214349245-Cancel-Your-Deezer-Subscription
+  accessed_on: 2026-11-22
 contributors:
   - ai-draft
 reviewers: []
-verified_on: 2026-10-31
+verified_on: 2026-11-22
 verification_method: official-help-page
 sources:
-  - url: https://support.deezer.com/hc/en-gb/articles/115003869205-Cancel-Your-Deezer-Subscription
-    accessed_on: 2026-11-02
-revision: 1
+  - url: https://support.deezer.com/hc/en-gb/articles/214349245-Cancel-Your-Deezer-Subscription
+    accessed_on: 2026-11-22
+    sha256: 9e6d16f6a04da9eef3f5dc4e0af0c374aeabf0d51e5e3c6157d96a87048d7ca3
+revision: 2
 status: draft
 status_reason: AI-drafted, awaiting human verification.

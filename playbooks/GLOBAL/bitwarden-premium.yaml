@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: bitwarden-premium
+name: Bitwarden Premium
+category: software
+website: https://bitwarden.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://vault.bitwarden.com
+    steps:
+      - In the web app, go to Settings → Subscription.
+      - Take note of the Next charge date when paid features will end.
+      - Select Cancel Subscription.
+    notes: Paid features end at the end of the current billing cycle (account reverts to free individual plan). You can select Reinstate subscription on the same page to turn renewal back on before the cycle ends. Cancelling renewal does not delete your vault data.
+    source: https://bitwarden.com/help/cancel-a-subscription/
+refund_window:
+  value: 30 days
+  source: https://bitwarden.com/help/cancel-a-subscription/
+  accessed_on: 2026-11-18
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-18
+verification_method: official-help-page
+sources:
+  - url: https://bitwarden.com/help/cancel-a-subscription/
+    accessed_on: 2026-11-18
+    sha256: 33c67da622738fbc3362a108aab7e8d64e2f73d6730006984946d51401a652eb
+revision: 2
+status: draft
+status_reason: AI-drafted, awaiting human verification.

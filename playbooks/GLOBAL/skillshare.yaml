@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: skillshare
+name: Skillshare
+category: education
+website: https://www.skillshare.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.skillshare.com
+    steps:
+      - Go to Account settings on skillshare.com.
+      - Select Membership & Payments from the left menu.
+      - Click Cancel membership.
+      - Follow the prompts to confirm your cancellation.
+    notes: On a mobile browser, open skillshare.com, tap your profile icon, select Account settings, tap Membership & Payments, and tap Cancel membership.
+    source: https://help.skillshare.com/hc/en-us/articles/115001701651-How-do-I-cancel-my-Skillshare-subscription
+  - channel: apple
+    steps: []
+    notes: Subscriptions started through the iOS App Store are managed in Apple ID subscription settings; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions started through Google Play are managed in Google Play account settings; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://help.skillshare.com/hc/en-us/articles/115001701651-How-do-I-cancel-my-Skillshare-subscription
+    accessed_on: 2026-11-12
+    sha256: fc7b5c14331d5aef4e81576a290d3d057ae8e2e3d5fd7d21cc126a50d64c8893
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

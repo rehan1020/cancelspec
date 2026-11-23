@@ -16,18 +16,24 @@ export function renderServicePage(
 
   // Status and staleness banner
   let statusBanner = '';
-  if (playbook.status === 'stale' || playbook.staleness_days > 180) {
+  if (playbook.verification_method === 'ai-assisted') {
     statusBanner = `
+      <div class="banner banner-info" role="status">
+        Checked against the official page on ${escapeHtml(playbook.verified_on)} by an AI assistant. Not yet confirmed by a person. (<a href="/methodology/">Methodology</a>)
+      </div>`;
+  }
+  if (playbook.status === 'stale' || playbook.staleness_days > 180) {
+    statusBanner += `
       <div class="banner banner-warning" role="alert">
         <strong>Notice:</strong> This playbook was last verified over 180 days ago (${escapeHtml(playbook.verified_on)}). Steps may have changed.
       </div>`;
   } else if (playbook.status === 'broken') {
-    statusBanner = `
+    statusBanner += `
       <div class="banner banner-danger" role="alert">
         <strong>Warning:</strong> This playbook has been reported broken. ${escapeHtml(playbook.status_reason)}
       </div>`;
   } else if (playbook.status === 'discontinued') {
-    statusBanner = `
+    statusBanner += `
       <div class="banner" role="alert">
         <strong>Discontinued:</strong> This service has been discontinued. ${escapeHtml(playbook.status_reason)}
       </div>`;
@@ -142,7 +148,15 @@ export function renderServicePage(
 
     <section aria-labelledby="provenance-heading" style="margin-top: 2rem;">
       <h2 id="provenance-heading">Verification & Sources</h2>
-      <p><small>Last verified on <strong>${escapeHtml(playbook.verified_on)}</strong> using <strong>${escapeHtml(playbook.verification_method)}</strong> by community contributors (${escapeHtml(playbook.contributors.join(', '))}).</small></p>
+      ${playbook.verification_method === 'ai-assisted'
+        ? `<p><small>Checked against the official page on ${escapeHtml(playbook.verified_on)} by an AI assistant. Not yet confirmed by a person. (<a href="/methodology/">Methodology</a>)</small></p>`
+        : `<p><small>Verified by ${escapeHtml(
+            (Array.isArray(playbook.reviewers) && playbook.reviewers.length > 0)
+              ? playbook.reviewers.join(', ')
+              : (Array.isArray(playbook.contributors) && playbook.contributors.length > 0
+                ? playbook.contributors.join(', ')
+                : 'community contributors'),
+          )} on ${escapeHtml(playbook.verified_on)}</small></p>`}
       <ul>
         ${playbook.sources.map((s) => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.url)} (opens in new tab)</a> (Accessed ${escapeHtml(s.accessed_on)})${s.sha256 ? ` <small style="color: var(--text-muted); font-family: monospace;">[SHA-256: ${escapeHtml(s.sha256.slice(0, 12))}...]</small>` : ''}</li>`).join('\n')}
       </ul>

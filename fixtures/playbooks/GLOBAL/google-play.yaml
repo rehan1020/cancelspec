@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: google-play
+name: Google Play
+category: software
+website: https://play.google.com
+merchant_patterns: []
+channels:
+  - channel: google-play
+    entry_url: https://play.google.com/store/account/subscriptions
+    steps:
+      - Open Play Store
+      - Cancel
+    source: https://play.google.com/help
+  - channel: google-play
+    notes: Steps for an Android device.
+    steps:
+      - On your Android device, go to subscriptions in Google Play.
+      - Select the subscription you want to cancel.
+      - Tap Cancel subscription.
+      - Follow the instructions.
+    source: https://play.google.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://play.google.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+kind: channel-guide
+content_seal: 20d8047dc995f0c834e2ba34f9995030fda6d460c8d60f9713900f1ba72b96a5

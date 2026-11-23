@@ -25,6 +25,7 @@ If this PR adds or edits a cancellation playbook in `playbooks/`:
 - [ ] 8. **Sources:** Facts have valid `source` HTTPS URLs and `accessed_on` ISO dates.
 - [ ] 9. **Billing channels:** Supported channels (direct, Apple, Google Play, bank mandate) are cataloged.
 - [ ] 10. **Provenance:** `verified_on` date and `verification_method` are recorded.
+- [ ] 11. **Scope boundaries:** Edit only the files a task names; never rewrite wording for style; list every changed file in the PR description and flag any that were not named.
 
 ## Licensing & DCO Sign-off
 

@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: crunchyroll
+name: Crunchyroll
+category: streaming-video
+website: https://www.crunchyroll.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.crunchyroll.com
+    steps:
+      - Log in to your Crunchyroll account on a web browser and select your profile.
+      - Click your profile picture in the top-right corner and select Settings from the drop-down menu.
+      - Go to Membership Info and click Cancel Subscription.
+      - Click No thanks, Finish Cancellation.
+      - Submit optional feedback or click Skip and exit.
+    notes: For subscriptions paid directly via credit card or PayPal on crunchyroll.com. Premium perks remain active until the billing period expires.
+    source: https://help.crunchyroll.com/article/how-do-i-cancel-my-membership
+  - channel: apple
+    steps: []
+    notes: Subscriptions started through the iOS app are billed through Apple; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions started through the Android app are billed through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://help.crunchyroll.com/article/how-do-i-cancel-my-membership
+    accessed_on: 2026-11-12
+    sha256: 9a072148f740aed638e6b543c29ded668caf19e9aaae9233fb091c555320c81b
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

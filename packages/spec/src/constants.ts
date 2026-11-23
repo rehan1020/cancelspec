@@ -55,8 +55,16 @@ export const VERIFICATION_METHODS = [
   'first-hand',
   'official-help-page',
   'community-report',
+  'ai-assisted',
 ] as const;
 export type VerificationMethod = typeof VERIFICATION_METHODS[number];
+
+export const HUMAN_VERIFICATION_METHODS = [
+  'first-hand',
+  'official-help-page',
+  'community-report',
+] as const;
+export type HumanVerificationMethod = typeof HUMAN_VERIFICATION_METHODS[number];
 
 export const STATUSES = [
   'draft',
@@ -87,6 +95,9 @@ export const BANNED_LEGAL_PHRASES = [
   'we advise legally',
   'statutory right',
 ] as const;
+
+export const RETRIEVAL_METHODS = ['automated', 'manual'] as const;
+export type RetrievalMethod = typeof RETRIEVAL_METHODS[number];
 
 export const ALLOWLISTED_OFFICIAL_HELP_HOSTS: Record<string, string[]> = {
   'youtube.com': ['support.google.com', 'google.com'],

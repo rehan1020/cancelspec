@@ -14,16 +14,27 @@ channels:
     entry_url: https://www.strava.com/settings/account
     steps:
       - Log in to your Strava account at strava.com.
-      - Go to Settings and select My Account.
-      - Select Cancel Subscription and follow the prompts to confirm.
-    notes: You will retain access to subscription features until the end of your current subscription term. Canceling does not delete your uploaded activities or data.
+      - Select your profile picture in the top right corner.
+      - Go to Settings, then My Account.
+      - Select Cancel subscription.
+    notes: You retain access until the end of your term. Canceling does not delete uploaded activities or data.
     source: https://support.strava.com/en-us/articles/15401936-how-do-i-cancel-my-subscription
   - channel: apple
-    steps: []
-    notes: Subscriptions started in the iOS app are managed through the Apple App Store; see the Apple Subscriptions guide.
+    steps:
+      - Open the Strava app and go to the You tab.
+      - Tap the gear icon to open Settings.
+      - Select Your Strava Subscription, then Manage Your Subscription.
+      - Complete cancellation in the App Store.
+    notes: Subscriptions started in the iOS app are managed through the Apple App Store.
+    source: https://support.strava.com/en-us/articles/15401936-how-do-i-cancel-my-subscription
   - channel: google-play
-    steps: []
-    notes: Subscriptions started via Google Play are managed through Google Play; see the Google Play guide.
+    steps:
+      - Open the Strava app and go to the You tab.
+      - Tap the gear icon to open Settings.
+      - Select Your Strava Subscription, then Manage Your Subscription.
+      - Complete cancellation in Google Play.
+    notes: Subscriptions started in the Android app are managed through Google Play.
+    source: https://support.strava.com/en-us/articles/15401936-how-do-i-cancel-my-subscription
 contributors:
   - ai-draft
 reviewers: []
@@ -31,8 +42,8 @@ verified_on: 2026-11-10
 verification_method: official-help-page
 sources:
   - url: https://support.strava.com/en-us/articles/15401936-how-do-i-cancel-my-subscription
-    accessed_on: 2026-11-10
-    sha256: d7cf2625c9bb5824a8e89430795ab223d824c86dea86322fd332b20e433d0f61
+    accessed_on: 2026-11-17
+    sha256: 375e4315e5ee7deb161e9377d98fbe58abbedbde4d8b1e7b1f74d36dd4d89118
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

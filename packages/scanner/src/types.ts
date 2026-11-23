@@ -62,6 +62,8 @@ export interface MatchedPlaybook {
   entry?: IndexEntry | undefined;
   outcome?: Outcome | undefined;
   kind?: PlaybookKind | undefined;
+  confidence?: 'high' | 'medium' | 'low' | undefined;
+  note?: string | undefined;
 }
 
 export interface DetectedSubscription {
@@ -76,6 +78,8 @@ export interface DetectedSubscription {
   lastDate: string;
   confidenceScore: number; // 0 - 100
   tier: 'likely' | 'possible';
+  confidence?: 'high' | 'medium' | 'low' | undefined;
+  note?: string | undefined;
   isOverdue: boolean;
   processorHint?: Channel | undefined;
   matches: MatchedPlaybook[];

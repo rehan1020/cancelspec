@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: puregym
+name: PureGym
+category: fitness-health
+website: https://puregym.com
+merchant_patterns:
+  - PUREGYM*
+channels:
+  - channel: direct
+    entry_url: https://www.puregym.com/login
+    steps:
+      - Log in
+      - Cancel membership
+    source: https://puregym.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://puregym.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://puregym.com/help
+content_seal: f2d890eaf9d5efe677aeb5dce126879e5ac981baa794ab721a7026cb1e53e422

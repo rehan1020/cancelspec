@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: adobe-creative-cloud
+name: Adobe Creative Cloud
+category: software
+website: https://www.adobe.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://account.adobe.com/plans
+    steps:
+      - Sign in to your Adobe account at account.adobe.com/plans.
+      - Select Manage plan for the plan you want to cancel.
+      - Select Cancel your plan under Available actions.
+      - Check your plan details and select Continue to cancel.
+      - Select your cancellation reason and select Continue.
+      - Check your cancellation details and select Confirm cancellation.
+    source: https://helpx.adobe.com/manage-account/using/cancel-subscription.html
+  - channel: apple
+    steps: []
+    notes: Subscriptions purchased from an app store must be cancelled through that app store; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions purchased from Google Play must be cancelled through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-13
+verification_method: official-help-page
+sources:
+  - url: https://helpx.adobe.com/manage-account/using/cancel-subscription.html
+    accessed_on: 2026-11-13
+    sha256: e92201da79a8c93361e5b4183d25bdad85f6f483b8cd137fc498ac8d470f8ee0
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

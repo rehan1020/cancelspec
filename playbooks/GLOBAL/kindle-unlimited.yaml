@@ -7,7 +7,9 @@ aliases:
   - Kindle+
 category: education
 website: https://www.amazon.com/kindle-dbs/ku/ku-central
-merchant_patterns: []
+merchant_patterns:
+  - AMAZON DIGITAL SVCS*
+pattern_source: https://www.amazon.com/gp/help/customer/display.html?nodeId=GSNBBJP63SM65UDB
 channels:
   - channel: direct
     entry_url: https://www.amazon.com/kindle-dbs/ku/ku-central
@@ -34,6 +36,9 @@ sources:
   - url: https://www.amazon.com/gp/help/customer/display.html?nodeId=GLSQ4722655M4ZEJ
     accessed_on: 2026-11-10
     sha256: 943920d779b4d4d78b689cda9198b19e7e18ffc8a66c557bc03b8592607ba1f1
+  - url: https://www.amazon.com/gp/help/customer/display.html?nodeId=GSNBBJP63SM65UDB
+    accessed_on: 2026-11-14
+    sha256: ec953802eacfaec249ee9401210d6ce8d3355d5e12a01a19e8a2970049999d02
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

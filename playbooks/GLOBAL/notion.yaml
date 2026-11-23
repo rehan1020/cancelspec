@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: notion
+name: Notion
+category: software
+website: https://www.notion.com
+outcome: downgrade
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://www.notion.com
+    steps:
+      - In your Notion sidebar, click Settings → Billing → Change plan.
+      - Select the plan you want to change to, then click Continue.
+      - Provide feedback, then click Downgrade.
+    notes: You will receive confirmation of your downgrade and see when your current plan ends.
+    source: https://www.notion.com/help/upgrade-or-downgrade-your-plan
+  - channel: apple
+    steps: []
+    notes: Subscriptions billed through Apple must be managed through Apple ID settings; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions billed through Google Play must be managed through Google Play settings; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://www.notion.com/help/upgrade-or-downgrade-your-plan
+    accessed_on: 2026-11-12
+    sha256: ef937846870df788b33692cc48d578f0511741da1f8163981be60e99c87d893a
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

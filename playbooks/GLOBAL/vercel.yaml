@@ -8,8 +8,7 @@ aliases:
 category: software
 website: https://vercel.com
 outcome: downgrade
-merchant_patterns:
-  - VERCEL*
+merchant_patterns: []
 channels:
   - channel: direct
     entry_url: https://vercel.com/dashboard

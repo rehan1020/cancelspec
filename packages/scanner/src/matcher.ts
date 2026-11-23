@@ -80,6 +80,22 @@ export function matchMerchantKey(
 
   function considerMatch(entry: IndexEntry, matchScore: number, isExact: boolean) {
     const literalLength = entry.literalLength || entry.pattern.replace(/\*/g, '').trim().length;
+    let confidence: 'high' | 'medium' | 'low' | undefined;
+    let note: string | undefined;
+    let finalScore = matchScore;
+
+    // When a matched pattern is shared across several Amazon digital products
+    const isSharedAmazon =
+      entry.pattern.includes('AMAZON DIGITAL SVCS') ||
+      entry.normalizedPattern.includes('AMAZON DIGITAL SVCS') ||
+      cleanKey.includes('AMAZON DIGITAL SVCS');
+
+    if (isSharedAmazon) {
+      confidence = 'low';
+      note = 'shared descriptor';
+      finalScore = Math.min(matchScore, 0.5);
+    }
+
     const cand: InternalMatch = {
       serviceId: entry.serviceId,
       serviceName: entry.serviceName,
@@ -88,7 +104,9 @@ export function matchMerchantKey(
       difficulty: entry.difficulty,
       outcome: entry.outcome,
       kind: entry.kind,
-      matchScore,
+      matchScore: finalScore,
+      confidence,
+      note,
       entry,
       isExact,
       literalLength,

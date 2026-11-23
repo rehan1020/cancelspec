@@ -90,12 +90,21 @@ export function renderMethodologyPage(config: ProjectConfig): string {
 
     <section aria-labelledby="verification-heading" class="card" style="margin-bottom: 2rem;">
       <h2 id="verification-heading">3. Evidence Standards & Verification Hierarchy</h2>
-      <p>Playbook accuracy is maintained through three hierarchical tiers of evidence:</p>
+      <p>Playbook accuracy is maintained through structured evidence standards and transparent verification tiers:</p>
+      <h3>Human Verification</h3>
       <ol>
-        <li><strong>First-hand verification:</strong> Performed directly by a verified contributor using an active account or free trial.</li>
-        <li><strong>Official help page:</strong> Step-by-step documentation published on the service provider's verified official domain.</li>
-        <li><strong>Community report:</strong> Independent user reports submitted through public issues, flagged for reviewer confirmation.</li>
+        <li><strong>First-hand verification:</strong> Performed directly by a verified human contributor using an active account or free trial.</li>
+        <li><strong>Official help page:</strong> Step-by-step documentation confirmed by a human reviewer from the service provider's official domain.</li>
+        <li><strong>Community report:</strong> Independent user reports submitted through public issues, confirmed by a reviewer.</li>
       </ol>
+      <h3>AI-Assisted Check (ai-assisted)</h3>
+      <p>Playbooks may be published with an AI-assisted check when verified against the provider's official help page by an AI assistant (<code>claude-ai</code>):</p>
+      <ul>
+        <li>Every source page must carry a verified SHA-256 hash.</li>
+        <li>Each playbook carries a cryptographic <code>content_seal</code> ensuring that steps, channels, facts, and patterns cannot change silently after verification.</li>
+        <li>Clearly badged on the service page: <em>&ldquo;Checked against the official page on DATE by an AI assistant. Not yet confirmed by a person.&rdquo;</em></li>
+        <li>AI-assisted playbooks are accounted for separately in release readiness checks and project statistics until confirmed by a person.</li>
+      </ul>
       <p>Every published playbook records its verification source URL and the exact access date.</p>
     </section>
 

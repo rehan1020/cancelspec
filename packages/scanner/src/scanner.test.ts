@@ -87,8 +87,8 @@ describe('Worker Protocol (Stage 11-12)', () => {
 
 describe('Fixture Accuracy & Performance Acceptance (WP7)', () => {
   const rootDir = join(__dirname, '../../..');
-  const playbooksDir = join(rootDir, 'playbooks');
   const fixturesDir = join(rootDir, 'fixtures');
+  const playbooksDir = join(fixturesDir, 'playbooks');
 
   const playbooks = loadAllPlaybooks(playbooksDir, {
     referenceDate: new Date('2026-10-31T00:00:00.000Z'),
@@ -184,7 +184,7 @@ describe('Fixture Accuracy & Performance Acceptance (WP7)', () => {
 
 describe('Most-Specific-Pattern-Wins Rule & Disambiguation (Task 9 & 10)', () => {
   const rootDir = join(__dirname, '../../..');
-  const playbooks = loadAllPlaybooks(join(rootDir, 'playbooks'), {
+  const playbooks = loadAllPlaybooks(join(rootDir, 'fixtures', 'playbooks'), {
     includeDrafts: true,
   });
   const aliasIndex = buildAliasIndex(playbooks);
@@ -216,21 +216,79 @@ describe('Most-Specific-Pattern-Wins Rule & Disambiguation (Task 9 & 10)', () =>
     expect(matches[0]!.kind).toBe('channel-guide');
   });
 
-  it('ordinary Google charge matches nothing', () => {
+  it('ordinary Google charges match nothing without bare GOOGLE* pattern', () => {
     const ordinaryCharges = [
-      'GOOGLE *MOUNTAIN VIEW CA',
       'GOOGLE *SERVICES',
       'GOOGLE LLC',
       'GOOGLE *TEMPORARY HOLD',
+      'GOOGLE *FITBIT PREMIUM',
+      'GOOGLE *CLOUD',
+      'GOOGLE *MOUNTAIN VIEW CA',
       'GOOGLE',
       'GOOGLE *APPS',
     ];
 
     for (const rawDesc of ordinaryCharges) {
       const norm = normalizeMerchant(rawDesc);
-      const matches = matchMerchantKey(norm.merchantKey, norm.tokens, aliasIndex);
+      const matches = matchMerchantKey(norm.merchantKey, norm.tokens, aliasIndex, norm.processorHint);
       expect(matches).toEqual([]);
     }
+  });
+
+  it('marks match low confidence and notes shared descriptor for Amazon digital products', () => {
+    const kindlePlaybook = {
+      id: 'kindle-unlimited',
+      name: 'Kindle Unlimited',
+      region: 'GLOBAL' as const,
+      category: 'education' as const,
+      website: 'https://amazon.com',
+      merchant_patterns: ['AMAZON DIGITAL SVCS*'],
+      pattern_source: 'https://amazon.com/help',
+      channels: [
+        {
+          channel: 'direct' as const,
+          entry_url: 'https://amazon.com/ku',
+          steps: ['Cancel'],
+          source: 'https://amazon.com/help',
+        },
+      ],
+      contributors: ['test'],
+      reviewers: ['test'],
+      verified_on: '2026-11-01',
+      verification_method: 'first-hand' as const,
+      sources: [{ url: 'https://amazon.com/help', accessed_on: '2026-11-01', sha256: 'a'.repeat(64) }],
+      revision: 1,
+      status: 'active' as const,
+      status_reason: 'Active',
+      kind: 'service' as const,
+      outcome: 'cancel' as const,
+      difficulty: 1,
+      effective_date: '2026-11-01',
+      staleness_days: 0,
+      source_file: 'playbooks/GLOBAL/kindle-unlimited.yaml',
+      tags: [],
+      accessible_to_cancel: true,
+      matcher_key: 'kindle-unlimited',
+    };
+
+    const kuIndex = buildAliasIndex([kindlePlaybook as any]);
+    const norm = normalizeMerchant('AMAZON DIGITAL SVCS');
+    const matches = matchMerchantKey(norm.merchantKey, norm.tokens, kuIndex, norm.processorHint);
+
+    expect(matches.length).toBeGreaterThan(0);
+    expect(matches[0]!.serviceId).toBe('kindle-unlimited');
+    expect(matches[0]!.confidence).toBe('low');
+    expect(matches[0]!.note).toBe('shared descriptor');
+
+    const csvData =
+      'Date,Description,Amount\n2026-01-01,AMAZON DIGITAL SVCS,9.99\n2026-02-01,AMAZON DIGITAL SVCS,9.99\n2026-03-01,AMAZON DIGITAL SVCS,9.99';
+    const scanRes = scanStatement(csvData, { aliasIndex: kuIndex });
+    expect(scanRes.subscriptions.length).toBe(1);
+    const sub = scanRes.subscriptions[0]!;
+    expect(sub.confidence).toBe('low');
+    expect(sub.note).toBe('shared descriptor');
+    expect(sub.topMatch?.confidence).toBe('low');
+    expect(sub.topMatch?.note).toBe('shared descriptor');
   });
 
   it('longer literal text beats shorter literal text in matching order', () => {

@@ -10,11 +10,9 @@ channels:
   - channel: direct
     entry_url: https://www.expressvpn.com
     steps:
-      - Go to expressvpn.com in your web browser.
-      - Log in to your ExpressVPN account.
-      - Navigate to the My subscription page.
-      - Click Cancel subscription to stop the plan.
-      - Follow the on-screen prompts to confirm.
+      - Open any browser and go to My subscription.
+      - Click Cancel subscription below Automatic renewal and follow the prompts.
+    notes: You can still use ExpressVPN until the last day of your current subscription cycle.
     source: https://www.expressvpn.com/support/manage-account/cancel-expressvpn-subscription/
   - channel: apple
     notes: Subscriptions billed through Apple are cancelled through Apple; see the
@@ -24,23 +22,19 @@ channels:
     notes: Subscriptions billed through Google Play are cancelled through Google
       Play; see the Google Play Subscriptions guide.
     steps: []
-notice_period:
-  value: 24 hours
-  source: https://www.expressvpn.com/support/manage-account/cancel-expressvpn-subscription/
-  accessed_on: 2026-11-09
 auto_renews:
   value: true
   source: https://www.expressvpn.com/support/manage-account/cancel-expressvpn-subscription/
-  accessed_on: 2026-11-09
+  accessed_on: 2026-11-18
 contributors:
   - ai-draft
 reviewers: []
-verified_on: 2026-11-09
+verified_on: 2026-11-18
 verification_method: official-help-page
 sources:
   - url: https://www.expressvpn.com/support/manage-account/cancel-expressvpn-subscription/
-    accessed_on: 2026-11-09
-    sha256: 9b43552fee34de45e7c46acd8ad6b1de1d35bf55855f615193df24e68fa03b8c
-revision: 1
+    accessed_on: 2026-11-18
+    sha256: 7d66f5318b54faa13119f6c97e2d572623b1ffb2025fa7cf9b096b3584b558d1
+revision: 2
 status: draft
 status_reason: AI-drafted, awaiting human verification.

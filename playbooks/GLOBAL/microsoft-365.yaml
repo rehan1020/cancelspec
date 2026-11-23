@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: microsoft-365
+name: Microsoft 365
+category: software
+website: https://www.microsoft.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://account.microsoft.com/services
+    steps:
+      - Go to account.microsoft.com/services in your web browser.
+      - Sign in with the account used to purchase your subscription.
+      - Select Manage next to Microsoft 365.
+      - Select Cancel subscription (if it is not shown, select Turn off recurring billing).
+      - Follow the prompts to complete cancellation.
+    notes: Access continues until the expiration date. If purchased from Google Play or Apple App Store, manage through their store.
+    source: https://support.microsoft.com/en-us/account-billing/cancel-a-microsoft-365-subscription-46e2634c-c64b-4c65-94b9-2cc9c960e91b
+  - channel: apple
+    steps: []
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions billed through Google Play are cancelled through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-13
+verification_method: official-help-page
+sources:
+  - url: https://support.microsoft.com/en-us/account-billing/cancel-a-microsoft-365-subscription-46e2634c-c64b-4c65-94b9-2cc9c960e91b
+    accessed_on: 2026-11-17
+    sha256: 5775ef8010ad47e9851602695af1a41f5b8b888834cf0b4a4a7942bccdbb9b03
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

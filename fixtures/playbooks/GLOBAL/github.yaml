@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: github
+name: GitHub
+category: software
+website: https://github.com
+merchant_patterns:
+  - GITHUB*
+channels:
+  - channel: direct
+    entry_url: https://github.com/settings/billing
+    steps:
+      - Log in
+      - Click Downgrade
+    source: https://github.com/help
+contributors:
+  - test-fixture
+reviewers:
+  - test-fixture
+verified_on: 2026-10-31
+verification_method: first-hand
+sources:
+  - url: https://github.com/help
+    accessed_on: 2026-10-31
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+revision: 1
+status: active
+status_reason: Test fixture playbook
+pattern_source: https://github.com/help
+content_seal: aef4dd55f9ba3a7c0c2bbbc39f2a5cd1ab23abac11628919e8cb59913b796da1

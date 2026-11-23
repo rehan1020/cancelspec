@@ -11,6 +11,7 @@ website: https://heroku.com
 outcome: close-account
 merchant_patterns:
   - HEROKU*
+pattern_source: https://help.heroku.com/0DPBR3G7/why-is-my-credit-card-being-charged-by-heroku
 channels:
   - channel: direct
     entry_url: https://dashboard.heroku.com/account
@@ -18,7 +19,7 @@ channels:
       - Sign in to your Heroku dashboard.
       - Open your account settings page.
       - Scroll to the bottom of the page.
-      - Click Close account. Confirm to finish.
+      - Click Close account.
     notes: Any unpaid balance must be paid before you can close your account.
     source: https://devcenter.heroku.com/articles/account-management
 contributors:
@@ -30,6 +31,9 @@ sources:
   - url: https://devcenter.heroku.com/articles/account-management
     accessed_on: 2026-11-02
     sha256: 9091b8a0dc4c8314bf00788094259d6881d6346514a1d62f9d846488a944eaf3
+  - url: https://help.heroku.com/0DPBR3G7/why-is-my-credit-card-being-charged-by-heroku
+    accessed_on: 2026-11-14
+    sha256: 8e1a28ef58c8e87fca9caef0e9239493b204f791f5261422cb5a2936f448cc53
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

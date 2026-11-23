@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: calm
+name: Calm
+category: fitness-health
+website: https://www.calm.com
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://calm.com/login
+    steps:
+      - Log in to your Calm account on a web browser at calm.com/login.
+      - Click your profile icon in the top-right corner.
+      - Select Settings, then select Manage Subscription.
+      - Click Cancel Subscription and follow the prompts.
+    notes: Subscription will not renew at the end of your billing cycle, but Premium access continues until that date.
+    source: https://support.calm.com/hc/en-us/articles/115002473607-How-to-Cancel-Your-Subscription-or-Free-Trial
+  - channel: apple
+    steps:
+      - Open your iPhone or iPad Settings.
+      - Tap your name at the top, then tap Subscriptions.
+      - Select Calm, then tap Cancel Subscription.
+    source: https://support.calm.com/hc/en-us/articles/115002473607-How-to-Cancel-Your-Subscription-or-Free-Trial
+  - channel: google-play
+    steps:
+      - Open the Google Play app.
+      - Tap your profile icon, then tap Payments & subscriptions, then Subscriptions.
+      - Select Calm, then tap Cancel Subscription.
+    source: https://support.calm.com/hc/en-us/articles/115002473607-How-to-Cancel-Your-Subscription-or-Free-Trial
+refund_window:
+  value: Within 30 days for Calm.com and Google Play purchases; Apple purchases are refunded through Apple
+  source: https://support.calm.com/hc/en-us/articles/115002473607-How-to-Cancel-Your-Subscription-or-Free-Trial
+  accessed_on: 2026-11-22
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-22
+verification_method: official-help-page
+sources:
+  - url: https://support.calm.com/hc/en-us/articles/115002473607-How-to-Cancel-Your-Subscription-or-Free-Trial
+    accessed_on: 2026-11-22
+    sha256: c5e91a611e169e7e6a820b72451a59ce51231ce3c29293655aebe34f84040ee1
+revision: 2
+status: draft
+status_reason: AI-drafted, awaiting human verification.

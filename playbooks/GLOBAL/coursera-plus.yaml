@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: 2026 CancelSpec contributors
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+id: coursera-plus
+name: Coursera Plus
+aliases:
+  - Coursera
+category: education
+website: https://coursera.org
+merchant_patterns: []
+channels:
+  - channel: direct
+    entry_url: https://coursera.org
+    steps:
+      - Log in to Coursera.org in a computer or mobile web browser.
+      - Go to your Purchases page.
+      - Find the subscription you want to cancel under the Subscriptions tab.
+      - Click Cancel subscription.
+    notes: For subscriptions started on the web, you can also cancel in the Coursera mobile app via Settings (gear icon) > My Subscriptions > Manage Subscription > Cancel subscription.
+    source: https://www.coursera.support/s/article/learner-000001189?language=en_US
+  - channel: apple
+    steps: []
+    notes: Subscriptions started in the iOS app are billed through Apple; see the Apple Subscriptions guide.
+  - channel: google-play
+    steps: []
+    notes: Subscriptions started in the Android app are billed through Google Play; see the Google Play guide.
+contributors:
+  - ai-draft
+reviewers: []
+verified_on: 2026-11-12
+verification_method: official-help-page
+sources:
+  - url: https://www.coursera.org/about/terms
+    accessed_on: 2026-11-12
+    sha256: 22898a9ca4fc441eae278f2f38c9addd4a235cc45cfb41f413390832ec1e26d8
+  - url: https://www.coursera.support/s/article/learner-000001189?language=en_US
+    accessed_on: 2026-11-12
+    sha256: 0256cbd0a0c6ed45dda9595c03784670a7bfdc1c52b779f6ee72febe5c80f900
+revision: 1
+status: draft
+status_reason: AI-drafted, awaiting human verification.

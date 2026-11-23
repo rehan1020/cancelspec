@@ -9,22 +9,27 @@ aliases:
 category: cloud-storage
 website: https://one.google.com
 merchant_patterns:
-  - GOOGLE*GOOGLE ONE*
-  - GOOGLE*STORAGE*
+  - GOOGLE*GOOGLE STORAGE*
+pattern_source: https://support.google.com/googlepay/answer/7644142
 channels:
   - channel: direct
     entry_url: https://one.google.com
     steps:
       - Go to Google One on your web browser.
-      - Click Settings in the menu.
-      - Click Cancel membership to view options.
-      - Click Cancel membership. Confirm to finish.
-    notes: Your storage stays active until your billing period ends.
+      - Click Settings, then Cancel membership.
+      - To confirm, click Cancel membership.
+    notes: Storage and benefits remain available until the end of your billing cycle.
+    source: https://support.google.com/googleone/answer/9056360?hl=en
+  - channel: google-play
+    steps:
+      - On your Android phone or tablet, open the Google One app.
+      - At the top, tap Menu, then Settings, then Cancel membership.
+      - To confirm, tap Cancel membership.
+    notes: Storage and benefits remain available until the end of your billing cycle.
     source: https://support.google.com/googleone/answer/9056360?hl=en
   - channel: apple
     steps: []
-    notes: Subscriptions billed through Apple are cancelled through Apple; see the
-      Apple Subscriptions guide.
+    notes: Subscriptions billed through Apple are cancelled through Apple; see the Apple Subscriptions guide.
 refund_window:
   value: Non-refundable in most regions
   source: https://support.google.com/googleone/answer/9056360?hl=en
@@ -36,8 +41,11 @@ verified_on: 2026-11-01
 verification_method: official-help-page
 sources:
   - url: https://support.google.com/googleone/answer/9056360?hl=en
-    accessed_on: 2026-11-02
-    sha256: 86a8cc42d18f14243b3e704885f9c6dafff0e617dda77c5cff377cc25b27fb18
+    accessed_on: 2026-11-17
+    sha256: f6d19e53833ae8820de2ec74b537a23911ee3d3e44b1eebd508857d9a43bd57b
+  - url: https://support.google.com/googlepay/answer/7644142
+    accessed_on: 2026-11-14
+    sha256: 0c5248b1db8f6807d4ce8f220765879a0bd5f69ae099d0bb0e7c6324034d7770
 revision: 1
 status: draft
 status_reason: AI-drafted, awaiting human verification.

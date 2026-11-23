@@ -9,8 +9,7 @@ aliases:
 category: software
 website: https://gitlab.com
 outcome: downgrade
-merchant_patterns:
-  - GITLAB*
+merchant_patterns: []
 channels:
   - channel: direct
     entry_url: https://customers.gitlab.com
@@ -23,8 +22,6 @@ channels:
       - Click Cancel subscription to finish.
     notes: Your subscription remains active until the end of the term, then expires.
     source: https://docs.gitlab.com/subscriptions/manage_subscription/
-tags:
-  - survey-wall
 contributors:
   - ai-draft
 reviewers: []
